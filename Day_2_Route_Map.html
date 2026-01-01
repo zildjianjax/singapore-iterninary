@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 2 - Universal Studios Singapore - Route Map</title>
+    <title>Day 2 - Universal Studios Singapore - Route Map with Photos</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
             min-height: 100vh;
         }
         .container {
@@ -20,7 +20,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
         h1 {
-            color: #f5576c;
+            color: #FF6B6B;
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 10px;
@@ -43,7 +43,7 @@
             padding: 20px;
             background: #f8f9fa;
             border-radius: 15px;
-            border-left: 5px solid #f5576c;
+            border-left: 5px solid #FF6B6B;
             transition: transform 0.3s ease;
         }
         .stop:hover {
@@ -51,7 +51,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         .stop-number {
-            background: #f5576c;
+            background: #FF6B6B;
             color: white;
             width: 50px;
             height: 50px;
@@ -67,7 +67,7 @@
             flex: 1;
         }
         .stop-time {
-            color: #f5576c;
+            color: #FF6B6B;
             font-weight: bold;
             font-size: 1.2em;
             margin-bottom: 5px;
@@ -83,253 +83,270 @@
             line-height: 1.6;
             margin-bottom: 10px;
         }
-        .stop-duration {
+        .stop-duration, .cost {
             display: inline-block;
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 5px 15px;
+            padding: 5px 12px;
+            background: #FFE8E8;
+            color: #FF6B6B;
             border-radius: 20px;
             font-size: 0.9em;
-            font-weight: 600;
-        }
-        .transport {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            color: #f093fb;
             font-weight: bold;
-        }
-        .transport::before {
-            content: "↓";
-            font-size: 2em;
             margin-right: 10px;
         }
-        .cost {
-            background: #fff3cd;
-            color: #856404;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
+        .transport {
+            text-align: center;
+            color: #4ECDC4;
+            font-weight: bold;
+            padding: 10px;
+            background: linear-gradient(90deg, transparent, #E8F9F7, transparent);
+            border-radius: 10px;
         }
         .highlight {
-            background: #d4edda;
-            border-left-color: #28a745;
+            border-left-color: #4ECDC4;
         }
         .highlight .stop-number {
-            background: #28a745;
-        }
-        .meal {
-            background: #fff3cd;
-            border-left-color: #ffc107;
-        }
-        .meal .stop-number {
-            background: #ffc107;
-        }
-        .ride {
-            background: #cce5ff;
-            border-left-color: #007bff;
-        }
-        .ride .stop-number {
-            background: #007bff;
+            background: #4ECDC4;
         }
         .summary {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
             margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            color: white;
+            border-radius: 15px;
             text-align: center;
         }
         .summary h3 {
             margin-top: 0;
         }
+        .photo-link {
+            display: block;
+            margin: 15px 0;
+            color: #FF6B6B;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            background: #FFE8E8;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .photo-link:hover {
+            background: #FFD4D4;
+        }
+        .image-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin: 15px 0;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎢 DAY 2 - Wednesday, March 18, 2026</h1>
-        <div class="subtitle">Universal Studios Singapore - Full Day Adventure!</div>
+        <h1>📍 DAY 2 - Wednesday, March 18, 2026</h1>
+        <div class="subtitle">Universal Studios Singapore - Theme Park Day! 🎢🎬</div>
         
         <div class="route-container">
             
             <div class="stop">
                 <div class="stop-number">1</div>
                 <div class="stop-content">
-                    <div class="stop-time">🕕 6:00 AM - 7:00 AM</div>
-                    <div class="stop-location">Furama RiverFront Hotel - Morning Prep</div>
-                    <div class="stop-activity">
-                        • Wake up at 6:00 AM<br>
-                        • Get ready<br>
-                        • Pack: water bottles, sunscreen, hats, snacks, change of clothes
-                    </div>
-                    <span class="stop-duration">⏱️ 1 hour</span>
-                </div>
-            </div>
-
-            <div class="transport">🚶‍♂️ Walk 20 min to Maxwell Food Centre</div>
-
-            <div class="stop meal">
-                <div class="stop-number">2</div>
-                <div class="stop-content">
                     <div class="stop-time">🕖 7:00 AM - 7:45 AM</div>
-                    <div class="stop-location">🍜 Maxwell Food Centre - BREAKFAST</div>
+                    <div class="stop-location">🍜 Breakfast at Maxwell/Chinatown</div>
                     <div class="stop-activity">
-                        • Chicken Rice (SGD 4-5)<br>
-                        • Roti Prata (SGD 3-5)<br>
-                        • Kaya Toast (SGD 5-7)<br>
-                        • Quick hearty breakfast to fuel up!
+                        • Walk to Maxwell Food Centre (20 min)<br>
+                        • OR Chinatown Complex (15 min)<br>
+                        • Chicken Rice, Roti Prata, Kaya Toast<br>
+                        • Quick hearty breakfast before theme park!
                     </div>
                     <span class="stop-duration">⏱️ 45 min</span>
                     <span class="cost">💰 SGD 18-25</span>
                 </div>
             </div>
 
-            <div class="transport">🚶‍♂️ Walk 12 min → 🚇 MRT 10 min → 🚊 Sentosa Express 5 min</div>
+            <div class="transport">🚇 MRT to HarbourFront → Sentosa Express (1 hour 15 min)</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">2</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕤 9:30 AM</div>
+                    <div class="stop-location">🎢 Universal Studios Singapore - ARRIVE EARLY!</div>
+                    <div class="stop-activity">
+                        • Arrive BEFORE 10 AM opening!<br>
+                        • Be at gates by 9:30 AM<br>
+                        • First in line = shortest waits all day!<br>
+                        • Get park map, download USS app
+                    </div>
+                    <div class="image-placeholder">📸 Universal Studios Singapore<br>Entrance & Globe</div>
+                    <a href="https://www.google.com/search?q=universal+studios+singapore+entrance+globe&tbm=isch" target="_blank" class="photo-link">🔍 View USS Entrance Photos on Google Images</a>
+                    <span class="stop-duration">⏱️ 30 min wait</span>
+                    <span class="cost">💰 SGD 220-240 (tickets)</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Enter park at 10 AM opening!</div>
 
             <div class="stop highlight">
                 <div class="stop-number">3</div>
                 <div class="stop-content">
-                    <div class="stop-time">🕤 9:30 AM - 10:00 AM</div>
-                    <div class="stop-location">🎢 Universal Studios Singapore - ARRIVAL</div>
-                    <div class="stop-activity">
-                        <strong>⭐ ARRIVE BEFORE OPENING!</strong><br>
-                        • Be at gates by 9:30 AM<br>
-                        • First in line = shortest waits!<br>
-                        • Get park map<br>
-                        • Download USS app
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min wait</span>
-                    <span class="cost">💰 SGD 220-240</span>
-                </div>
-            </div>
-
-            <div class="transport">🎢 PARK OPENS AT 10:00 AM!</div>
-
-            <div class="stop ride">
-                <div class="stop-number">4</div>
-                <div class="stop-content">
                     <div class="stop-time">🕙 10:00 AM - 12:00 PM</div>
-                    <div class="stop-location">Morning Rides - BEST TIME!</div>
+                    <div class="stop-location">🎠 Morning Rides - BEST TIME!</div>
                     <div class="stop-activity">
-                        <strong>Hit major rides first:</strong><br>
-                        • Transformers (if 102cm height)<br>
+                        <strong>Priority Rides (Do First!):</strong><br>
+                        • Transformers: The Ride (if 102cm+)<br>
                         • Sesame Street Spaghetti Space Chase<br>
                         • Madagascar: A Crate Adventure<br>
                         • Shrek 4-D Adventure<br>
-                        • Puss In Boots' Giant Journey<br>
-                        <strong>Wait times: 15-30 min!</strong>
+                        • Puss In Boots' Giant Journey
                     </div>
+                    <div class="image-placeholder">📸 USS Theme Park Rides<br>Transformers, Madagascar, Shrek</div>
+                    <a href="https://www.google.com/search?q=universal+studios+singapore+transformers+madagascar+rides&tbm=isch" target="_blank" class="photo-link">🔍 View USS Rides Photos on Google Images</a>
                     <span class="stop-duration">⏱️ 2 hours</span>
                 </div>
             </div>
 
-            <div class="transport">🚶‍♂️ Walk to restaurant inside park</div>
+            <div class="transport">🚶‍♂️ Walk to restaurant area</div>
 
-            <div class="stop meal">
-                <div class="stop-number">5</div>
+            <div class="stop">
+                <div class="stop-number">4</div>
                 <div class="stop-content">
                     <div class="stop-time">🕧 12:00 PM - 1:00 PM</div>
-                    <div class="stop-location">🍔 Lunch at Universal Studios</div>
+                    <div class="stop-location">🍔 Lunch at USS</div>
                     <div class="stop-activity">
-                        • KT's Grill (chicken tenders, burgers)<br>
-                        • OR Goldilocks (pizza, pasta)<br>
-                        • Find shaded area<br>
-                        • REST & RECHARGE!<br>
-                        • Don't rush!
+                        • KT's Grill (New York zone)<br>
+                        • OR Goldilocks (Far Far Away)<br>
+                        • Chicken tenders, burgers, pizza, pasta<br>
+                        • Find shaded area to eat<br>
+                        • Rest and recharge!
                     </div>
                     <span class="stop-duration">⏱️ 1 hour</span>
                     <span class="cost">💰 SGD 45-60</span>
                 </div>
             </div>
 
-            <div class="transport">⏸️ Post-Lunch Break (explore shops, reapply sunscreen)</div>
+            <div class="transport">🚶‍♂️ Post-lunch break</div>
 
-            <div class="stop ride">
-                <div class="stop-number">6</div>
+            <div class="stop">
+                <div class="stop-number">5</div>
                 <div class="stop-content">
-                    <div class="stop-time">🕜 1:30 PM - 3:30 PM</div>
-                    <div class="stop-location">Afternoon Rides & Shows</div>
+                    <div class="stop-time">🕐 1:00 PM - 1:30 PM</div>
+                    <div class="stop-location">☕ Post-Lunch Break</div>
                     <div class="stop-activity">
-                        • King Julien's Beach Party-Go-Round<br>
-                        • Despicable Me Minion Mayhem<br>
-                        • Enchanted Airways<br>
-                        • Lights, Camera, Action! (show)<br>
-                        • Snack break between rides
-                    </div>
-                    <span class="stop-duration">⏱️ 2 hours</span>
-                    <span class="cost">💰 SGD 15-20 snacks</span>
-                </div>
-            </div>
-
-            <div class="transport">🚶‍♂️ Walk to WaterWorld arena</div>
-
-            <div class="stop highlight">
-                <div class="stop-number">7</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕞 3:30 PM - 4:00 PM</div>
-                    <div class="stop-location">💦 WaterWorld Show - MUST SEE!</div>
-                    <div class="stop-activity">
-                        <strong>DON'T MISS THIS!</strong><br>
-                        • Arrive 15 minutes early (3:15 PM)<br>
-                        • 20-minute spectacular stunt show<br>
-                        • Sit in middle section (blue seats)<br>
-                        • Amazing pyrotechnics & stunts!
+                        • Let child digest<br>
+                        • Explore gift shops (air-conditioned!)<br>
+                        • Watch street performances<br>
+                        • Reapply sunscreen<br>
+                        • Use restrooms
                     </div>
                     <span class="stop-duration">⏱️ 30 min</span>
                 </div>
             </div>
 
-            <div class="transport">🎢 Continue exploring park</div>
+            <div class="transport">🚶‍♂️ Back to rides!</div>
 
-            <div class="stop ride">
+            <div class="stop highlight">
+                <div class="stop-number">6</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕜 1:30 PM - 3:30 PM</div>
+                    <div class="stop-location">🎡 Afternoon Rides</div>
+                    <div class="stop-activity">
+                        • King Julien's Beach Party-Go-Round<br>
+                        • Despicable Me Minion Mayhem<br>
+                        • Enchanted Airways (junior coaster)<br>
+                        • Lights, Camera, Action! (special effects show)
+                    </div>
+                    <div class="image-placeholder">📸 USS Minions & Madagascar<br>Family-Friendly Attractions</div>
+                    <a href="https://www.google.com/search?q=universal+studios+singapore+minions+madagascar+attractions&tbm=isch" target="_blank" class="photo-link">🔍 View Minions & Madagascar Photos on Google Images</a>
+                    <span class="stop-duration">⏱️ 2 hours</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to WaterWorld theater</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">7</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 3:30 PM - 4:00 PM</div>
+                    <div class="stop-location">💦 WaterWorld Show - DON'T MISS!</div>
+                    <div class="stop-activity">
+                        • 3:30 PM showtime - ARRIVE 15 MIN EARLY!<br>
+                        • 20-minute spectacular stunt show<br>
+                        • Sit in middle section (blue seats - dry but great view)<br>
+                        • Explosions, jet skis, stunts!<br>
+                        • **AMAZING show!**
+                    </div>
+                    <div class="image-placeholder">📸 WaterWorld Stunt Show<br>Spectacular Action Show</div>
+                    <a href="https://www.google.com/search?q=waterworld+universal+studios+singapore+show&tbm=isch" target="_blank" class="photo-link">🔍 View WaterWorld Show Photos on Google Images</a>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                    <span class="cost">💰 Included in ticket</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Final hour in park</div>
+
+            <div class="stop">
                 <div class="stop-number">8</div>
                 <div class="stop-content">
                     <div class="stop-time">🕓 4:00 PM - 5:00 PM</div>
-                    <div class="stop-location">Final Hour at USS</div>
+                    <div class="stop-location">🎁 Final Hour</div>
                     <div class="stop-activity">
-                        • Revisit favorite rides<br>
+                        • Revisit favorite rides (shorter waits!)<br>
                         • Character meet & greet photos<br>
-                        • Last-minute gift shop<br>
-                        • Exit by 5:00 PM
+                        • Last-minute shopping at gift shops<br>
+                        • Start heading to exit by 4:45 PM
                     </div>
+                    <div class="image-placeholder">📸 USS Characters<br>Minions, Elmo, Shrek & More!</div>
+                    <a href="https://www.google.com/search?q=universal+studios+singapore+characters+meet+and+greet&tbm=isch" target="_blank" class="photo-link">🔍 View USS Characters Photos on Google Images</a>
                     <span class="stop-duration">⏱️ 1 hour</span>
                 </div>
             </div>
 
-            <div class="transport">🚊 Sentosa Express to VivoCity (10 min)</div>
+            <div class="transport">🚇 Sentosa Express to VivoCity</div>
 
-            <div class="stop meal">
+            <div class="stop">
                 <div class="stop-number">9</div>
                 <div class="stop-content">
                     <div class="stop-time">🕔 5:00 PM - 6:00 PM</div>
-                    <div class="stop-location">🍜 Food Republic (VivoCity) - DINNER</div>
+                    <div class="stop-location">🍜 Dinner at VivoCity</div>
                     <div class="stop-activity">
-                        • Wide variety: Japanese, Chinese, Western<br>
+                        • Exit USS by 5:00 PM<br>
+                        • Take Sentosa Express to VivoCity<br>
+                        • Food Republic food court (Level 3)<br>
+                        • Wide variety: Japanese, Chinese, Western, Local<br>
                         • Air-conditioned comfort<br>
                         • Let child decompress after exciting day
                     </div>
+                    <div class="image-placeholder">📸 VivoCity Mall<br>Singapore's Largest Shopping Mall</div>
+                    <a href="https://www.google.com/search?q=vivocity+singapore+food+republic&tbm=isch" target="_blank" class="photo-link">🔍 View VivoCity Photos on Google Images</a>
                     <span class="stop-duration">⏱️ 1 hour</span>
                     <span class="cost">💰 SGD 30-40</span>
                 </div>
             </div>
 
-            <div class="transport">🚇 MRT HarbourFront → Outram Park (10 min) → 🚶‍♂️ Walk 12 min</div>
+            <div class="transport">🚇 MRT back to hotel (30 min)</div>
 
             <div class="stop">
                 <div class="stop-number">10</div>
                 <div class="stop-content">
                     <div class="stop-time">🕖 7:00 PM - 10:00 PM</div>
-                    <div class="stop-location">Furama RiverFront - Evening Rest</div>
+                    <div class="stop-location">Furama RiverFront Hotel - Evening Relaxation</div>
                     <div class="stop-activity">
                         • Swimming at hotel pool<br>
                         • Child plays at playground<br>
                         • Shower and wind down<br>
-                        • Review amazing photos!<br>
-                        • Bedtime at 10:00 PM
+                        • Review photos from amazing day!<br>
+                        • Light evening snack if needed<br>
+                        • Early bedtime (10 PM)
                     </div>
                     <span class="stop-duration">⏱️ 3 hours</span>
                 </div>
@@ -338,16 +355,11 @@
         </div>
 
         <div class="summary">
-            <h3>📊 DAY 2 SUMMARY</h3>
-            <p><strong>Total Travel Time:</strong> ~1.5 hours (MRT + Sentosa Express)</p>
-            <p><strong>At Universal Studios:</strong> 7 hours (10 AM - 5 PM)</p>
-            <p><strong>Total Cost:</strong> SGD 343-400 (PHP 15,160-17,680)</p>
-            <p><strong>🎢 Rides:</strong> Transformers, Sesame Street, Madagascar, Shrek, Puss In Boots, Minions, Enchanted Airways</p>
-            <p><strong>⭐ BEST TIP: Arrive at 9:30 AM = Beat 80% of crowds!</strong></p>
-        </div>
-
-        <div style="text-align: center; margin-top: 20px; color: #666;">
-            <p><strong>💡 Pro Tips:</strong> Bring portable fan | Stay hydrated | Take breaks | Child may get cranky by 4 PM (normal!)</p>
+            <h3>📊 DAY 2 SUMMARY - UNIVERSAL STUDIOS!</h3>
+            <p><strong>Total Time at Park:</strong> 7 hours (9:30 AM - 4:45 PM)</p>
+            <p><strong>Main Rides:</strong> Transformers, Madagascar, Shrek, Minions, Sesame Street + WaterWorld Show!</p>
+            <p><strong>Total Cost:</strong> SGD 343-400 (PHP 15,150-17,670)</p>
+            <p><strong>Pro Tip:</strong> Arriving at 9:30 AM = You beat 80% of crowds! 🎉</p>
         </div>
     </div>
 </body>

@@ -1,796 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 7 - Harry Potter + Jewel + Departure - Route Map</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            min-height: 100vh;
-        }
-        .container {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-        h1 {
-            color: #dc3545;
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #666;
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-        .route-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .stop {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            border-left: 5px solid #dc3545;
-            transition: transform 0.3s ease;
-        }
-        .stop:hover {
-            transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .stop-number {
-            background: #dc3545;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-        .stop-content {
-            flex: 1;
-        }
-        .stop-time {
-            color: #dc3545;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-        }
-        .stop-location {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 8px;
-        }
-        .stop-activity {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        .stop-duration {
-            display: inline-block;
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
-        }
-        .transport {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            color: #ff9a9e;
-            font-weight: bold;
-        }
-        .transport::before {
-            content: "↓";
-            font-size: 2em;
-            margin-right: 10px;
-        }
-        .cost {
-            background: #fff3cd;
-            color: #856404;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        .highlight {
-            background: #d4edda;
-            border-left-color: #28a745;
-        }
-        .highlight .stop-number {
-            background: #28a745;
-        }
-        .meal {
-            background: #fff3cd;
-            border-left-color: #ffc107;
-        }
-        .meal .stop-number {
-            background: #ffc107;
-        }
-        .magic {
-            background: #e7d4f5;
-            border-left-color: #6f42c1;
-        }
-        .magic .stop-number {
-            background: #6f42c1;
-        }
-        .jewel {
-            background: #d1ecf1;
-            border-left-color: #17a2b8;
-        }
-        .jewel .stop-number {
-            background: #17a2b8;
-        }
-        .critical {
-            background: #f8d7da;
-            border-left-color: #dc3545;
-            box-shadow: 0 0 15px rgba(220, 53, 69, 0.3);
-        }
-        .critical .stop-number {
-            background: #dc3545;
-            animation: blink 1.5s infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .summary {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            color: #333;
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 30px;
-            text-align: center;
-        }
-        .summary h3 {
-            margin-top: 0;
-            color: #dc3545;
-        }
-    </style>
+<title>Day 7 - Harry Potter & Jewel Changi & Departure</title>
+<style>
+body{font-family:'Segoe UI',Tahoma,sans-serif;max-width:1200px;margin:0 auto;padding:20px;background:linear-gradient(135deg,#9C27B0 0%,#FF9800 100%);min-height:100vh}.container{background:white;border-radius:20px;padding:30px;box-shadow:0 10px 40px rgba(0,0,0,0.2)}h1{color:#9C27B0;text-align:center;font-size:2.5em;margin-bottom:10px}.subtitle{text-align:center;color:#666;font-size:1.2em;margin-bottom:30px}.stop{padding:20px;background:#f8f9fa;border-radius:15px;margin:20px 0;border-left:5px solid #9C27B0}.stop-number{background:#9C27B0;color:white;width:50px;height:50px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold}.stop-time{color:#9C27B0;font-weight:bold;font-size:1.2em;margin:10px 0}.stop-location{font-size:1.3em;font-weight:bold;color:#333;margin:10px 0}.photo-link{display:block;margin:15px 0;color:#9C27B0;text-decoration:none;font-weight:bold;padding:10px;background:#F3E5F5;border-radius:8px;text-align:center}.photo-link:hover{background:#E1BEE7}.image-placeholder{width:100%;max-width:500px;height:300px;background:linear-gradient(135deg,#9C27B0 0%,#FF9800 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2em;font-weight:bold;text-align:center;padding:20px;margin:15px 0}.summary{margin-top:30px;padding:20px;background:linear-gradient(135deg,#9C27B0 0%,#FF9800 100%);color:white;border-radius:15px;text-align:center}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>⚡ DAY 7 - Monday, March 23, 2026</h1>
-        <div class="subtitle">Harry Potter + Jewel Changi + DEPARTURE DAY! ✈️</div>
-        
-        <div class="route-container">
-            
-            <div class="stop">
-                <div class="stop-number">1</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕕 6:00 AM - 7:00 AM</div>
-                    <div class="stop-location">Wake Up & Morning Prep</div>
-                    <div class="stop-activity">
-                        • Wake up at 6:00 AM<br>
-                        • Everyone gets ready<br>
-                        • Final packing & organization<br>
-                        • Set aside items you'll need today<br>
-                        • Get dressed and ready
-                    </div>
-                    <span class="stop-duration">⏱️ 1 hour</span>
-                </div>
-            </div>
+<div class="container">
+<h1>📍 DAY 7 - Monday, March 23, 2026</h1>
+<div class="subtitle">⚡ Harry Potter + Jewel Changi + DEPARTURE! 🪄✈️</div>
 
-            <div class="transport">🍽️ Head to hotel restaurant</div>
+<div class="stop"><span class="stop-number">1</span><div><div class="stop-time">🕖 7:00 AM - 7:45 AM</div><div class="stop-location">🍳 Buffet Breakfast at Hotel</div>
+Full buffet spread at Furama RiverFront<br>
+Western & Asian options<br>
+Last proper meal before flight<br>
+Cost: Included OR SGD 15-25/person</div></div>
 
-            <div class="stop meal">
-                <div class="stop-number">2</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕖 7:00 AM - 7:45 AM</div>
-                    <div class="stop-location">🍳 Buffet Breakfast at Furama RiverFront</div>
-                    <div class="stop-activity">
-                        <strong>Hotel buffet breakfast - so convenient!</strong><br>
-                        • Full buffet spread at hotel restaurant<br>
-                        • Western & Asian options<br>
-                        • Eggs, toast, dim sum, noodles, fruits<br>
-                        • Coffee, tea, juices<br>
-                        • No need to walk anywhere!<br>
-                        • Eat comfortably before checking out<br>
-                        • Last proper meal before flight
-                    </div>
-                    <span class="stop-duration">⏱️ 45 min</span>
-                    <span class="cost">💰 Usually included or SGD 15-25/person</span>
-                </div>
-            </div>
+<div class="stop"><span class="stop-number">2</span><div><div class="stop-time">🕗 8:15 AM - 8:30 AM</div><div class="stop-location">🏨 Hotel Checkout</div>
+<strong>CHECK OUT OF HOTEL</strong><br>
+Return key cards<br>
+<strong>Take ALL luggage with you</strong><br>
+<strong>YOU'RE NOT COMING BACK!</strong></div></div>
 
-            <div class="transport">🏨 Return to room</div>
+<div class="stop"><span class="stop-number">3</span><div><div class="stop-time">🕣 8:30 AM - 9:00 AM</div><div class="stop-location">🧳 Luggage Storage</div>
+Taxi/walk to HarbourFront MRT<br>
+<strong>Store luggage in lockers (SGD 10-15/bag)</strong><br>
+Now luggage-free for Harry Potter!</div></div>
 
-            <div class="stop critical">
-                <div class="stop-number">3</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕗 7:45 AM - 8:15 AM</div>
-                    <div class="stop-location">⚠️ FINAL ROOM CHECK!</div>
-                    <div class="stop-activity">
-                        <strong>DOUBLE-CHECK EVERYTHING!</strong><br>
-                        • Check ALL closets, drawers<br>
-                        • Bathroom - under sink, shower<br>
-                        • Under bed, behind curtains<br>
-                        • Safe - don't forget!<br>
-                        • Balcony (if you have one)<br>
-                        • Phone chargers in walls<br>
-                        • Behind doors<br>
-                        • All belongings packed<br>
-                        • Place all luggage by door<br>
-                        • Ready to check out!
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                </div>
-            </div>
+<div class="stop"><span class="stop-number">4</span><div><div class="stop-time">🕘 9:00 AM - 12:00 PM</div><div class="stop-location">🛍️ Free Morning Time</div>
+<strong>Explore VivoCity Mall (RECOMMENDED):</strong><br>
+• Right above HarbourFront MRT<br>
+• Air-conditioned shopping<br>
+• Uniqlo, Toys "R" Us, etc.<br>
+• Coffee at Starbucks<br>
+• Very comfortable way to pass time!<br>
+<br>
+OR head to Sentosa early to explore</div></div>
 
-            <div class="transport">✅ Take ALL luggage!</div>
+<div class="stop"><span class="stop-number">5</span><div><div class="stop-time">🕚 11:30 AM - 12:30 PM</div><div class="stop-location">🥗 Early Light Lunch</div>
+Food Republic at VivoCity<br>
+OR Resorts World Sentosa food court<br>
+<strong>Light meal - you'll have Butterbeer soon!</strong><br>
+Cost: SGD 15-25</div></div>
 
-            <div class="stop critical">
-                <div class="stop-number">4</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕗 8:15 AM - 8:30 AM</div>
-                    <div class="stop-location">🏨 CHECK OUT - Furama RiverFront</div>
-                    <div class="stop-activity">
-                        <strong>CHECK OUT OF HOTEL</strong><br>
-                        • Go to reception<br>
-                        • Return key cards<br>
-                        • Confirm no charges<br>
-                        • Take ALL luggage with you<br>
-                        <strong>YOU'RE NOT COMING BACK!</strong>
-                    </div>
-                    <span class="stop-duration">⏱️ 15 min</span>
-                </div>
-            </div>
+<div class="stop"><span class="stop-number">6</span><div><div class="stop-time">🕐 1:00 PM - 2:45 PM</div><div class="stop-location">⚡ Harry Potter™: Visions of Magic!</div>
+<strong>MAGICAL EXPERIENCE - Self-Paced!</strong><br>
+• <strong>Platform 9¾</strong> - Hogwarts Express entrance<br>
+• <strong>The Trap Door</strong> - Singapore Exclusive!<br>
+• <strong>Chamber of Secrets</strong> - Basilisk encounter!<br>
+• <strong>Ministry of Magic</strong> - Flying memos everywhere<br>
+• <strong>Newt's Menagerie</strong> - Fantastic Beasts!<br>
+• <strong>The Pensieve</strong> - Dive into memories<br>
+• <strong>Hogsmeade Village</strong> - Cozy snow village<br>
+<br>
+<strong>Interactive wand included!</strong><br>
+Use throughout exhibition to unlock magic!<br>
+<div class="image-placeholder">📸 Harry Potter: Visions of Magic<br>Interactive Magical Experience!</div>
+<a href="https://www.google.com/search?q=harry+potter+visions+of+magic+singapore+sentosa&tbm=isch" target="_blank" class="photo-link">🔍 View Harry Potter Exhibition Photos</a>
+Cost: SGD 105-135 (includes SGD 10 voucher!)</div></div>
 
-            <div class="transport">🚕 Taxi OR 🚶‍♂️ Walk to HarbourFront MRT</div>
+<div class="stop"><span class="stop-number">7</span><div><div class="stop-time">🕞 2:45 PM - 3:30 PM</div><div class="stop-location">☕ Butterbeer Café</div>
+<strong>Use your SGD 10 voucher!</strong><br>
+<br>
+<strong>Must Try:</strong><br>
+• <strong>Butterbeer</strong> (Frozen/Original/Hot)<br>
+• Cauldron Cakes<br>
+• Chocolate Frogs (collectible cards!)<br>
+• Pumpkin Pasties<br>
+• Treacle Tart<br>
+<div class="image-placeholder">📸 Butterbeer<br>The Magical Drink!</div>
+<a href="https://www.google.com/search?q=butterbeer+harry+potter+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Butterbeer Photos</a>
+</div></div>
 
-            <div class="stop critical">
-                <div class="stop-number">5</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕣 8:30 AM - 9:00 AM</div>
-                    <div class="stop-location">🧳 HarbourFront MRT - LUGGAGE STORAGE</div>
-                    <div class="stop-activity">
-                        <strong>Store luggage here!</strong><br>
-                        • Taxi or walk to HarbourFront MRT<br>
-                        • Luggage lockers available<br>
-                        • Store all bags (SGD 10-15 per bag)<br>
-                        • Now you're luggage-free for Harry Potter!<br>
-                        • Easy access when you return for Sentosa
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                    <span class="cost">💰 SGD 10-15 per bag + taxi</span>
-                </div>
-            </div>
+<div class="stop"><span class="stop-number">8</span><div><div class="stop-time">🕞 3:30 PM</div><div class="stop-location">🧳 Retrieve Luggage</div>
+Return to HarbourFront MRT<br>
+Get luggage from lockers<br>
+Ready for Changi Airport!</div></div>
 
-            <div class="transport">🎉 Luggage-free! Explore VivoCity!</div>
+<div class="stop"><span class="stop-number">9</span><div><div class="stop-time">🕓 4:00 PM - 5:30 PM</div><div class="stop-location">🚇 Travel to Changi Airport</div>
+MRT from HarbourFront → Tanah Merah → Changi Airport<br>
+About 1 hour journey</div></div>
 
-            <div class="stop">
-                <div class="stop-number">6</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕘 9:00 AM - 11:30 AM</div>
-                    <div class="stop-location">🛍️ VivoCity Mall - Free Morning Time</div>
-                    <div class="stop-activity">
-                        <strong>Harry Potter is at 1:00 PM, so 2.5 hours free!</strong><br>
-                        <br>
-                        <strong>Things to do:</strong><br>
-                        • Air-conditioned shopping mall<br>
-                        • Browse stores: Uniqlo, Toys "R" Us, etc.<br>
-                        • Coffee at Starbucks<br>
-                        • Relax at cafés<br>
-                        • Window shopping<br>
-                        • Very comfortable way to pass time!<br>
-                        • Use restrooms<br>
-                        • Reapply sunscreen
-                    </div>
-                    <span class="stop-duration">⏱️ 2.5 hours</span>
-                </div>
-            </div>
+<div class="stop"><span class="stop-number">10</span><div><div class="stop-time">🕔 5:30 PM - 10:00 PM</div><div class="stop-location">✨ JEWEL CHANGI AIRPORT!</div>
+<strong>The Ultimate Finale!</strong><br>
+<br>
+<strong>5:30 PM - Check-in & Drop Bags:</strong><br>
+• Check-in for 1:25 AM flight<br>
+• Drop all luggage<br>
+• Get boarding passes<br>
+• Now luggage-free!<br>
+<br>
+<strong>6:00 PM - 10:00 PM - Explore Jewel:</strong><br>
+<br>
+<strong>HSBC Rain Vortex (MUST-SEE!):</strong><br>
+• World's tallest indoor waterfall (40m!)<br>
+• Light shows at 7:30 PM & 8:30 PM<br>
+• <strong>ABSOLUTELY STUNNING!</strong><br>
+• FREE to watch!<br>
+<br>
+<strong>Canopy Park (if time/energy):</strong><br>
+• Sky Nets, Hedge Maze, Bouncing Net<br>
+• Walking nets 25m above ground<br>
+• Cost: SGD 30-40<br>
+<br>
+<strong>Dinner at Jewel:</strong><br>
+• Shake Shack, A&W, burger King<br>
+• Din Tai Fung, Wingstop<br>
+• SO many options!<br>
+• Cost: SGD 40-60<br>
+<br>
+<strong>Shopping:</strong><br>
+• 280+ shops<br>
+• Last-minute souvenirs<br>
+• Duty-free when you enter transit<br>
+<div class="image-placeholder">📸 Jewel Changi Rain Vortex<br>World's Tallest Indoor Waterfall!</div>
+<a href="https://www.google.com/search?q=jewel+changi+airport+rain+vortex+waterfall&tbm=isch" target="_blank" class="photo-link">🔍 View Jewel Changi Photos</a>
+</div></div>
 
-            <div class="transport">🍽️ Light lunch before Harry Potter</div>
+<div class="stop"><span class="stop-number">11</span><div><div class="stop-time">🕙 10:00 PM - 11:00 PM</div><div class="stop-location">🛂 Immigration & Security</div>
+Enter transit area<br>
+Immigration clearance<br>
+Security screening<br>
+Plenty of time before 1:25 AM flight!</div></div>
 
-            <div class="stop meal">
-                <div class="stop-number">6</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕚 11:30 AM - 12:30 PM</div>
-                    <div class="stop-location">🍜 Early Light Lunch</div>
-                    <div class="stop-activity">
-                        • Food Republic at VivoCity<br>
-                        • OR Sentosa food court<br>
-                        • Light meal - don't eat too much!<br>
-                        • You'll have Butterbeer at Harry Potter
-                    </div>
-                    <span class="stop-duration">⏱️ 1 hour</span>
-                    <span class="cost">💰 SGD 15-25</span>
-                </div>
-            </div>
+<div class="stop"><span class="stop-number">12</span><div><div class="stop-time">🕚 11:00 PM - 1:00 AM</div><div class="stop-location">✈️ Final Hours at Gate</div>
+Relax at departure gate<br>
+Let child rest/nap<br>
+Light snacks if needed<br>
+Browse duty-free<br>
+Board at ~12:45 AM<br>
+<br>
+<strong>FLIGHT PR508 departs 1:25 AM!</strong></div></div>
 
-            <div class="transport">🚊 Sentosa Express to Waterfront (5 min)</div>
-
-            <div class="stop magic">
-                <div class="stop-number">7</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕧 12:30 PM - 1:00 PM</div>
-                    <div class="stop-location">⚡ Harry Potter - Arrival</div>
-                    <div class="stop-activity">
-                        • Sentosa Express to Waterfront<br>
-                        • Walk to Resorts World Sentosa (5 min)<br>
-                        • Arrive at Harry Potter: Visions of Magic<br>
-                        • Use restrooms before entering<br>
-                        • Get tickets scanned<br>
-                        • Receive your interactive wand! (included!)<br>
-                        • Watch brief intro video (5 min)
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                    <span class="cost">💰 SGD 195-225</span>
-                </div>
-            </div>
-
-            <div class="transport">🪄 Enter the magical world!</div>
-
-            <div class="stop magic">
-                <div class="stop-number">8</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕐 1:00 PM - 2:45 PM</div>
-                    <div class="stop-location">⚡ HARRY POTTER MAGICAL EXPERIENCE!</div>
-                    <div class="stop-activity">
-                        <strong>Self-paced journey - take your time!</strong><br>
-                        <br>
-                        <strong>The Rooms:</strong><br>
-                        1. Platform 9¾ (10 min)<br>
-                        2. The Trap Door (10 min) - Singapore exclusive!<br>
-                        3. Chamber of Secrets (15 min) - Singapore exclusive!<br>
-                        4. Ministry of Magic (15 min)<br>
-                        5. Newt's Menagerie (15 min) - Kids LOVE this!<br>
-                        6. The Pensieve (10 min)<br>
-                        7. Hogsmeade Village (15 min)<br>
-                        8-10. Additional Magical Rooms (15 min)<br>
-                        <br>
-                        <strong>Total: ~1 hour 45 minutes</strong><br>
-                        • Use interactive wand throughout!<br>
-                        • Take all the photos you want<br>
-                        • Let child explore at their pace<br>
-                        • Absolutely magical!
-                    </div>
-                    <span class="stop-duration">⏱️ 1 hr 45 min</span>
-                </div>
-            </div>
-
-            <div class="transport">🍺 Exit to café</div>
-
-            <div class="stop magic">
-                <div class="stop-number">9</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕞 2:45 PM - 3:30 PM</div>
-                    <div class="stop-location">🍺 BUTTERBEER CAFÉ!</div>
-                    <div class="stop-activity">
-                        <strong>Use your SGD 10 voucher!</strong><br>
-                        <br>
-                        <strong>Must Try Butterbeer:</strong><br>
-                        • Frozen (most popular!)<br>
-                        • Original<br>
-                        • Hot<br>
-                        <br>
-                        <strong>Magical Snacks:</strong><br>
-                        • Cauldron Cakes<br>
-                        • Chocolate Frogs (collectible cards!)<br>
-                        • Pumpkin Pasties<br>
-                        • Treacle Tart<br>
-                        <br>
-                        • Sit, relax, discuss the magic!<br>
-                        • Review photos<br>
-                        • This is your last major Singapore activity!
-                    </div>
-                    <span class="stop-duration">⏱️ 45 min</span>
-                    <span class="cost">💰 SGD 15-25 extra</span>
-                </div>
-            </div>
-
-            <div class="transport">🛍️ Optional shopping</div>
-
-            <div class="stop">
-                <div class="stop-number">10</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕞 3:30 PM - 4:00 PM</div>
-                    <div class="stop-location">🎁 Merchandise Shop (Optional)</div>
-                    <div class="stop-activity">
-                        • Official Harry Potter shop at exit<br>
-                        • Wands (SGD 60-80)<br>
-                        • Robes (SGD 80-120)<br>
-                        • Plush toys (SGD 30-60)<br>
-                        • Books, collectibles<br>
-                        • ONLY if you want!
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                    <span class="cost">💰 SGD 0-100</span>
-                </div>
-            </div>
-
-            <div class="transport">🚊 Sentosa Express back to VivoCity</div>
-
-            <div class="stop meal">
-                <div class="stop-number">11</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕓 4:00 PM - 5:00 PM</div>
-                    <div class="stop-location">🍜 Food Republic VivoCity - DINNER FIRST!</div>
-                    <div class="stop-activity">
-                        <strong>Smart plan: Eat BEFORE picking up luggage!</strong><br>
-                        • Return to VivoCity from Sentosa<br>
-                        • Food Republic food court<br>
-                        • Last proper Singapore meal!<br>
-                        • Wide variety to choose from<br>
-                        • Eat comfortably without luggage!<br>
-                        • Take your time<br>
-                        • No rushing<br>
-                        • Reflect on amazing week!
-                    </div>
-                    <span class="stop-duration">⏱️ 1 hour</span>
-                    <span class="cost">💰 SGD 35-50</span>
-                </div>
-            </div>
-
-            <div class="transport">🚶‍♂️ Walk to HarbourFront MRT (inside VivoCity)</div>
-
-            <div class="stop critical">
-                <div class="stop-number">12</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕔 5:00 PM - 5:30 PM</div>
-                    <div class="stop-location">🧳 PICK UP LUGGAGE!</div>
-                    <div class="stop-activity">
-                        • Walk to HarbourFront MRT (2 min from Food Republic)<br>
-                        • PICK UP YOUR LUGGAGE from lockers!<br>
-                        • Now you have all your bags<br>
-                        • Find trolley if needed<br>
-                        • Ready to go straight to airport!
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                </div>
-            </div>
-
-            <div class="transport">🚕 TAXI to Changi Airport (30-35 min)</div>
-
-            <div class="stop critical">
-                <div class="stop-number">13</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕔 5:30 PM - 6:30 PM</div>
-                    <div class="stop-location">🚕 Travel to Changi Airport</div>
-                    <div class="stop-activity">
-                        • TAXI from VivoCity to Airport<br>
-                        • With all luggage - most comfortable!<br>
-                        • 30-35 minute drive<br>
-                        • Arrive Terminal 3 around 6:15-6:30 PM
-                    </div>
-                    <span class="stop-duration">⏱️ 1 hour</span>
-                    <span class="cost">💰 SGD 25-35</span>
-                </div>
-            </div>
-
-            <div class="transport">✈️ Arrive at airport</div>
-
-            <div class="stop">
-                <div class="stop-number">14</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕕 6:30 PM - 7:00 PM</div>
-                    <div class="stop-location">✈️ Airport Arrival & Bag Check</div>
-                    <div class="stop-activity">
-                        • Arrive Terminal 3<br>
-                        • Try to check in luggage NOW if counter open<br>
-                        • Some airlines allow early check-in<br>
-                        • Get rid of heavy bags!<br>
-                        • If counter not open: temporary storage OR carry with you
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                </div>
-            </div>
-
-            <div class="transport">🚶‍♂️ Walk to Jewel (connected to T3)</div>
-
-            <div class="stop jewel">
-                <div class="stop-number">15</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕖 7:00 PM - 8:00 PM</div>
-                    <div class="stop-location">🌿 Shiseido Forest Valley</div>
-                    <div class="stop-activity">
-                        <strong>5 floors of indoor gardens!</strong><br>
-                        • Lush greenery inside airport<br>
-                        • Walking trails through forest<br>
-                        • Beautiful plants and trees<br>
-                        • Photo opportunities everywhere<br>
-                        • Tranquil atmosphere<br>
-                        • FREE to explore!
-                    </div>
-                    <span class="stop-duration">⏱️ 1 hour</span>
-                    <span class="cost">💰 FREE</span>
-                </div>
-            </div>
-
-            <div class="transport">💧 Move to Rain Vortex area</div>
-
-            <div class="stop jewel">
-                <div class="stop-number">16</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕗 8:00 PM - 8:30 PM</div>
-                    <div class="stop-location">💧 Rain Vortex Photos</div>
-                    <div class="stop-activity">
-                        <strong>World's tallest indoor waterfall!</strong><br>
-                        • 40 meters tall!<br>
-                        • Stunning centerpiece<br>
-                        • Take photos from multiple angles<br>
-                        • Ground level<br>
-                        • Upper levels (Canopy Bridge)<br>
-                        • Get ready for evening light shows!
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                </div>
-            </div>
-
-            <div class="transport">🛍️ Shopping time</div>
-
-            <div class="stop">
-                <div class="stop-number">17</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕣 8:30 PM - 9:30 PM</div>
-                    <div class="stop-location">🛍️ Jewel Shopping</div>
-                    <div class="stop-activity">
-                        <strong>For Kids:</strong><br>
-                        • Pokémon Center<br>
-                        • MINISO<br>
-                        • Toys "R" Us<br>
-                        <br>
-                        <strong>For Souvenirs:</strong><br>
-                        • Singapore Memories<br>
-                        • Naiise<br>
-                        • Changi Recommends<br>
-                        • Charles & Keith<br>
-                        <br>
-                        <strong>For Last-Minute Needs:</strong><br>
-                        • Guardian, Watson's<br>
-                        • 7-Eleven, Cheers
-                    </div>
-                    <span class="stop-duration">⏱️ 1 hour</span>
-                    <span class="cost">💰 SGD 0-80</span>
-                </div>
-            </div>
-
-            <div class="transport">🍿 Buy flight snacks NOW!</div>
-
-            <div class="stop meal">
-                <div class="stop-number">18</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕤 9:30 PM - 10:00 PM</div>
-                    <div class="stop-location">🍪 Buy Flight Snacks</div>
-                    <div class="stop-activity">
-                        <strong>IMPORTANT: Stock up before security!</strong><br>
-                        • Guardian, Watson's, 7-Eleven, Cheers<br>
-                        • Crackers, chips, cookies (SGD 10-15)<br>
-                        • Candy, gum, chocolates (SGD 5-10)<br>
-                        • Biscuits for child (SGD 5-10)<br>
-                        • Don't buy water yet - buy after security
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                    <span class="cost">💰 SGD 20-30</span>
-                </div>
-            </div>
-
-            <div class="transport">✨ MUST-SEE SHOW!</div>
-
-            <div class="stop jewel">
-                <div class="stop-number">19</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕙 10:00 PM - 10:30 PM</div>
-                    <div class="stop-location">✨ RAIN VORTEX LIGHT SHOW!</div>
-                    <div class="stop-activity">
-                        <strong>FREE & MAGICAL!</strong><br>
-                        • Show times: 7:30, 8:00, 8:30, 9:00, 9:30, 10:00 PM<br>
-                        • WATCH THE 10:00 PM SHOW!<br>
-                        • 40-meter waterfall becomes canvas<br>
-                        • Projection mapping with colorful lights<br>
-                        • Music and sound effects<br>
-                        • 5-7 minutes of magic<br>
-                        • Arrive by 9:50 PM for good spot<br>
-                        • Sit on floor or benches<br>
-                        • Child will be mesmerized!<br>
-                        • Can watch 10:00 PM AND 10:30 PM!
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                    <span class="cost">💰 FREE</span>
-                </div>
-            </div>
-
-            <div class="transport">🍦 Final treat</div>
-
-            <div class="stop">
-                <div class="stop-number">20</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕥 10:30 PM - 11:00 PM</div>
-                    <div class="stop-location">🍦 Late Snack & Rest</div>
-                    <div class="stop-activity">
-                        • Ice cream (Ben & Jerry's, Häagen-Dazs)<br>
-                        • OR Bubble tea<br>
-                        • OR Coffee for parents<br>
-                        • Final treat before flight!<br>
-                        • Let everyone rest<br>
-                        • Child might get sleepy (okay!)
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                    <span class="cost">💰 SGD 10-15</span>
-                </div>
-            </div>
-
-            <div class="transport">✅ Final prep</div>
-
-            <div class="stop">
-                <div class="stop-number">21</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕦 11:00 PM - 11:30 PM</div>
-                    <div class="stop-location">Final Jewel Time</div>
-                    <div class="stop-activity">
-                        • Last Rain Vortex photos<br>
-                        • Final bathroom breaks (important!)<br>
-                        • Let child walk around, burn energy<br>
-                        • Organize carry-on bags<br>
-                        • Passports easily accessible<br>
-                        • Boarding passes ready<br>
-                        • Electronics for security<br>
-                        • Child's entertainment<br>
-                        • Double-check everything
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                </div>
-            </div>
-
-            <div class="transport">🚶‍♂️ Walk to Terminal 3 check-in</div>
-
-            <div class="stop critical">
-                <div class="stop-number">22</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕦 11:30 PM - 12:00 AM</div>
-                    <div class="stop-location">✈️ Check-In (if not done earlier)</div>
-                    <div class="stop-activity">
-                        • Walk to Terminal 3 check-in counters<br>
-                        • Check in for 1:25 AM flight<br>
-                        • Drop off luggage (if not checked)<br>
-                        • Get boarding passes<br>
-                        • Gate number on boarding pass
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                </div>
-            </div>
-
-            <div class="transport">🛂 Immigration & Security</div>
-
-            <div class="stop critical">
-                <div class="stop-number">23</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕧 12:00 AM - 12:30 AM</div>
-                    <div class="stop-location">🛂 Immigration & Security</div>
-                    <div class="stop-activity">
-                        • Proceed to immigration<br>
-                        • Have passports & boarding passes ready<br>
-                        • Go through security screening<br>
-                        • Remove laptops, liquids<br>
-                        • Shoes might need to come off<br>
-                        • Proceed to departure gate area<br>
-                        <strong>Gate closes at 12:45 AM - don't be late!</strong>
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                </div>
-            </div>
-
-            <div class="transport">🦋 Bonus time!</div>
-
-            <div class="stop highlight">
-                <div class="stop-number">24</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕧 12:30 AM - 1:00 AM</div>
-                    <div class="stop-location">🦋 Final Wait at Gate</div>
-                    <div class="stop-activity">
-                        <strong>Things to do in transit area:</strong><br>
-                        • Butterfly Garden (Terminal 3) - FREE!<br>
-                        • Duty-free shopping<br>
-                        • Browse bookstores<br>
-                        • Final restroom breaks!<br>
-                        • Buy water NOW (post-security)<br>
-                        • Let child walk around<br>
-                        • Burn energy before plane<br>
-                        • Change into comfortable flight clothes<br>
-                        • Organize carry-ons<br>
-                        • Final snacks for child
-                    </div>
-                    <span class="stop-duration">⏱️ 30 min</span>
-                </div>
-            </div>
-
-            <div class="transport">✈️ BOARDING TIME!</div>
-
-            <div class="stop critical">
-                <div class="stop-number">25</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕐 12:45 AM - 1:10 AM</div>
-                    <div class="stop-location">✈️ Boarding Process</div>
-                    <div class="stop-activity">
-                        • Boarding begins around 12:45 AM<br>
-                        • Listen for announcements<br>
-                        • Usually board by zones/rows<br>
-                        • Board when your zone is called<br>
-                        • Find seats<br>
-                        • Stow carry-ons in overhead bin<br>
-                        • Get settled
-                    </div>
-                    <span class="stop-duration">⏱️ 25 min</span>
-                </div>
-            </div>
-
-            <div class="transport">✈️✈️✈️</div>
-
-            <div class="stop highlight">
-                <div class="stop-number">26</div>
-                <div class="stop-content">
-                    <div class="stop-time">🕜 1:25 AM</div>
-                    <div class="stop-location">✈️ DEPARTURE TO CEBU!</div>
-                    <div class="stop-activity">
-                        • Flight time: 4 hours<br>
-                        • Red-eye flight<br>
-                        • Child will hopefully sleep!<br>
-                        • Parents try to sleep too<br>
-                        • Watch movies, read, rest
-                    </div>
-                    <span class="stop-duration">⏱️ 4 hours</span>
-                </div>
-            </div>
-
-            <div class="transport">🛬 LANDING!</div>
-
-            <div class="stop highlight">
-                <div class="stop-number">27</div>
-                <div class="stop-content">
-                    <div class="stop-time">🛬 5:25 AM</div>
-                    <div class="stop-location">🇵🇭 WELCOME HOME TO CEBU!</div>
-                    <div class="stop-activity">
-                        • Land at Mactan-Cebu Airport<br>
-                        • Clear immigration<br>
-                        • Collect luggage at baggage claim<br>
-                        • Customs<br>
-                        • Exit to arrivals hall<br>
-                        <br>
-                        <strong>END OF INCREDIBLE SINGAPORE ADVENTURE! 🎉</strong>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="summary">
-            <h3>📊 DAY 7 SUMMARY</h3>
-            <p><strong>⚠️ CHECKOUT DAY - Check out AFTER breakfast!</strong></p>
-            <p><strong>🍳 Buffet breakfast at hotel (7:00 AM) → Checkout (8:15 AM)</strong></p>
-            <p><strong>Total Cost (No Merch/Shopping):</strong> SGD 343-445 (PHP 15,160-19,670)</p>
-            <p><strong>Total Cost (With Merch):</strong> SGD 443-625 (PHP 19,580-27,625)</p>
-            <p><strong>🪄 Harry Potter:</strong> 1:00-2:45 PM (Self-paced magical journey)</p>
-            <p><strong>✨ Jewel Changi:</strong> 7:00 PM-12:45 AM (Rain Vortex shows, shopping, Forest Valley)</p>
-            <p><strong>✈️ Flight:</strong> 1:25 AM → 5:25 AM (4 hours)</p>
-        </div>
-
-        <div style="text-align: center; margin-top: 20px; color: #dc3545; font-weight: bold; font-size: 1.1em;">
-            <p>⚠️ CRITICAL REMINDERS:</p>
-            <p>✅ Buffet breakfast at hotel first! | ✅ Check out at 8:15 AM | ✅ Take ALL luggage</p>
-            <p>✅ Store at HarbourFront | ✅ Don't miss Rain Vortex shows!</p>
-        </div>
-    </div>
+<div class="summary">
+<h3>📊 DAY 7 SUMMARY - MAGICAL FINALE!</h3>
+<p><strong>Highlights:</strong> Harry Potter Magic + Butterbeer + Jewel Changi Waterfall!</p>
+<p><strong>Total Cost:</strong> SGD 210-310</p>
+<p><strong>Perfect Ending:</strong> Magical experience + stunning airport finale! ⚡✨</p>
+<p><strong>Flight:</strong> PR508 Manila at 1:25 AM ✈️🇵🇭</p>
+</div>
+</div>
 </body>
 </html>
