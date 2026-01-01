@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5 - Oceanarium + Skyline Luge - Route Map</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #30cfd0;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .route-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .stop {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #30cfd0;
+            transition: transform 0.3s ease;
+        }
+        .stop:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .stop-number {
+            background: #30cfd0;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .stop-content {
+            flex: 1;
+        }
+        .stop-time {
+            color: #30cfd0;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .stop-location {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .stop-activity {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .stop-duration {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        .transport {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            color: #330867;
+            font-weight: bold;
+        }
+        .transport::before {
+            content: "↓";
+            font-size: 2em;
+            margin-right: 10px;
+        }
+        .cost {
+            background: #fff3cd;
+            color: #856404;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .highlight {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        .highlight .stop-number {
+            background: #28a745;
+        }
+        .meal {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        .meal .stop-number {
+            background: #ffc107;
+        }
+        .adventure {
+            background: #cce5ff;
+            border-left-color: #007bff;
+        }
+        .adventure .stop-number {
+            background: #007bff;
+        }
+        .rest {
+            background: #e7e7e7;
+            border-left-color: #6c757d;
+        }
+        .rest .stop-number {
+            background: #6c757d;
+        }
+        .summary {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .summary h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐠 DAY 5 - Saturday, March 21, 2026</h1>
+        <div class="subtitle">Oceanarium + Skyline Luge Adventure!</div>
+        
+        <div class="route-container">
+            
+            <div class="stop">
+                <div class="stop-number">1</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕕 6:00 AM - 7:00 AM</div>
+                    <div class="stop-location">Furama RiverFront Hotel - Morning Prep</div>
+                    <div class="stop-activity">
+                        • Wake up at 6:00 AM<br>
+                        • Get ready for Sentosa adventure<br>
+                        • Pack: Water, sunscreen, comfortable clothes, CLOSED-TOE SHOES for Luge!
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk 15 min to hawker</div>
+
+            <div class="stop meal">
+                <div class="stop-number">2</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 7:00 AM - 7:45 AM</div>
+                    <div class="stop-location">🍜 Breakfast - Quick & Hearty</div>
+                    <div class="stop-activity">
+                        • Tiong Bahru OR Maxwell<br>
+                        • Your favorite dishes<br>
+                        • Fuel up for active day!
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                    <span class="cost">💰 SGD 18-25</span>
+                </div>
+            </div>
+
+            <div class="transport">🚇 MRT Outram → HarbourFront (10 min) → 🚊 Sentosa Express (5 min)</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">3</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕘 9:00 AM - 9:30 AM</div>
+                    <div class="stop-location">🐠 Singapore Oceanarium - EARLY ARRIVAL!</div>
+                    <div class="stop-activity">
+                        <strong>⭐ Arrive BEFORE 10 AM opening!</strong><br>
+                        • Wait at entrance<br>
+                        • Grab coffee nearby while waiting<br>
+                        • Be first in line for almost empty experience!
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min wait</span>
+                    <span class="cost">💰 SGD 145-165</span>
+                </div>
+            </div>
+
+            <div class="transport">🚪 Enter right at 10:00 AM opening!</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">4</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕙 10:00 AM - 10:30 AM</div>
+                    <div class="stop-location">🌊 Open Ocean Zone - START HERE!</div>
+                    <div class="stop-activity">
+                        <strong>STUNNING 36-meter viewing panel!</strong><br>
+                        • Almost EMPTY at this hour!<br>
+                        • Manta rays gliding gracefully<br>
+                        • Hammerhead sharks, Giant groupers<br>
+                        • Mesmerizing blue water<br>
+                        • Spend quality time - hypnotic!<br>
+                        • Amazing photos with NO crowds
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk through exhibition</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">5</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕥 10:30 AM - 11:00 AM</div>
+                    <div class="stop-location">🦕 Ancient Waters - DINOSAURS!</div>
+                    <div class="stop-activity">
+                        <strong>Your 4-year-old will be AMAZED!</strong><br>
+                        • LIFE-SIZED dinosaur animatronics!<br>
+                        • T-Rex, Triceratops, Pteranodon<br>
+                        • Interactive displays<br>
+                        • Educational and fun<br>
+                        • Photo opportunities with dinosaurs
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Continue through zones</div>
+
+            <div class="stop">
+                <div class="stop-number">6</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕚 11:00 AM - 11:30 AM</div>
+                    <div class="stop-location">🪼 Moon Jellies & Other Zones</div>
+                    <div class="stop-activity">
+                        • World's largest kreisel jellyfish habitat<br>
+                        • Hypnotic and beautiful<br>
+                        • Coral Garden - stunning reef<br>
+                        • Living Ocean - rays & tropical fish<br>
+                        • Take your time, explore at your pace
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Explore final zones</div>
+
+            <div class="stop">
+                <div class="stop-number">7</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕦 11:30 AM - 12:00 PM</div>
+                    <div class="stop-location">Pier Adventure & Touch Pools</div>
+                    <div class="stop-activity">
+                        • Kids interactive play area<br>
+                        • Touch pools: sea stars, sea cucumbers<br>
+                        • Digital games and activities<br>
+                        • Revisit any favorite zones
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to Malaysian Food Street (5 min)</div>
+
+            <div class="stop meal">
+                <div class="stop-number">8</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕧 12:00 PM - 1:00 PM</div>
+                    <div class="stop-location">🍜 Malaysian Food Street - LUNCH</div>
+                    <div class="stop-activity">
+                        <strong>15+ authentic Malaysian stalls!</strong><br>
+                        • Nostalgic 1960s street atmosphere<br>
+                        • Penang Char Kway Teow (SGD 8-10)<br>
+                        • Hainanese Chicken Rice (SGD 7-9)<br>
+                        • Beef Rendang (SGD 9-12)<br>
+                        • Laksa mild for child (SGD 7-9)<br>
+                        • Fresh fruit juice (SGD 3-5)<br>
+                        • Indoor air-conditioned comfort!
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 35-50</span>
+                </div>
+            </div>
+
+            <div class="transport">⏸️ BUFFER TIME - Important rest!</div>
+
+            <div class="stop rest">
+                <div class="stop-number">9</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕐 1:00 PM - 1:30 PM</div>
+                    <div class="stop-location">Post-Lunch Rest - CRITICAL!</div>
+                    <div class="stop-activity">
+                        <strong>Don't rush to next activity!</strong><br>
+                        • Let child digest properly<br>
+                        • Relax in air-conditioned area<br>
+                        • Use restrooms<br>
+                        • Reapply sunscreen<br>
+                        • Check Luge operating hours<br>
+                        • Hydrate well!
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚌 Bus 123 to Imbiah (10 min) OR 🚶‍♂️ Walk Imbiah Trail (20 min)</div>
+
+            <div class="stop adventure">
+                <div class="stop-number">10</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕑 2:00 PM - 2:15 PM</div>
+                    <div class="stop-location">🛷 Skyline Luge - Arrival & Orientation</div>
+                    <div class="stop-activity">
+                        • Purchase tickets (if not online)<br>
+                        • Watch safety video (5 min)<br>
+                        • Get assigned luge cart<br>
+                        • Safety briefing from staff<br>
+                        <strong>Your 4-year-old rides WITH parent!</strong><br>
+                        • No age limit when with adult<br>
+                        • Completely safe!
+                    </div>
+                    <span class="stop-duration">⏱️ 15 min</span>
+                    <span class="cost">💰 SGD 80-95</span>
+                </div>
+            </div>
+
+            <div class="transport">🚡 First Skyride up!</div>
+
+            <div class="stop adventure">
+                <div class="stop-number">11</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕝 2:15 PM - 2:40 PM</div>
+                    <div class="stop-location">🛷 RIDE #1: Jungle Trail (638m)</div>
+                    <div class="stop-activity">
+                        <strong>Perfect for first-timers!</strong><br>
+                        • Skyride chairlift up (10 min scenic ride)<br>
+                        • Beautiful Sentosa & harbor views<br>
+                        • Jungle Trail - family-friendly, gentle curves<br>
+                        • Through tropical forest<br>
+                        • 3-5 minutes of fun going down<br>
+                        • Parent controls speed & braking<br>
+                        <strong>Your child will LOVE this!</strong>
+                    </div>
+                    <span class="stop-duration">⏱️ 25 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚡 Skyride up again!</div>
+
+            <div class="stop adventure">
+                <div class="stop-number">12</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 2:40 PM - 3:05 PM</div>
+                    <div class="stop-location">🛷 RIDE #2: Kupu Kupu Trail (658m)</div>
+                    <div class="stop-activity">
+                        <strong>Butterfly-themed trail!</strong><br>
+                        • More scenic, beautiful curves<br>
+                        • Slightly different experience<br>
+                        • Still family-friendly<br>
+                        • Enjoy the views going up!
+                    </div>
+                    <span class="stop-duration">⏱️ 25 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚡 Third ride up!</div>
+
+            <div class="stop adventure">
+                <div class="stop-number">13</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 3:05 PM - 3:30 PM</div>
+                    <div class="stop-location">🛷 RIDE #3: Expedition Trail (628m)</div>
+                    <div class="stop-activity">
+                        <strong>Adventurous trail!</strong><br>
+                        • Fun twists and turns<br>
+                        • Still suitable for families<br>
+                        • Each track offers unique experience!
+                    </div>
+                    <span class="stop-duration">⏱️ 25 min</span>
+                </div>
+            </div>
+
+            <div class="transport">⏸️ Quick break - hydration time!</div>
+
+            <div class="stop rest">
+                <div class="stop-number">14</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 3:30 PM - 3:45 PM</div>
+                    <div class="stop-location">Quick Break</div>
+                    <div class="stop-activity">
+                        • Hydration break<br>
+                        • Snacks if needed<br>
+                        • Use restrooms<br>
+                        • Take photos at Luge area
+                    </div>
+                    <span class="stop-duration">⏱️ 15 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚡 Final ride up - save best for last!</div>
+
+            <div class="stop adventure">
+                <div class="stop-number">15</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 3:45 PM - 4:15 PM</div>
+                    <div class="stop-location">🛷 RIDE #4: Dragon Trail (688m) - FASTEST!</div>
+                    <div class="stop-activity">
+                        <strong>Most thrilling of all tracks!</strong><br>
+                        • MOST twists and turns<br>
+                        • Fastest track (if you want!)<br>
+                        • Save the best for last!<br>
+                        • Your child will be squealing with joy!<br>
+                        • Final memories & celebration
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">📸 Final photos & memories</div>
+
+            <div class="stop">
+                <div class="stop-number">16</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕟 4:15 PM - 4:30 PM</div>
+                    <div class="stop-location">Final Photos & Optional Fort Siloso</div>
+                    <div class="stop-activity">
+                        • Group photos at Luge area<br>
+                        • Views of Sentosa from Imbiah Lookout<br>
+                        • Celebration photos!<br>
+                        <strong>Optional:</strong> Fort Siloso Skywalk (FREE, 15-20 min)<br>
+                        • Glass-bottom walkway, 11-story high<br>
+                        • Skip if everyone is tired - totally fine!
+                    </div>
+                    <span class="stop-duration">⏱️ 15 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚌 Bus back OR 🚶‍♂️ Walk to Beach Station → 🚊 Sentosa Express</div>
+
+            <div class="stop meal">
+                <div class="stop-number">17</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕔 5:00 PM - 6:00 PM</div>
+                    <div class="stop-location">🍜 Food Republic VivoCity - DINNER</div>
+                    <div class="stop-activity">
+                        • Wide variety for everyone<br>
+                        • Japanese, Chinese, Western, Local<br>
+                        • Air-conditioned comfort<br>
+                        • Let everyone rest after active day<br>
+                        • Child can decompress
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 30-40</span>
+                </div>
+            </div>
+
+            <div class="transport">🚇 MRT HarbourFront → Outram Park → 🚶‍♂️ Walk to hotel</div>
+
+            <div class="stop">
+                <div class="stop-number">18</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕡 6:30 PM - 10:00 PM</div>
+                    <div class="stop-location">Furama RiverFront - Evening Rest</div>
+                    <div class="stop-activity">
+                        • Swimming at hotel pool (if energy!)<br>
+                        • OR just shower and relax<br>
+                        • Child plays at playground<br>
+                        • Parents rest in room<br>
+                        • Light evening snack<br>
+                        • Review amazing photos!<br>
+                        • Sleep by 10:00 PM
+                    </div>
+                    <span class="stop-duration">⏱️ 3.5 hours</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="summary">
+            <h3>📊 DAY 5 SUMMARY</h3>
+            <p><strong>Total Travel Time:</strong> ~1.5 hours</p>
+            <p><strong>Main Activities:</strong> S.E.A. Aquarium (2.5 hrs) + Skyline Luge 4 Rides (2.5 hrs)</p>
+            <p><strong>Total Cost:</strong> SGD 338-410 (PHP 14,940-18,120)</p>
+            <p><strong>🛷 Luge Tracks:</strong> Jungle → Kupu Kupu → Expedition → Dragon (save best for last!)</p>
+            <p><strong>⭐ AMAZING: 10 AM Oceanarium = Almost empty! | 4-year-old rides FREE as Luge passenger!</strong></p>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; color: #666;">
+            <p><strong>💡 Pro Tips:</strong> Book Klook tickets (15-20% off!) | Closed-toe shoes REQUIRED for Luge | Try all 4 tracks!</p>
+        </div>
+    </div>
+</body>
+</html>

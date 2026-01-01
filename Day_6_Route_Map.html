@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6 - Singapore Zoo - Route Map</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #28a745;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .route-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .stop {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #28a745;
+            transition: transform 0.3s ease;
+        }
+        .stop:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .stop-number {
+            background: #28a745;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .stop-content {
+            flex: 1;
+        }
+        .stop-time {
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .stop-location {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .stop-activity {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .stop-duration {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        .transport {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            color: #28a745;
+            font-weight: bold;
+        }
+        .transport::before {
+            content: "↓";
+            font-size: 2em;
+            margin-right: 10px;
+        }
+        .cost {
+            background: #fff3cd;
+            color: #856404;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .highlight {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        .highlight .stop-number {
+            background: #28a745;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .meal {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        .meal .stop-number {
+            background: #ffc107;
+        }
+        .animals {
+            background: #e7f3ff;
+            border-left-color: #007bff;
+        }
+        .animals .stop-number {
+            background: #007bff;
+        }
+        .critical {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+            box-shadow: 0 0 15px rgba(220, 53, 69, 0.3);
+        }
+        .critical .stop-number {
+            background: #dc3545;
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .summary {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .summary h3 {
+            margin-top: 0;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦁 DAY 6 - Sunday, March 22, 2026</h1>
+        <div class="subtitle">Singapore Zoo - Full Day Wildlife Adventure!</div>
+        
+        <div class="route-container">
+            
+            <div class="stop">
+                <div class="stop-number">1</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕕 6:00 AM - 7:00 AM</div>
+                    <div class="stop-location">Furama RiverFront - Early Rise</div>
+                    <div class="stop-activity">
+                        • Wake at 6:00 AM (early for zoo!)<br>
+                        • Get ready quickly<br>
+                        • Pack: Extra clothes, swimsuits for water play, towels, sunscreen
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to hawker</div>
+
+            <div class="stop meal">
+                <div class="stop-number">2</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 7:00 AM - 7:45 AM</div>
+                    <div class="stop-location">🍜 Quick Breakfast</div>
+                    <div class="stop-activity">
+                        • Chinatown Complex OR Maxwell<br>
+                        • Hearty breakfast to fuel zoo day<br>
+                        • Quick and efficient!
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                    <span class="cost">💰 SGD 18-25</span>
+                </div>
+            </div>
+
+            <div class="transport">🚇 MRT Outram Park → Khatib (30 min) → 🚌 FREE Shuttle (15 min)</div>
+
+            <div class="stop">
+                <div class="stop-number">3</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕗 8:00 AM - 9:00 AM</div>
+                    <div class="stop-location">Travel to Singapore Zoo</div>
+                    <div class="stop-activity">
+                        <strong>Route:</strong><br>
+                        • Walk to Outram Park MRT (12 min)<br>
+                        • MRT to Khatib Station (30 min)<br>
+                        • FREE Mandai Khatib Shuttle to Zoo (15 min)<br>
+                        • Look for shuttle at Exit A<br>
+                        • Runs every 15-20 minutes<br>
+                        <strong>Total journey: 60-70 minutes</strong>
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 10-15 MRT</span>
+                </div>
+            </div>
+
+            <div class="transport">🎫 Enter zoo!</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">4</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕘 9:00 AM - 9:30 AM</div>
+                    <div class="stop-location">🦁 Singapore Zoo - ARRIVAL</div>
+                    <div class="stop-activity">
+                        <strong>Perfect timing - before big crowds!</strong><br>
+                        • Enter zoo (opens 8:30 AM)<br>
+                        • Get paper map + download zoo app<br>
+                        • Check feeding times on app<br>
+                        • Plan route: Start with farthest zones first!
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                    <span class="cost">💰 SGD 110-125</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to Fragile Forest</div>
+
+            <div class="stop animals">
+                <div class="stop-number">5</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕤 9:30 AM - 10:00 AM</div>
+                    <div class="stop-location">🦋 Fragile Forest Biodome</div>
+                    <div class="stop-activity">
+                        • Free-flight aviary biodome<br>
+                        • Walk among butterflies, flying lemurs<br>
+                        • Two-toed sloths!<br>
+                        • Beautiful birds flying overhead<br>
+                        • Air-conditioned rainforest (nice!)<br>
+                        • Stunning sloth sightings
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to Primate Kingdom</div>
+
+            <div class="stop animals">
+                <div class="stop-number">6</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕙 10:00 AM - 10:30 AM</div>
+                    <div class="stop-location">🦧 Primate Kingdom</div>
+                    <div class="stop-activity">
+                        • Orangutans swinging through trees<br>
+                        • White-handed Gibbons<br>
+                        • Proboscis monkeys<br>
+                        • Educational displays<br>
+                        • Great photo opportunities
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to Elephants</div>
+
+            <div class="stop animals">
+                <div class="stop-number">7</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕥 10:30 AM - 11:00 AM</div>
+                    <div class="stop-location">🐘 Elephants of Asia</div>
+                    <div class="stop-activity">
+                        • Beautiful spacious habitat<br>
+                        • Watch elephants bathing, eating, playing<br>
+                        • Feeding times: 9:15 AM or 1:30 PM<br>
+                        • Learn about conservation<br>
+                        • Amazing gentle giants!
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk through other zones</div>
+
+            <div class="stop animals">
+                <div class="stop-number">8</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕚 11:00 AM - 11:45 AM</div>
+                    <div class="stop-location">Walk to Wild Africa</div>
+                    <div class="stop-activity">
+                        • Head towards Wild Africa<br>
+                        • See animals you pass along the way<br>
+                        • Take your time, no rushing<br>
+                        • Quick stop at Reptopia if time allows
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🍽️ Lunch time!</div>
+
+            <div class="stop meal">
+                <div class="stop-number">9</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕧 12:00 PM - 1:00 PM</div>
+                    <div class="stop-location">🍔 Lunch at Zoo</div>
+                    <div class="stop-activity">
+                        <strong>Options:</strong><br>
+                        • KFC (chicken, fries - SGD 25-30)<br>
+                        • Ah Meng Restaurant (local food - SGD 30-40)<br>
+                        • Indoor air-conditioned seating<br>
+                        <strong>REST & RECHARGE!</strong><br>
+                        • Let child relax, digest<br>
+                        • Use restrooms<br>
+                        • You're only halfway!
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 35-50</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to Wild Africa - biggest zone!</div>
+
+            <div class="stop animals">
+                <div class="stop-number">10</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕐 1:00 PM - 1:50 PM</div>
+                    <div class="stop-location">🦒 Wild Africa Zone</div>
+                    <div class="stop-activity">
+                        <strong>Largest zone - budget good time!</strong><br>
+                        • Giraffes (so tall!)<br>
+                        • Zebras, White Rhinos<br>
+                        • Lions, Cheetahs<br>
+                        • African Painted Dogs<br>
+                        • Wide open savanna landscape<br>
+                        • Beautiful naturalistic habitats
+                    </div>
+                    <span class="stop-duration">⏱️ 50 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🦒 GET READY!</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">11</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕜 1:50 PM - 2:10 PM</div>
+                    <div class="stop-location">🦒 GIRAFFE FEEDING TIME - MUST DO!</div>
+                    <div class="stop-activity">
+                        <strong>DON'T MISS THIS!</strong><br>
+                        • Pay small fee (SGD 5-10)<br>
+                        • Feed giraffes by hand!<br>
+                        • Their tongues are amazing!<br>
+                        • Your 4-year-old will be THRILLED!<br>
+                        • Great photos<br>
+                        • Unforgettable experience!
+                    </div>
+                    <span class="stop-duration">⏱️ 20 min</span>
+                    <span class="cost">💰 SGD 5-10</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to Frozen Tundra</div>
+
+            <div class="stop animals">
+                <div class="stop-number">12</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕜 1:50 PM - 2:10 PM</div>
+                    <div class="stop-location">🐻‍❄️ Frozen Tundra</div>
+                    <div class="stop-activity">
+                        • Indoor polar bear exhibit<br>
+                        • Underwater viewing - watch bears swim!<br>
+                        • Super air-conditioned (refreshing!)<br>
+                        • Rocky Arctic landscape<br>
+                        • Great break from heat
+                    </div>
+                    <span class="stop-duration">⏱️ 20 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to Australasia</div>
+
+            <div class="stop animals">
+                <div class="stop-number">13</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕝 2:10 PM - 2:30 PM</div>
+                    <div class="stop-location">🦘 Australasia</div>
+                    <div class="stop-activity">
+                        • Kangaroos hopping around<br>
+                        • Wallabies<br>
+                        • Cassowaries (huge birds!)
+                    </div>
+                    <span class="stop-duration">⏱️ 20 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to Rainforest Kidzworld - highlight ahead!</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">14</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 2:30 PM - 3:15 PM</div>
+                    <div class="stop-location">💦 SPLASH SAFARI - WATER PLAY!</div>
+                    <div class="stop-activity">
+                        <strong>Your 4-year-old will LOVE this!</strong><br>
+                        • Change child into swim clothes!<br>
+                        • Water fountains, spray pools, slides<br>
+                        • Safe shallow water<br>
+                        • Let child play freely, burn energy<br>
+                        • Parents supervise from benches in shade<br>
+                        • Bring towels!<br>
+                        • 45 minutes of water fun
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚿 Change & rest</div>
+
+            <div class="stop">
+                <div class="stop-number">15</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 3:15 PM - 3:30 PM</div>
+                    <div class="stop-location">Change & Snack Break</div>
+                    <div class="stop-activity">
+                        • Change back to dry clothes in facilities<br>
+                        • Reapply sunscreen<br>
+                        • Snack time (bring own or buy)<br>
+                        • Hydrate well
+                    </div>
+                    <span class="stop-duration">⏱️ 15 min</span>
+                    <span class="cost">💰 SGD 10-15</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to Barnyard</div>
+
+            <div class="stop animals">
+                <div class="stop-number">16</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 3:30 PM - 3:45 PM</div>
+                    <div class="stop-location">🐐 Goat Feeding</div>
+                    <div class="stop-activity">
+                        • Rainforest Kidzworld Barnyard<br>
+                        • Interactive feeding experience<br>
+                        • Your child can feed friendly goats<br>
+                        • Included in admission (FREE!)<br>
+                        • So cute and fun!
+                    </div>
+                    <span class="stop-duration">⏱️ 15 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Check show schedule</div>
+
+            <div class="stop animals">
+                <div class="stop-number">17</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 3:45 PM - 4:00 PM</div>
+                    <div class="stop-location">Animal Friends Show (if timing works)</div>
+                    <div class="stop-activity">
+                        • 15-minute educational show<br>
+                        • Indoor air-conditioned theater<br>
+                        • Animal ambassadors<br>
+                        • Fun and educational<br>
+                        • Skip if show times don't align
+                    </div>
+                    <span class="stop-duration">⏱️ 15 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚌 Hop on tram!</div>
+
+            <div class="stop">
+                <div class="stop-number">18</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕓 4:00 PM - 4:30 PM</div>
+                    <div class="stop-location">🚂 Complimentary Tram Tour</div>
+                    <div class="stop-activity">
+                        <strong>FREE with admission!</strong><br>
+                        • Covers all major zones<br>
+                        • Sit and rest while touring<br>
+                        • Educational commentary<br>
+                        • See areas you might have missed<br>
+                        • Great way to rest tired feet!
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Final stops</div>
+
+            <div class="stop">
+                <div class="stop-number">19</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕟 4:30 PM - 5:00 PM</div>
+                    <div class="stop-location">Last Stops & Departure</div>
+                    <div class="stop-activity">
+                        • Revisit favorite animals<br>
+                        • Gift shop browsing (optional - SGD 20-40)<br>
+                        • Final family photos<br>
+                        • Restroom break before leaving<br>
+                        • Exit zoo by 5:00 PM
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚌 FREE Shuttle → 🚇 MRT → 🚶‍♂️ Total 60-75 min</div>
+
+            <div class="stop">
+                <div class="stop-number">20</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕕 6:15 PM - 6:45 PM</div>
+                    <div class="stop-location">Return & Quick Shower</div>
+                    <div class="stop-activity">
+                        • Return to hotel<br>
+                        • Everyone showers QUICKLY<br>
+                        • Change into comfortable clothes<br>
+                        • Time is tight tonight!
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to hawker - quick!</div>
+
+            <div class="stop meal">
+                <div class="stop-number">21</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 6:45 PM - 7:30 PM</div>
+                    <div class="stop-location">🍜 Quick Efficient Dinner</div>
+                    <div class="stop-activity">
+                        • Maxwell OR Chinatown Complex<br>
+                        • Quick efficient meal<br>
+                        • Don't linger - packing time is priority!<br>
+                        • Grab takeaway if needed
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                    <span class="cost">💰 SGD 30-40</span>
+                </div>
+            </div>
+
+            <div class="transport">🏃‍♂️ RUSH back to hotel!</div>
+
+            <div class="stop critical">
+                <div class="stop-number">22</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 7:30 PM - 9:30 PM</div>
+                    <div class="stop-location">🎒 PACK ALL LUGGAGE - CRITICAL!</div>
+                    <div class="stop-activity">
+                        <strong>⚠️ THIS IS THE MOST IMPORTANT TASK TONIGHT!</strong><br>
+                        <br>
+                        <strong>Everything Must Be Packed:</strong><br>
+                        ✅ All clothing, shoes, toiletries<br>
+                        ✅ All belongings from room<br>
+                        ✅ Check closets, drawers, bathroom, safe<br>
+                        ✅ Organize documents: passports, boarding passes<br>
+                        ✅ Charge ALL devices: phones, cameras, power banks<br>
+                        ✅ Set aside clothes for tomorrow (Harry Potter day)<br>
+                        ✅ Prepare carry-on bags<br>
+                        ✅ Pack child's toys, comfort items<br>
+                        ✅ Organize snacks for tomorrow<br>
+                        ✅ Place all luggage by door<br>
+                        ✅ Double-check you haven't forgotten anything!<br>
+                        <br>
+                        <strong>Carry-On Must Include:</strong><br>
+                        • Important documents<br>
+                        • Valuables, electronics<br>
+                        • Child's entertainment for flight<br>
+                        • Change of clothes for everyone<br>
+                        • Medications, essentials
+                    </div>
+                    <span class="stop-duration">⏱️ 2 hours</span>
+                </div>
+            </div>
+
+            <div class="transport">✅ Everything packed and ready!</div>
+
+            <div class="stop">
+                <div class="stop-number">23</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕤 9:30 PM - 10:00 PM</div>
+                    <div class="stop-location">Final Prep for Tomorrow</div>
+                    <div class="stop-activity">
+                        • Everything packed and ready<br>
+                        • Quick shower if needed<br>
+                        • Set alarm for 6:00 AM<br>
+                        • Clothes laid out for tomorrow<br>
+                        • Sleep by 10:00 PM<br>
+                        • Tomorrow is checkout day!
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="summary">
+            <h3>📊 DAY 6 SUMMARY</h3>
+            <p><strong>Total Travel Time:</strong> ~2 hours (MRT + FREE shuttle both ways)</p>
+            <p><strong>At Zoo:</strong> 8 hours (9 AM - 5 PM)</p>
+            <p><strong>Total Cost:</strong> SGD 218-275 (PHP 9,640-12,155)</p>
+            <p><strong>🦒 MUST-DO:</strong> Giraffe feeding at 1:50 PM! | 💦 Splash Safari water play!</p>
+            <p><strong>⚠️ CRITICAL: PACK ALL LUGGAGE TONIGHT!</strong></p>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; color: #dc3545; font-weight: bold; font-size: 1.1em;">
+            <p>⚠️ IMPORTANT: Tomorrow you checkout and DON'T return to hotel!</p>
+            <p>Everything MUST be packed tonight! Double-check room before bed!</p>
+        </div>
+    </div>
+</body>
+</html>

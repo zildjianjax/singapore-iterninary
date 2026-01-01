@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 - Arrival, Chinatown & Kampong Glam - Route Map</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .route-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .stop {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+        .stop:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .stop-number {
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .stop-content {
+            flex: 1;
+        }
+        .stop-time {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .stop-location {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .stop-activity {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .stop-duration, .cost {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #e8ecff;
+            color: #667eea;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .transport {
+            text-align: center;
+            color: #764ba2;
+            font-weight: bold;
+            padding: 10px;
+            background: linear-gradient(90deg, transparent, #e8ecff, transparent);
+            border-radius: 10px;
+        }
+        .highlight {
+            border-left-color: #ff6b6b;
+        }
+        .highlight .stop-number {
+            background: #ff6b6b;
+        }
+        .rest {
+            border-left-color: #51cf66;
+        }
+        .rest .stop-number {
+            background: #51cf66;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .summary h3 {
+            margin-top: 0;
+        }
+        .icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        .new-badge {
+            display: inline-block;
+            background: #ffd43b;
+            color: #333;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📍 DAY 1 - Tuesday, March 17, 2026</h1>
+        <div class="subtitle">Arrival, Chinatown & Kampong Glam Photo Tour 📸🕌<span class="new-badge">UPDATED!</span></div>
+        
+        <div class="route-container">
+            
+            <div class="stop">
+                <div class="stop-number">1</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕛 12:30 AM - 3:00 AM</div>
+                    <div class="stop-location">Changi Airport → Furama RiverFront Hotel</div>
+                    <div class="stop-activity">
+                        • Land at Changi (00:30)<br>
+                        • Immigration & baggage<br>
+                        • Taxi to hotel (30 min)<br>
+                        • Check-in & SLEEP!
+                    </div>
+                    <span class="stop-duration">⏱️ 2.5 hours</span>
+                    <span class="cost">💰 SGD 25-35</span>
+                </div>
+            </div>
+
+            <div class="transport">😴 Sleep & Rest at Hotel</div>
+
+            <div class="stop rest">
+                <div class="stop-number">2</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕘 9:00 AM - 10:30 AM</div>
+                    <div class="stop-location">Furama RiverFront Hotel</div>
+                    <div class="stop-activity">
+                        • Sleep in - no alarm!<br>
+                        • Wake naturally around 9-10 AM<br>
+                        • Recovery from late arrival<br>
+                        • Pack day bag: camera, water, sunscreen
+                    </div>
+                    <span class="stop-duration">⏱️ Exception - Sleep in!</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk 20 min OR Taxi 5 min</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">3</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕚 11:30 AM - 12:30 PM</div>
+                    <div class="stop-location">🍜 Maxwell Food Centre - LUNCH</div>
+                    <div class="stop-activity">
+                        • Famous Tian Tian Hainanese Chicken Rice!<br>
+                        • Rojak, Char Kway Teow<br>
+                        • Fresh juice<br>
+                        • Outdoor covered seating
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 18-28</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk 5 min</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">4</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕧 12:30 PM - 1:30 PM</div>
+                    <div class="stop-location">📸 Buddha Tooth Relic Temple</div>
+                    <div class="stop-activity">
+                        • Stunning red & gold architecture<br>
+                        • Main prayer hall<br>
+                        • Rooftop garden with city views<br>
+                        • Amazing photo opportunities!<br>
+                        • Remove shoes before entering
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 FREE</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk 2 min</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">5</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕜 1:30 PM - 2:30 PM</div>
+                    <div class="stop-location">📸 Chinatown Street Walking</div>
+                    <div class="stop-activity">
+                        • RED LANTERNS everywhere!<br>
+                        • Pagoda Street & Trengganu Street<br>
+                        • Colorful shophouses<br>
+                        • Sri Mariamman Temple (Hindu temple)<br>
+                        • Street murals & art
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 FREE</span>
+                </div>
+            </div>
+
+            <div class="transport">🚕 Taxi/Grab 10 min (SGD 8-12) OR MRT</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">6</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕒 3:00 PM - 3:30 PM</div>
+                    <div class="stop-location">🕌 Sultan Mosque (Masjid Sultan) <span class="new-badge">NEW!</span></div>
+                    <div class="stop-activity">
+                        • STUNNING gold-domed mosque!<br>
+                        • Beautiful Indo-Saracenic architecture<br>
+                        • Photo: facade with golden dome<br>
+                        • Modest dress required (robes provided free)<br>
+                        • Remove shoes before entering
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                    <span class="cost">💰 FREE</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk 2 min</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">7</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕒 3:30 PM - 4:00 PM</div>
+                    <div class="stop-location">🎨 Haji Lane <span class="new-badge">NEW!</span></div>
+                    <div class="stop-activity">
+                        • INSTAGRAM PARADISE!<br>
+                        • Colorful street art & murals<br>
+                        • Hipster cafés & vintage shops<br>
+                        • Amazing photo backdrops<br>
+                        • Optional: ice cream/bubble tea
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                    <span class="cost">💰 SGD 0-7</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk 5 min to 37 Kerbau Road</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">8</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕓 4:00 PM - 4:15 PM</div>
+                    <div class="stop-location">🏠🌈 Tan Teng Niah House <span class="new-badge">NEW!</span></div>
+                    <div class="stop-activity">
+                        • MOST COLORFUL HOUSE in Singapore!<br>
+                        • Historic Chinese villa from 1900<br>
+                        • Painted in bright pastels<br>
+                        • Perfect family photos!<br>
+                        • Quick 10-15 min photo stop
+                    </div>
+                    <span class="stop-duration">⏱️ 15 min</span>
+                    <span class="cost">💰 FREE</span>
+                </div>
+            </div>
+
+            <div class="transport">🚕 Taxi/Grab 10-15 min (SGD 10-15) OR MRT</div>
+
+            <div class="stop rest">
+                <div class="stop-number">9</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕔 5:00 PM - 5:30 PM</div>
+                    <div class="stop-location">Furama RiverFront Hotel - Quick Rest</div>
+                    <div class="stop-activity">
+                        • Freshen up<br>
+                        • Short rest<br>
+                        • Optional: quick swim if energetic<br>
+                        • Prepare for dinner
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk 15 min</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">10</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕥 5:30 PM - 6:30 PM</div>
+                    <div class="stop-location">🍜 Tiong Bahru Food Centre - DINNER</div>
+                    <div class="stop-activity">
+                        • Chicken Rice<br>
+                        • Char Kway Teow<br>
+                        • Satay<br>
+                        • Early dinner time
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 25-35</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk 15 min back to hotel</div>
+
+            <div class="stop rest">
+                <div class="stop-number">11</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕕 6:30 PM - 10:00 PM</div>
+                    <div class="stop-location">Furama RiverFront Hotel - Evening Rest</div>
+                    <div class="stop-activity">
+                        • More swimming/playground<br>
+                        • Watch TV, relax in room<br>
+                        • Pack bags for USS tomorrow<br>
+                        • Set alarm for 6:00 AM<br>
+                        • Early bedtime (10 PM)
+                    </div>
+                    <span class="stop-duration">⏱️ 3.5 hours</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="summary">
+            <h3>📊 DAY 1 SUMMARY - NOW WITH KAMPONG GLAM!</h3>
+            <p><strong>Total Walking:</strong> ~1 hour 15 min (+ optional MRT rides)</p>
+            <p><strong>Main Activities:</strong> Chinatown Photos, Buddha Tooth Temple, Kampong Glam District, Hotel Rest</p>
+            <p><strong>Total Cost:</strong> SGD 91-142 (PHP 4,020-6,270)</p>
+            <p><strong>Photo Spots:</strong> 🏮 Buddha Tooth Temple | 📸 Red Lanterns | 🕌 Sultan Mosque | 🎨 Haji Lane | 🌈 Tan Teng Niah House</p>
+            <p><strong>New Highlights:</strong> 3 amazing Kampong Glam spots added - not rushed!</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4 - Anniversary Adventure Cove Waterpark - Route Map</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #fa709a;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .route-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .stop {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #fa709a;
+            transition: transform 0.3s ease;
+        }
+        .stop:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .stop-number {
+            background: #fa709a;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .stop-content {
+            flex: 1;
+        }
+        .stop-time {
+            color: #fa709a;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .stop-location {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .stop-activity {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .stop-duration {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        .transport {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            color: #fee140;
+            font-weight: bold;
+        }
+        .transport::before {
+            content: "↓";
+            font-size: 2em;
+            margin-right: 10px;
+        }
+        .cost {
+            background: #fff3cd;
+            color: #856404;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .highlight {
+            background: #fff9c4;
+            border-left-color: #ffc107;
+        }
+        .highlight .stop-number {
+            background: #ffc107;
+        }
+        .beach {
+            background: #e1f5fe;
+            border-left-color: #03a9f4;
+        }
+        .beach .stop-number {
+            background: #03a9f4;
+        }
+        .anniversary {
+            background: #fce4ec;
+            border-left-color: #e91e63;
+            box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
+        }
+        .anniversary .stop-number {
+            background: #e91e63;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .summary {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .summary h3 {
+            margin-top: 0;
+        }
+        .option-box {
+            background: #f3e5f5;
+            border: 2px dashed #9c27b0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 DAY 4 - Friday, March 20, 2026</h1>
+        <div class="subtitle">ANNIVERSARY - Adventure Cove Waterpark! 💑🌊</div>
+        
+        <div class="route-container">
+            
+            <div class="stop">
+                <div class="stop-number">1</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕕 6:00 AM - 7:00 AM</div>
+                    <div class="stop-location">Furama RiverFront - Flexible Wake Up</div>
+                    <div class="stop-activity">
+                        • Can wake at 6 AM OR sleep in!<br>
+                        • More flexible timing today<br>
+                        • It's your anniversary - enjoy!
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to hawker</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">2</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 7:00 AM - 7:45 AM</div>
+                    <div class="stop-location">🍜 Anniversary Breakfast</div>
+                    <div class="stop-activity">
+                        • Maxwell or Chinatown Complex<br>
+                        • Special breakfast together<br>
+                        • Celebrate 4 beautiful years!
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                    <span class="cost">💰 SGD 20-30</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Return to hotel</div>
+
+            <div class="stop">
+                <div class="stop-number">3</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕗 8:00 AM - 9:30 AM</div>
+                    <div class="stop-location">Furama RiverFront - Waterpark Prep</div>
+                    <div class="stop-activity">
+                        <strong>Pack waterpark bag thoroughly:</strong><br>
+                        • Swimsuits, rash guards (sun protection!)<br>
+                        • Towels, waterproof bags<br>
+                        • Sunscreen (SPF 50+ WATERPROOF!)<br>
+                        • Change of clothes for after<br>
+                        • Waterproof phone case<br>
+                        • Flip-flops/water shoes<br>
+                        • Snacks & water bottles<br>
+                        • Camera for anniversary photos<br>
+                        • Cash/cards for lockers & extras<br>
+                        • No rush today - it's your day!
+                    </div>
+                    <span class="stop-duration">⏱️ 1.5 hours</span>
+                </div>
+            </div>
+
+            <div class="transport">🚇 MRT to HarbourFront → 🚊 Sentosa Express → 🚶‍♂️ Walk</div>
+
+            <div class="stop beach">
+                <div class="stop-number">4</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕙 10:00 AM - 10:30 AM</div>
+                    <div class="stop-location">🌊 Adventure Cove Waterpark - ARRIVAL!</div>
+                    <div class="stop-activity">
+                        <strong>Asia's ultimate water adventure!</strong><br>
+                        • Arrive at Resorts World Sentosa<br>
+                        • Entry to Adventure Cove<br>
+                        • Rent lockers (SGD 10-20)<br>
+                        • Change into swimsuits<br>
+                        • Apply waterproof sunscreen!<br>
+                        • Get oriented - check park map<br>
+                        • Life jackets available (FREE for kids!)
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                    <span class="cost">💰 SGD 120-160 tickets</span>
+                </div>
+            </div>
+
+            <div class="transport">🌊 Let the water adventure begin!</div>
+
+            <div class="stop beach">
+                <div class="stop-number">5</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕥 10:30 AM - 12:00 PM</div>
+                    <div class="stop-location">🌊 Morning Water Activities</div>
+                    <div class="stop-activity">
+                        <strong>Perfect for 4-year-old!</strong><br>
+                        <br>
+                        <strong>Start with gentle attractions:</strong><br>
+                        • <strong>Bluwater Bay Wave Pool</strong><br>
+                        &nbsp;&nbsp;- Gentle waves, safe for kids<br>
+                        &nbsp;&nbsp;- Family-friendly fun!<br>
+                        <br>
+                        • <strong>Adventure River (Lazy River)</strong><br>
+                        &nbsp;&nbsp;- Relaxing float together<br>
+                        &nbsp;&nbsp;- Ride on tubes as a family<br>
+                        &nbsp;&nbsp;- Gentle current, very safe<br>
+                        <br>
+                        • <strong>Splashworks Kids Play Area</strong><br>
+                        &nbsp;&nbsp;- Perfect for 4-year-old!<br>
+                        &nbsp;&nbsp;- Mini slides, water features<br>
+                        &nbsp;&nbsp;- Shallow water<br>
+                        &nbsp;&nbsp;- Parents can supervise easily<br>
+                        <br>
+                        • Take breaks in shaded areas<br>
+                        • Hydrate frequently!
+                    </div>
+                    <span class="stop-duration">⏱️ 1.5 hours</span>
+                </div>
+            </div>
+
+            <div class="transport">🍽️ Lunch time!</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">6</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕧 12:00 PM - 1:00 PM</div>
+                    <div class="stop-location">🍔 Lunch at Adventure Cove</div>
+                    <div class="stop-activity">
+                        <div class="option-box">
+                        <strong>Option 1: Inside Park Food Outlets</strong><br>
+                        • Lighthouse Cafe<br>
+                        • Burgers, pizzas, noodles<br>
+                        • Kid-friendly menu<br>
+                        💰 SGD 40-60
+                        </div>
+                        <div class="option-box" style="margin-top:10px;">
+                        <strong>Option 2: Exit & Re-entry</strong><br>
+                        • Malaysian Food Street (nearby)<br>
+                        • More affordable<br>
+                        • Can re-enter with hand stamp<br>
+                        💰 SGD 30-40
+                        </div>
+                        <br>
+                        <strong>Recommended: Stay inside park (saves time!)</strong><br>
+                        • Rest in shaded dining area<br>
+                        • Let child digest properly<br>
+                        • Reapply sunscreen!
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                </div>
+            </div>
+
+            <div class="transport">🌊 More water fun!</div>
+
+            <div class="stop beach">
+                <div class="stop-number">7</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕐 1:00 PM - 3:00 PM</div>
+                    <div class="stop-location">🌊 Afternoon Water Adventures</div>
+                    <div class="stop-activity">
+                        <strong>Continue the fun!</strong><br>
+                        <br>
+                        • <strong>Rainbow Reef</strong> (if child interested)<br>
+                        &nbsp;&nbsp;- Snorkel with colorful fish!<br>
+                        &nbsp;&nbsp;- Equipment included<br>
+                        &nbsp;&nbsp;- Shallow, safe area<br>
+                        &nbsp;&nbsp;- Amazing for kids!<br>
+                        <br>
+                        • <strong>More Wave Pool time</strong><br>
+                        &nbsp;&nbsp;- Never gets old!<br>
+                        <br>
+                        • <strong>More Lazy River floats</strong><br>
+                        &nbsp;&nbsp;- Relaxing for parents<br>
+                        &nbsp;&nbsp;- Fun for kids<br>
+                        <br>
+                        • <strong>Back to Splashworks</strong><br>
+                        &nbsp;&nbsp;- Let child play freely<br>
+                        <br>
+                        <strong>For Parents (while child plays):</strong><br>
+                        • Take turns on bigger slides if interested:<br>
+                        &nbsp;&nbsp;- Riptide Rocket<br>
+                        &nbsp;&nbsp;- Pipeline Plunge<br>
+                        &nbsp;&nbsp;- Whirlpool Washout<br>
+                        • Or relax in sun loungers together<br>
+                        <br>
+                        <strong>Pace yourselves - don't overdo it!</strong>
+                    </div>
+                    <span class="stop-duration">⏱️ 2 hours</span>
+                </div>
+            </div>
+
+            <div class="transport">🧊 Cooling down</div>
+
+            <div class="stop">
+                <div class="stop-number">8</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕒 3:00 PM - 3:30 PM</div>
+                    <div class="stop-location">☕ Afternoon Snack & Rest</div>
+                    <div class="stop-activity">
+                        • Ice cream or cold drinks<br>
+                        • Rest in shaded area<br>
+                        • Let child wind down<br>
+                        • Reapply sunscreen one more time<br>
+                        • Decide on final activities
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                    <span class="cost">💰 SGD 10-15</span>
+                </div>
+            </div>
+
+            <div class="transport">🌊 Final splash!</div>
+
+            <div class="stop beach">
+                <div class="stop-number">9</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 3:30 PM - 4:30 PM</div>
+                    <div class="stop-location">🌊 Final Hour - Favorite Activities</div>
+                    <div class="stop-activity">
+                        • Revisit favorite attractions<br>
+                        • One more lazy river float<br>
+                        • Final wave pool fun<br>
+                        • Last Splashworks playtime<br>
+                        • Anniversary family photos in the park!<br>
+                        • Start winding down by 4:15 PM
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                </div>
+            </div>
+
+            <div class="transport">🚿 Clean up time</div>
+
+            <div class="stop">
+                <div class="stop-number">10</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕟 4:30 PM - 5:00 PM</div>
+                    <div class="stop-location">🚿 Change & Freshen Up</div>
+                    <div class="stop-activity">
+                        • Shower at park facilities<br>
+                        • Change into dry clothes<br>
+                        • Return locker keys<br>
+                        • Pack up all belongings<br>
+                        • Check you haven't forgotten anything<br>
+                        • Exit Adventure Cove
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚊 Sentosa Express OR 🚶‍♂️ Walk to VivoCity</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">11</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕔 5:00 PM - 6:00 PM</div>
+                    <div class="stop-location">🍽️ Early Dinner at VivoCity</div>
+                    <div class="stop-activity">
+                        • Return to VivoCity<br>
+                        • Food Republic food court<br>
+                        • Comfortable, air-conditioned<br>
+                        • Everyone can choose what they want<br>
+                        • Rest after active day
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 30-40</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Return to hotel, shower & freshen up</div>
+
+            <div class="stop anniversary">
+                <div class="stop-number">12</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 7:30 PM - 11:00 PM</div>
+                    <div class="stop-location">💑 ANNIVERSARY EVENING</div>
+                    <div class="stop-activity">
+                        <div class="option-box">
+                        <strong>🌟 Option A: Romantic Dinner Out (Special!)</strong><br>
+                        • Hotel babysitting (SGD 60-80)<br>
+                        • Ce La Vi / Spago / LeVeL33<br>
+                        • Stunning views & fine dining<br>
+                        • Marina Bay walk after dinner<br>
+                        💰 Total: SGD 180-280
+                        </div>
+                        <div class="option-box" style="margin-top:10px;">
+                        <strong>💚 Option B: Family Celebration (Budget!)</strong><br>
+                        • Gardens + Satay by the Bay dinner<br>
+                        • Garden Rhapsody light show<br>
+                        • Marina Bay walk together<br>
+                        • Cake & champagne in room<br>
+                        💰 Total: SGD 75-105
+                        </div>
+                    </div>
+                    <span class="stop-duration">⏱️ 3-4 hours</span>
+                </div>
+            </div>
+
+            <div class="transport">💤 Return to hotel</div>
+
+            <div class="stop">
+                <div class="stop-number">13</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕥 10:30 PM - 11:00 PM</div>
+                    <div class="stop-location">Furama RiverFront - Bedtime</div>
+                    <div class="stop-activity">
+                        • Reflect on beautiful anniversary<br>
+                        • Review beach & celebration photos<br>
+                        • Sleep by 11:00 PM
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="summary">
+            <h3>📊 DAY 4 SUMMARY</h3>
+            <p><strong>Waterpark Time:</strong> 6 hours at Adventure Cove (10 AM - 4:30 PM)</p>
+            <p><strong>Anniversary Celebration:</strong> Special dinner OR budget-friendly family celebration</p>
+            <p><strong>Total Cost (Budget):</strong> SGD 215-270 (PHP 9,503-11,934)</p>
+            <p><strong>Total Cost (Special):</strong> SGD 325-480 (PHP 14,365-21,216)</p>
+            <p><strong>💑 Perfect water adventure to celebrate your love & family!</strong></p>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; color: #666;">
+            <p><strong>💕 Happy 4th Anniversary!</strong> Adventure Cove is perfect for family fun!</p>
+            <p><strong>💡 Pro Tip:</strong> Waterproof sunscreen! Rent lockers! Bring waterproof phone case!</p>
+        </div>
+    </div>
+</body>
+</html>

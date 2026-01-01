@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - Universal Studios Singapore - Route Map</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #f5576c;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .route-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .stop {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #f5576c;
+            transition: transform 0.3s ease;
+        }
+        .stop:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .stop-number {
+            background: #f5576c;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .stop-content {
+            flex: 1;
+        }
+        .stop-time {
+            color: #f5576c;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .stop-location {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .stop-activity {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .stop-duration {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        .transport {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            color: #f093fb;
+            font-weight: bold;
+        }
+        .transport::before {
+            content: "↓";
+            font-size: 2em;
+            margin-right: 10px;
+        }
+        .cost {
+            background: #fff3cd;
+            color: #856404;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .highlight {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        .highlight .stop-number {
+            background: #28a745;
+        }
+        .meal {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        .meal .stop-number {
+            background: #ffc107;
+        }
+        .ride {
+            background: #cce5ff;
+            border-left-color: #007bff;
+        }
+        .ride .stop-number {
+            background: #007bff;
+        }
+        .summary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .summary h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎢 DAY 2 - Wednesday, March 18, 2026</h1>
+        <div class="subtitle">Universal Studios Singapore - Full Day Adventure!</div>
+        
+        <div class="route-container">
+            
+            <div class="stop">
+                <div class="stop-number">1</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕕 6:00 AM - 7:00 AM</div>
+                    <div class="stop-location">Furama RiverFront Hotel - Morning Prep</div>
+                    <div class="stop-activity">
+                        • Wake up at 6:00 AM<br>
+                        • Get ready<br>
+                        • Pack: water bottles, sunscreen, hats, snacks, change of clothes
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk 20 min to Maxwell Food Centre</div>
+
+            <div class="stop meal">
+                <div class="stop-number">2</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 7:00 AM - 7:45 AM</div>
+                    <div class="stop-location">🍜 Maxwell Food Centre - BREAKFAST</div>
+                    <div class="stop-activity">
+                        • Chicken Rice (SGD 4-5)<br>
+                        • Roti Prata (SGD 3-5)<br>
+                        • Kaya Toast (SGD 5-7)<br>
+                        • Quick hearty breakfast to fuel up!
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                    <span class="cost">💰 SGD 18-25</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk 12 min → 🚇 MRT 10 min → 🚊 Sentosa Express 5 min</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">3</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕤 9:30 AM - 10:00 AM</div>
+                    <div class="stop-location">🎢 Universal Studios Singapore - ARRIVAL</div>
+                    <div class="stop-activity">
+                        <strong>⭐ ARRIVE BEFORE OPENING!</strong><br>
+                        • Be at gates by 9:30 AM<br>
+                        • First in line = shortest waits!<br>
+                        • Get park map<br>
+                        • Download USS app
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min wait</span>
+                    <span class="cost">💰 SGD 220-240</span>
+                </div>
+            </div>
+
+            <div class="transport">🎢 PARK OPENS AT 10:00 AM!</div>
+
+            <div class="stop ride">
+                <div class="stop-number">4</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕙 10:00 AM - 12:00 PM</div>
+                    <div class="stop-location">Morning Rides - BEST TIME!</div>
+                    <div class="stop-activity">
+                        <strong>Hit major rides first:</strong><br>
+                        • Transformers (if 102cm height)<br>
+                        • Sesame Street Spaghetti Space Chase<br>
+                        • Madagascar: A Crate Adventure<br>
+                        • Shrek 4-D Adventure<br>
+                        • Puss In Boots' Giant Journey<br>
+                        <strong>Wait times: 15-30 min!</strong>
+                    </div>
+                    <span class="stop-duration">⏱️ 2 hours</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to restaurant inside park</div>
+
+            <div class="stop meal">
+                <div class="stop-number">5</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕧 12:00 PM - 1:00 PM</div>
+                    <div class="stop-location">🍔 Lunch at Universal Studios</div>
+                    <div class="stop-activity">
+                        • KT's Grill (chicken tenders, burgers)<br>
+                        • OR Goldilocks (pizza, pasta)<br>
+                        • Find shaded area<br>
+                        • REST & RECHARGE!<br>
+                        • Don't rush!
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 45-60</span>
+                </div>
+            </div>
+
+            <div class="transport">⏸️ Post-Lunch Break (explore shops, reapply sunscreen)</div>
+
+            <div class="stop ride">
+                <div class="stop-number">6</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕜 1:30 PM - 3:30 PM</div>
+                    <div class="stop-location">Afternoon Rides & Shows</div>
+                    <div class="stop-activity">
+                        • King Julien's Beach Party-Go-Round<br>
+                        • Despicable Me Minion Mayhem<br>
+                        • Enchanted Airways<br>
+                        • Lights, Camera, Action! (show)<br>
+                        • Snack break between rides
+                    </div>
+                    <span class="stop-duration">⏱️ 2 hours</span>
+                    <span class="cost">💰 SGD 15-20 snacks</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to WaterWorld arena</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">7</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 3:30 PM - 4:00 PM</div>
+                    <div class="stop-location">💦 WaterWorld Show - MUST SEE!</div>
+                    <div class="stop-activity">
+                        <strong>DON'T MISS THIS!</strong><br>
+                        • Arrive 15 minutes early (3:15 PM)<br>
+                        • 20-minute spectacular stunt show<br>
+                        • Sit in middle section (blue seats)<br>
+                        • Amazing pyrotechnics & stunts!
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🎢 Continue exploring park</div>
+
+            <div class="stop ride">
+                <div class="stop-number">8</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕓 4:00 PM - 5:00 PM</div>
+                    <div class="stop-location">Final Hour at USS</div>
+                    <div class="stop-activity">
+                        • Revisit favorite rides<br>
+                        • Character meet & greet photos<br>
+                        • Last-minute gift shop<br>
+                        • Exit by 5:00 PM
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                </div>
+            </div>
+
+            <div class="transport">🚊 Sentosa Express to VivoCity (10 min)</div>
+
+            <div class="stop meal">
+                <div class="stop-number">9</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕔 5:00 PM - 6:00 PM</div>
+                    <div class="stop-location">🍜 Food Republic (VivoCity) - DINNER</div>
+                    <div class="stop-activity">
+                        • Wide variety: Japanese, Chinese, Western<br>
+                        • Air-conditioned comfort<br>
+                        • Let child decompress after exciting day
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 30-40</span>
+                </div>
+            </div>
+
+            <div class="transport">🚇 MRT HarbourFront → Outram Park (10 min) → 🚶‍♂️ Walk 12 min</div>
+
+            <div class="stop">
+                <div class="stop-number">10</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 7:00 PM - 10:00 PM</div>
+                    <div class="stop-location">Furama RiverFront - Evening Rest</div>
+                    <div class="stop-activity">
+                        • Swimming at hotel pool<br>
+                        • Child plays at playground<br>
+                        • Shower and wind down<br>
+                        • Review amazing photos!<br>
+                        • Bedtime at 10:00 PM
+                    </div>
+                    <span class="stop-duration">⏱️ 3 hours</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="summary">
+            <h3>📊 DAY 2 SUMMARY</h3>
+            <p><strong>Total Travel Time:</strong> ~1.5 hours (MRT + Sentosa Express)</p>
+            <p><strong>At Universal Studios:</strong> 7 hours (10 AM - 5 PM)</p>
+            <p><strong>Total Cost:</strong> SGD 343-400 (PHP 15,160-17,680)</p>
+            <p><strong>🎢 Rides:</strong> Transformers, Sesame Street, Madagascar, Shrek, Puss In Boots, Minions, Enchanted Airways</p>
+            <p><strong>⭐ BEST TIP: Arrive at 9:30 AM = Beat 80% of crowds!</strong></p>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; color: #666;">
+            <p><strong>💡 Pro Tips:</strong> Bring portable fan | Stay hydrated | Take breaks | Child may get cranky by 4 PM (normal!)</p>
+        </div>
+    </div>
+</body>
+</html>
