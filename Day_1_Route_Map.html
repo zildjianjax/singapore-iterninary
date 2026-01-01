@@ -157,6 +157,22 @@
         .photo-link:hover {
             background: #d4dbff;
         }
+        .map-link {
+            display: inline-block;
+            margin: 10px 0;
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background: #ffe0e0;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .map-link:hover {
+            background: #ffcccc;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(255,107,107,0.3);
+        }
         .photo-credit {
             font-size: 0.75em;
             color: #999;
@@ -183,6 +199,113 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             margin: 15px 0;
         }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+            .subtitle {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+            .route-container {
+                gap: 15px;
+            }
+            .stop {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+            .stop:hover {
+                transform: none;
+            }
+            .stop-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+            .stop-time {
+                font-size: 1em;
+            }
+            .stop-location {
+                font-size: 1.1em;
+                line-height: 1.4;
+            }
+            .stop-activity {
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+            .landmark-photo {
+                height: 200px;
+                margin: 10px 0;
+            }
+            .photo-link, .map-link {
+                font-size: 0.9em;
+                padding: 10px;
+                margin: 8px 0;
+            }
+            .stop-duration, .cost {
+                font-size: 0.85em;
+                padding: 4px 10px;
+                margin: 5px 5px 5px 0;
+                display: inline-block;
+            }
+            .transport {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+            .new-badge {
+                font-size: 0.7em;
+                padding: 2px 8px;
+            }
+            .summary {
+                padding: 15px;
+                font-size: 0.9em;
+            }
+            .summary h3 {
+                font-size: 1.3em;
+            }
+            .summary p {
+                margin: 10px 0;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            .container {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            .subtitle {
+                font-size: 0.9em;
+            }
+            .stop-time {
+                font-size: 0.95em;
+            }
+            .stop-location {
+                font-size: 1em;
+            }
+            .stop-activity {
+                font-size: 0.9em;
+            }
+            .landmark-photo {
+                height: 180px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -197,6 +320,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕛 12:30 AM - 3:00 AM</div>
                     <div class="stop-location">Changi Airport → Furama RiverFront Hotel</div>
+                    <a href="https://www.google.com/maps/dir/Singapore+Changi+Airport/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions on Google Maps</a>
                     <div class="stop-activity">
                         • Land at Changi (00:30)<br>
                         • Immigration & baggage<br>
@@ -222,6 +346,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕖 7:00 AM - 8:30 AM</div>
                     <div class="stop-location">🍳 Furama RiverFront Hotel - Breakfast Buffet</div>
+                    <a href="https://www.google.com/maps/place/Furama+RiverFront/@1.2877908,103.8333009,17z/data=!3m2!4b1!5s0x31da1975c68ac9b9:0x1501a754351fc40b!4m9!3m8!1s0x31da1977b165dfcd:0x939e0c251389175e!5m2!4m1!1i2!8m2!3d1.2877908!4d103.8358758!16s%2Fg%2F1tfb_k28?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-link">📍 View Location on Google Maps</a>
                     <div class="stop-activity">
                         • Wake up at 7:00 AM<br>
                         • Hotel breakfast buffet<br>
@@ -247,6 +372,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕘 9:00 AM - 10:30 AM</div>
                     <div class="stop-location">🛍️ Raffles City Shopping Centre <span class="new-badge">NEW!</span></div>
+                    <a href="https://www.google.com/maps/dir/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore/Raffles+City+Shopping+Centre,+252+North+Bridge+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Hotel</a>
                     <div class="stop-activity">
                         • Just 5 min walk from hotel!<br>
                         • Premium shopping mall with 200+ stores<br>
@@ -274,6 +400,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕚 11:30 AM - 12:30 PM</div>
                     <div class="stop-location">🍜 Maxwell Food Centre - LUNCH</div>
+                    <a href="https://www.google.com/maps/dir/Raffles+City+Shopping+Centre,+252+North+Bridge+Rd,+Singapore/Maxwell+Food+Centre,+1+Kadayanallur+St,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Raffles City</a>
                     <div class="stop-activity">
                         • Famous Tian Tian Hainanese Chicken Rice!<br>
                         • Rojak, Char Kway Teow<br>
@@ -299,6 +426,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕧 12:30 PM - 1:30 PM</div>
                     <div class="stop-location">📸 Buddha Tooth Relic Temple</div>
+                    <a href="https://www.google.com/maps/dir/Maxwell+Food+Centre,+1+Kadayanallur+St,+Singapore/Buddha+Tooth+Relic+Temple,+288+South+Bridge+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Maxwell</a>
                     <div class="stop-activity">
                         • Stunning red & gold architecture<br>
                         • Main prayer hall<br>
@@ -325,6 +453,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕜 1:30 PM - 2:30 PM</div>
                     <div class="stop-location">📸 Chinatown Street Walking</div>
+                    <a href="https://www.google.com/maps/dir/Buddha+Tooth+Relic+Temple,+288+South+Bridge+Rd,+Singapore/Pagoda+Street,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Buddha Tooth Temple</a>
                     <div class="stop-activity">
                         • RED LANTERNS everywhere!<br>
                         • Pagoda Street & Trengganu Street<br>
@@ -339,6 +468,8 @@
                         <div class="photo-credit">Photo: Pagoda Street Chinatown</div>
                         <a href="https://www.google.com/search?q=chinatown+red+lanterns+singapore+pagoda+street&tbm=isch" target="_blank" class="photo-link">🔍 View Chinatown Lanterns Photos on Google Images</a>
                         <br><br>
+                        <a href="https://www.google.com/maps/dir/Pagoda+Street,+Singapore/Sri+Mariamman+Temple,+244+South+Bridge+Rd,+Singapore" target="_blank" class="map-link">🗺️ Walk to Sri Mariamman Temple</a>
+                        <br>
                         <img src="https://www.cdn.travejar.com/storage/india_attraction_tour/1748240576.webp"
                              alt="Sri Mariamman Temple - Colorful Hindu Temple"
                              class="landmark-photo">
@@ -357,6 +488,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕒 3:00 PM - 3:30 PM</div>
                     <div class="stop-location">🕌 Sultan Mosque (Masjid Sultan) <span class="new-badge">NEW!</span></div>
+                    <a href="https://www.google.com/maps/dir/Pagoda+Street,+Singapore/Sultan+Mosque,+3+Muscat+St,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Chinatown</a>
                     <div class="stop-activity">
                         • STUNNING gold-domed mosque!<br>
                         • Beautiful Indo-Saracenic architecture<br>
@@ -383,6 +515,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕒 3:30 PM - 4:00 PM</div>
                     <div class="stop-location">🎨 Haji Lane <span class="new-badge">NEW!</span></div>
+                    <a href="https://www.google.com/maps/dir/Sultan+Mosque,+3+Muscat+St,+Singapore/Haji+Lane,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Sultan Mosque</a>
                     <div class="stop-activity">
                         • INSTAGRAM PARADISE!<br>
                         • Colorful street art & murals<br>
@@ -409,6 +542,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕓 4:00 PM - 4:15 PM</div>
                     <div class="stop-location">🏠🌈 Tan Teng Niah House <span class="new-badge">NEW!</span></div>
+                    <a href="https://www.google.com/maps/dir/Haji+Lane,+Singapore/Tan+Teng+Niah,+37+Kerbau+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Haji Lane</a>
                     <div class="stop-activity">
                         • MOST COLORFUL HOUSE in Singapore!<br>
                         • Historic Chinese villa from 1900<br>
@@ -435,6 +569,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕔 5:00 PM - 5:30 PM</div>
                     <div class="stop-location">Furama RiverFront Hotel - Quick Rest</div>
+                    <a href="https://www.google.com/maps/dir/Tan+Teng+Niah,+37+Kerbau+Rd,+Singapore/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions to Hotel</a>
                     <div class="stop-activity">
                         • Freshen up<br>
                         • Short rest<br>
@@ -452,6 +587,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕥 5:30 PM - 6:30 PM</div>
                     <div class="stop-location">🍜 Tiong Bahru Food Centre - DINNER</div>
+                    <a href="https://www.google.com/maps/dir/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore/Tiong+Bahru+Market,+30+Seng+Poh+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Hotel</a>
                     <div class="stop-activity">
                         • Chicken Rice<br>
                         • Char Kway Teow<br>
@@ -477,6 +613,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕕 6:30 PM - 8:30 PM</div>
                     <div class="stop-location">🛍️ Great World City Shopping Mall <span class="new-badge">NEW!</span></div>
+                    <a href="https://www.google.com/maps/dir/Tiong+Bahru+Market,+30+Seng+Poh+Rd,+Singapore/Great+World+City,+1+Kim+Seng+Promenade,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Tiong Bahru</a>
                     <div class="stop-activity">
                         • 5 min walk from Tiong Bahru!<br>
                         • Modern shopping mall with 200+ stores<br>
@@ -504,6 +641,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕘 9:00 PM - 10:00 PM</div>
                     <div class="stop-location">Furama RiverFront Hotel - Evening Rest</div>
+                    <a href="https://www.google.com/maps/dir/Great+World+City,+1+Kim+Seng+Promenade,+Singapore/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions to Hotel</a>
                     <div class="stop-activity">
                         • Quick shower & freshen up<br>
                         • Pack bags for USS tomorrow<br>
@@ -517,12 +655,20 @@
         </div>
 
         <div class="summary">
-            <h3>📊 DAY 1 SUMMARY - NOW WITH KAMPONG GLAM!</h3>
-            <p><strong>Total Walking:</strong> ~1 hour 15 min (+ optional MRT rides)</p>
-            <p><strong>Main Activities:</strong> Chinatown Photos, Buddha Tooth Temple, Kampong Glam District, Hotel Rest</p>
-            <p><strong>Total Cost:</strong> SGD 91-142 (PHP 4,020-6,270)</p>
-            <p><strong>Photo Spots:</strong> 🏮 Buddha Tooth Temple | 📸 Red Lanterns | 🕌 Sultan Mosque | 🎨 Haji Lane | 🌈 Tan Teng Niah House</p>
-            <p><strong>Click the photo links above to see real images of each landmark!</strong></p>
+            <h3>📊 DAY 1 SUMMARY - COMPLETE SINGAPORE EXPERIENCE!</h3>
+            <p><strong>Total Duration:</strong> 12:30 AM - 10:00 PM (Full Day Adventure)</p>
+            <p><strong>Total Stops:</strong> 13 locations across Singapore</p>
+            <p><strong>Total Walking:</strong> ~1 hour 45 min (+ optional MRT rides & taxis)</p>
+            <p><strong>Morning:</strong> 🍳 Hotel Breakfast Buffet → 🛍️ Raffles City Shopping</p>
+            <p><strong>Lunch:</strong> 🍜 Maxwell Food Centre (Famous Chicken Rice!)</p>
+            <p><strong>Afternoon:</strong> 🏮 Chinatown (Buddha Tooth Temple, Red Lanterns, Sri Mariamman Temple)</p>
+            <p><strong>Evening:</strong> 🕌 Kampong Glam (Sultan Mosque, Haji Lane, Tan Teng Niah House)</p>
+            <p><strong>Dinner & Shopping:</strong> 🍜 Tiong Bahru Food Centre → 🛍️ Great World City Mall</p>
+            <p><strong>Total Cost:</strong> SGD 91-177 (PHP 4,020-7,820) including shopping, food & transport</p>
+            <p><strong>📸 Photo Spots:</strong> Buddha Tooth Temple | Red Lanterns | Sri Mariamman Temple | Sultan Mosque | Haji Lane Street Art | Tan Teng Niah Rainbow House</p>
+            <p><strong>✨ INTERACTIVE FEATURES:</strong></p>
+            <p>🗺️ Click RED map links to get step-by-step directions on Google Maps!</p>
+            <p>🔍 Click BLUE photo links to see more beautiful images of each landmark!</p>
         </div>
     </div>
 </body>
