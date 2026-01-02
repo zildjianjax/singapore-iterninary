@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 3 - Gardens, Merlion & Marina Bay - Route Map with Photo Links</title>
+    <title>Day 3 - Gardens, Merlion & Marina Bay - Route Map with Photos</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background: linear-gradient(135deg, #20E2D7 0%, #F9FEA5 100%);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             min-height: 100vh;
         }
         .container {
@@ -20,7 +20,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
         h1 {
-            color: #20E2D7;
+            color: #4facfe;
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 10px;
@@ -43,7 +43,7 @@
             padding: 20px;
             background: #f8f9fa;
             border-radius: 15px;
-            border-left: 5px solid #20E2D7;
+            border-left: 5px solid #4facfe;
             transition: transform 0.3s ease;
         }
         .stop:hover {
@@ -51,7 +51,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         .stop-number {
-            background: #20E2D7;
+            background: #4facfe;
             color: white;
             width: 50px;
             height: 50px;
@@ -67,7 +67,7 @@
             flex: 1;
         }
         .stop-time {
-            color: #20E2D7;
+            color: #4facfe;
             font-weight: bold;
             font-size: 1.2em;
             margin-bottom: 5px;
@@ -86,8 +86,8 @@
         .stop-duration, .cost {
             display: inline-block;
             padding: 5px 12px;
-            background: #E8FCF8;
-            color: #20E2D7;
+            background: #e0f7ff;
+            color: #4facfe;
             border-radius: 20px;
             font-size: 0.9em;
             font-weight: bold;
@@ -95,10 +95,10 @@
         }
         .transport {
             text-align: center;
-            color: #0D9488;
+            color: #00bcd4;
             font-weight: bold;
             padding: 10px;
-            background: linear-gradient(90deg, transparent, #E8FCF8, transparent);
+            background: linear-gradient(90deg, transparent, #e0f7ff, transparent);
             border-radius: 10px;
         }
         .highlight {
@@ -116,8 +116,8 @@
         .summary {
             margin-top: 30px;
             padding: 20px;
-            background: linear-gradient(135deg, #20E2D7 0%, #F9FEA5 100%);
-            color: #333;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
             border-radius: 15px;
             text-align: center;
         }
@@ -134,58 +134,158 @@
             font-weight: bold;
             margin-left: 10px;
         }
+        .landmark-photo {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
         .photo-link {
             display: block;
             margin: 15px 0;
-            color: #20E2D7;
+            color: #4facfe;
             text-decoration: none;
             font-weight: bold;
             padding: 10px;
-            background: #E8FCF8;
+            background: #e0f7ff;
             border-radius: 8px;
             text-align: center;
         }
         .photo-link:hover {
-            background: #D1F4EF;
+            background: #b3e5fc;
+        }
+        .map-link {
+            display: inline-block;
+            margin: 10px 0;
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background: #ffe0e0;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .map-link:hover {
+            background: #ffcccc;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(255,107,107,0.3);
+        }
+        .photo-credit {
+            font-size: 0.75em;
+            color: #999;
+            font-style: italic;
+            margin-top: 5px;
         }
         .photo-container {
             margin: 15px 0;
         }
-        .image-placeholder {
-            width: 100%;
-            max-width: 500px;
-            height: 300px;
-            background: linear-gradient(135deg, #20E2D7 0%, #F9FEA5 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin: 15px 0;
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+            .subtitle {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+            .route-container {
+                gap: 15px;
+            }
+            .stop {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+            .stop:hover {
+                transform: none;
+            }
+            .stop-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+            .stop-time {
+                font-size: 1em;
+            }
+            .stop-location {
+                font-size: 1.1em;
+                line-height: 1.4;
+            }
+            .stop-activity {
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+            .landmark-photo {
+                height: 200px;
+                margin: 10px 0;
+            }
+            .summary {
+                padding: 15px;
+                font-size: 0.95em;
+            }
+            .transport {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .subtitle {
+                font-size: 0.9em;
+            }
+            .stop {
+                padding: 12px;
+            }
+            .stop-location {
+                font-size: 1em;
+            }
+            .landmark-photo {
+                height: 180px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📍 DAY 3 - Thursday, March 19, 2026</h1>
-        <div class="subtitle">Gardens by the Bay, Merlion Park & Marina Bay! 🌺🦁🌆 <span class="new-badge">WITH PHOTO LINKS!</span></div>
-        
+        <h1>🌺 DAY 3 - Thursday, March 19, 2026</h1>
+        <div class="subtitle">Gardens by the Bay, Merlion Park & Marina Bay Sands! 🦁🏙️✨</div>
+
         <div class="route-container">
-            
+
+            <!-- STOP 1: BREAKFAST -->
             <div class="stop">
                 <div class="stop-number">1</div>
                 <div class="stop-content">
                     <div class="stop-time">🕖 7:00 AM - 7:45 AM</div>
                     <div class="stop-location">🍜 Breakfast at Maxwell Food Centre</div>
+                    <a href="https://www.google.com/maps/dir/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore/Maxwell+Food+Centre,+1+Kadayanallur+St,+Singapore" target="_blank" class="map-link">🗺️ Get Directions to Maxwell Food Centre</a>
                     <div class="stop-activity">
                         • Walk 20 min from hotel<br>
-                        • OR Lau Pa Sat (MRT 10 min)<br>
-                        • Local breakfast favorites
+                        • OR Chinatown Complex (15 min alternative)<br>
+                        • Local breakfast favorites: Chicken Rice, Kaya Toast, Roti Prata<br>
+                        • Quick hearty breakfast before Gardens!
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://johnnyafrica.com/wp-content/uploads/2023/06/image-19.jpg"
+                             alt="Maxwell Food Centre - Famous Hawker Centre"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Maxwell Food Centre</div>
+                        <a href="https://www.google.com/search?q=maxwell+food+centre+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Maxwell Food Centre Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 45 min</span>
                     <span class="cost">💰 SGD 18-25</span>
@@ -194,12 +294,15 @@
 
             <div class="transport">🚇 Walk to Outram Park MRT → Bayfront (20 min total)</div>
 
+            <!-- STOP 2: CLOUD FOREST -->
             <div class="stop highlight">
                 <div class="stop-number">2</div>
                 <div class="stop-content">
                     <div class="stop-time">🕘 8:30 AM - 10:10 AM</div>
                     <div class="stop-location">❄️ Cloud Forest - ENTER FIRST!</div>
+                    <a href="https://www.google.com/maps/dir/Maxwell+Food+Centre,+1+Kadayanallur+St,+Singapore/Cloud+Forest,+18+Marina+Gardens+Dr,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Maxwell to Cloud Forest</a>
                     <div class="stop-activity">
+                        <strong>Early Bird Strategy!</strong><br>
                         • Arrive EARLY (opens 9 AM - almost EMPTY!)<br>
                         • Elevator to top, walk down 35m waterfall<br>
                         • Jurassic World dinosaur animatronics!<br>
@@ -207,7 +310,14 @@
                         • BRING JACKET - 23°C inside (cold!)
                     </div>
                     <div class="photo-container">
-                        <div class="image-placeholder">📸 Cloud Forest<br>35m Indoor Waterfall</div>
+                        <img src="https://www.gardensbythebay.com.sg/content/dam/gbb-2021/covers/attractions/cloud-forest/cf-cover-desktop.jpg"
+                             alt="Cloud Forest 35m Indoor Waterfall"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Cloud Forest Waterfall</div>
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/8f/19/66/cloud-forest.jpg?w=1200&h=-1&s=1"
+                             alt="Cloud Forest Interior"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Cloud Forest Interior</div>
                         <a href="https://www.google.com/search?q=cloud+forest+gardens+by+the+bay+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Cloud Forest Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 70 min</span>
@@ -215,22 +325,31 @@
                 </div>
             </div>
 
-            <div class="transport">🚶‍♂️ Quick break & regroup</div>
+            <div class="transport">🚶‍♂️ Quick break & regroup (5 min)</div>
 
+            <!-- STOP 3: FLOWER DOME -->
             <div class="stop highlight">
                 <div class="stop-number">3</div>
                 <div class="stop-content">
                     <div class="stop-time">🕥 10:20 AM - 11:20 AM</div>
                     <div class="stop-location">🌸 Flower Dome</div>
                     <div class="stop-activity">
-                        • World's largest glass greenhouse<br>
-                        • Beautiful spring blooms (March!)<br>
+                        <strong>World's Largest Glass Greenhouse!</strong><br>
+                        • Beautiful spring blooms (March is perfect!)<br>
                         • Mediterranean garden, Baobabs, cacti<br>
-                        • Cool 23-25°C<br>
-                        • Still early, fewer people
+                        • Cool 23-25°C air-conditioning<br>
+                        • Still early, fewer people<br>
+                        • Stunning floral displays
                     </div>
                     <div class="photo-container">
-                        <div class="image-placeholder">📸 Flower Dome<br>World's Largest Greenhouse</div>
+                        <img src="https://www.gardensbythebay.com.sg/content/dam/gbb-2021/covers/attractions/flower-dome/fd-cover-desktop.jpg"
+                             alt="Flower Dome World's Largest Greenhouse"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Flower Dome</div>
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/9c/0a/1a/flower-dome.jpg?w=1200&h=-1&s=1"
+                             alt="Flower Dome Interior Gardens"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Flower Dome Gardens</div>
                         <a href="https://www.google.com/search?q=flower+dome+gardens+by+the+bay+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Flower Dome Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 60 min</span>
@@ -238,22 +357,32 @@
                 </div>
             </div>
 
-            <div class="transport">🚶‍♂️ Walk to Supertree Grove</div>
+            <div class="transport">🚶‍♂️ Walk to Supertree Grove (5 min)</div>
 
+            <!-- STOP 4: SUPERTREES -->
             <div class="stop highlight">
                 <div class="stop-number">4</div>
                 <div class="stop-content">
                     <div class="stop-time">🕦 11:20 AM - 12:00 PM</div>
                     <div class="stop-location">🌳 Outdoor Gardens & Supertrees</div>
                     <div class="stop-activity">
+                        <strong>Iconic Singapore Landmark!</strong><br>
                         • Walk through Supertree Grove (FREE!)<br>
-                        • Photos at iconic Supertrees<br>
+                        • Photos at iconic Supertrees (25-50m tall!)<br>
                         • Beautiful morning light<br>
                         • Child can run around safely<br>
-                        • Preview Children's Garden
+                        • Preview Children's Garden area<br>
+                        • Absolutely stunning views!
                     </div>
                     <div class="photo-container">
-                        <div class="image-placeholder">📸 Supertree Grove<br>Iconic Singapore Landmark</div>
+                        <img src="https://www.gardensbythebay.com.sg/content/dam/gbb-2021/images/things-to-do/attractions/supertree-grove/supertree-grove-1.jpg"
+                             alt="Supertree Grove Iconic Singapore Landmark"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Supertree Grove</div>
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/4a/5e/d3/supertree-grove.jpg?w=1200&h=-1&s=1"
+                             alt="Supertree Grove Daytime"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Supertrees Daytime</div>
                         <a href="https://www.google.com/search?q=supertree+grove+gardens+by+the+bay+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Supertree Grove Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 40 min</span>
@@ -263,40 +392,65 @@
 
             <div class="transport">🚶‍♂️ Walk 5 min to hawker centre</div>
 
+            <!-- STOP 5: LUNCH -->
             <div class="stop highlight">
                 <div class="stop-number">5</div>
                 <div class="stop-content">
                     <div class="stop-time">🕧 12:00 PM - 1:00 PM</div>
                     <div class="stop-location">🍜 Lunch at Satay by the Bay</div>
+                    <a href="https://www.google.com/maps/dir/Supertree+Grove,+Gardens+by+the+Bay,+18+Marina+Gardens+Dr,+Singapore/Satay+by+the+Bay,+18+Marina+Gardens+Dr,+Singapore" target="_blank" class="map-link">🗺️ Get Directions to Satay by the Bay</a>
                     <div class="stop-activity">
+                        <strong>Outdoor Hawker Centre with Garden Views!</strong><br>
                         • Hawker centre with 10+ food stalls<br>
-                        • Satay (grilled skewers)<br>
-                        • Chicken Rice, Laksa<br>
+                        • Satay (grilled skewers) - must try!<br>
+                        • Chicken Rice, Laksa, Char Kway Teow<br>
                         • Fresh coconut water<br>
-                        • Shaded outdoor seating with garden views
+                        • Shaded outdoor seating with garden views<br>
+                        • Let child rest and recharge
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://sethlui.com/wp-content/uploads/2019/05/Satay-By-The-Bay-6.jpg"
+                             alt="Satay by the Bay Hawker Centre"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Satay by the Bay</div>
+                        <img src="https://danielfooddiary.com/wp-content/uploads/2019/06/sataybythebay1.jpg"
+                             alt="Satay by the Bay Food"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Satay by the Bay Food</div>
+                        <a href="https://www.google.com/search?q=satay+by+the+bay+singapore+food&tbm=isch" target="_blank" class="photo-link">🔍 View Satay by the Bay Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 1 hour</span>
                     <span class="cost">💰 SGD 25-35</span>
                 </div>
             </div>
 
-            <div class="transport">🚶‍♂️ Walk back to Children's Garden</div>
+            <div class="transport">🚶‍♂️ Walk back to Children's Garden (5 min)</div>
 
+            <!-- STOP 6: CHILDREN'S GARDEN WATER PLAY -->
             <div class="stop water">
                 <div class="stop-number">6</div>
                 <div class="stop-content">
                     <div class="stop-time">🕐 1:00 PM - 2:00 PM</div>
                     <div class="stop-location">💦 Children's Garden - WATER PLAY!</div>
                     <div class="stop-activity">
-                        • FREE splash zone!<br>
+                        <strong>FREE Splash Zone - Your 4-Year-Old Will LOVE This!</strong><br>
                         • Change child into swim clothes<br>
-                        • Water fountains, spray pools<br>
-                        • Safe shallow water<br>
-                        • Your 4-year-old will LOVE this!<br>
-                        • Parents supervise from benches
+                        • Water fountains, spray pools, splash pads<br>
+                        • Safe shallow water play area<br>
+                        • Outdoor water playground<br>
+                        • Parents supervise from benches<br>
+                        • Changing rooms available<br>
+                        • Perfect afternoon activity!
                     </div>
                     <div class="photo-container">
-                        <div class="image-placeholder">📸 Children's Garden<br>Water Play Zone</div>
+                        <img src="https://www.gardensbythebay.com.sg/content/dam/gbb-2021/images/things-to-do/attractions/childrens-garden/childrens-garden-2.jpg"
+                             alt="Children's Garden Water Play Zone"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Children's Garden</div>
+                        <img src="https://thesmartlocal.com/images/easyblog_articles/3428/b2ap3_thumbnail_IMG_5472.jpg"
+                             alt="Children's Garden Water Play"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Water Play Area</div>
                         <a href="https://www.google.com/search?q=children+garden+gardens+by+the+bay+singapore+water+play&tbm=isch" target="_blank" class="photo-link">🔍 View Children's Garden Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 45-60 min</span>
@@ -306,23 +460,32 @@
 
             <div class="transport">🚶‍♂️ Clean up & 15 min waterfront walk</div>
 
+            <!-- STOP 7: MERLION PARK -->
             <div class="stop highlight">
                 <div class="stop-number">7</div>
                 <div class="stop-content">
                     <div class="stop-time">🕞 2:45 PM - 3:15 PM</div>
                     <div class="stop-location">🦁 MERLION PARK - ICONIC! <span class="new-badge">NEW!</span></div>
+                    <a href="https://www.google.com/maps/dir/Children's+Garden,+Gardens+by+the+Bay,+18+Marina+Gardens+Dr,+Singapore/Merlion+Park,+1+Fullerton+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions to Merlion Park</a>
                     <div class="stop-activity">
-                        • THE MOST ICONIC photo spot in Singapore!<br>
+                        <strong>THE MOST ICONIC Photo Spot in Singapore!</strong><br>
                         • Half lion, half fish statue spouting water<br>
-                        • Symbol of Singapore<br>
-                        • Photos: Merlion, Marina Bay Sands backdrop<br>
-                        • Child "catching" the water spray<br>
-                        • Baby Merlion nearby<br>
-                        • Beautiful Marina Bay views<br>
-                        • EVERYONE needs this photo!
+                        • Symbol of Singapore - everyone needs this photo!<br>
+                        • Photos: Merlion with Marina Bay Sands backdrop<br>
+                        • Child "catching" the water spray (classic photo!)<br>
+                        • Baby Merlion nearby (smaller version)<br>
+                        • Beautiful Marina Bay waterfront views<br>
+                        • Absolutely must-visit landmark!
                     </div>
                     <div class="photo-container">
-                        <div class="image-placeholder">📸 MERLION PARK<br>Singapore's Most Iconic Symbol!</div>
+                        <img src="https://www.visitsingapore.com/content/dam/visitsingapore/editorials/singapore-merlion/Merlion-Park-Profile01-1128x635.jpg"
+                             alt="MERLION PARK Singapore's Most Iconic Symbol"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Merlion Park</div>
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/6f/e3/df/merlion-park.jpg?w=1200&h=-1&s=1"
+                             alt="Merlion with Marina Bay Sands"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Merlion with MBS Backdrop</div>
                         <a href="https://www.google.com/search?q=merlion+park+singapore+marina+bay&tbm=isch" target="_blank" class="photo-link">🔍 View Merlion Park Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 30 min</span>
@@ -332,23 +495,32 @@
 
             <div class="transport">🚶‍♂️ 5 min walk to Helix Bridge</div>
 
+            <!-- STOP 8: HELIX BRIDGE -->
             <div class="stop highlight">
                 <div class="stop-number">8</div>
                 <div class="stop-content">
                     <div class="stop-time">🕒 3:15 PM - 3:45 PM</div>
                     <div class="stop-location">🌉 HELIX BRIDGE WALK <span class="new-badge">NEW!</span></div>
                     <div class="stop-activity">
-                        • World-famous pedestrian bridge<br>
+                        <strong>World-Famous DNA-Inspired Bridge!</strong><br>
                         • Unique double-helix structure (DNA-inspired!)<br>
                         • Beautiful curved steel design<br>
                         • Walk from Marina Centre to Marina Bay Sands<br>
                         • Photos: bridge architecture, Marina Bay views<br>
                         • Covered walkway (shaded from sun)<br>
-                        • Benches along the way<br>
-                        • Child will enjoy the unique structure!
+                        • Benches along the way for rest<br>
+                        • Child will enjoy the unique structure!<br>
+                        • Stunning architectural landmark
                     </div>
                     <div class="photo-container">
-                        <div class="image-placeholder">📸 Helix Bridge<br>DNA-Inspired Architecture</div>
+                        <img src="https://www.visitsingapore.com/content/dam/visitsingapore/editorials/explore-singapore-walking/Helix-Bridge-Profile02-1128x635.jpg"
+                             alt="Helix Bridge DNA-Inspired Architecture"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Helix Bridge</div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Helix_Bridge%2C_Singapore_-_20101120.jpg/1200px-Helix_Bridge%2C_Singapore_-_20101120.jpg"
+                             alt="Helix Bridge Structure"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Helix Bridge Structure</div>
                         <a href="https://www.google.com/search?q=helix+bridge+singapore+marina+bay&tbm=isch" target="_blank" class="photo-link">🔍 View Helix Bridge Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 20-30 min</span>
@@ -356,25 +528,35 @@
                 </div>
             </div>
 
-            <div class="transport">🚶‍♂️ Arrive at Marina Bay Sands</div>
+            <div class="transport">🚶‍♂️ Arrive at Marina Bay Sands (2 min)</div>
 
+            <!-- STOP 9: MARINA BAY SANDS SKYPARK -->
             <div class="stop highlight">
                 <div class="stop-number">9</div>
                 <div class="stop-content">
                     <div class="stop-time">🕞 3:45 PM - 5:15 PM</div>
                     <div class="stop-location">🏙️ Marina Bay Sands SkyPark - Level 57</div>
+                    <a href="https://www.google.com/maps/dir/Helix+Bridge,+Singapore/Marina+Bay+Sands+SkyPark+Observation+Deck,+10+Bayfront+Ave,+Singapore" target="_blank" class="map-link">🗺️ Get Directions to Marina Bay Sands SkyPark</a>
                     <div class="stop-activity">
-                        • Take express elevator up<br>
-                        • Spectacular 360° views of Singapore!<br>
+                        <strong>Spectacular 360° Views of Singapore!</strong><br>
+                        • Take express elevator to Level 57<br>
                         • See Gardens by the Bay from above<br>
                         • See Merlion Park from above!<br>
                         • Marina Bay, city skyline, harbor<br>
                         • Air-conditioned comfort<br>
                         • Indoor and outdoor viewing areas<br>
-                        • Photo opportunities everywhere!
+                        • Photo opportunities everywhere!<br>
+                        • Breathtaking panoramic views
                     </div>
                     <div class="photo-container">
-                        <div class="image-placeholder">📸 Marina Bay Sands<br>SkyPark Observation Deck</div>
+                        <img src="https://www.marinabaysands.com/content/dam/singapore/marinabaysands/master/main/home/sands-skypark-observation-deck/Sands-SkyPark-Observation-Deck-16-9.jpg"
+                             alt="Marina Bay Sands SkyPark Observation Deck"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: SkyPark Observation Deck</div>
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/b8/4c/9e/view-from-the-skypark.jpg?w=1200&h=-1&s=1"
+                             alt="SkyPark Views"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: SkyPark Views</div>
                         <a href="https://www.google.com/search?q=marina+bay+sands+skypark+observation+deck+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Marina Bay Sands Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 90 min</span>
@@ -384,65 +566,97 @@
 
             <div class="transport">🚶‍♂️ Walk 20 min OR MRT 5 min to Clarke Quay</div>
 
+            <!-- STOP 10: DINNER -->
             <div class="stop highlight">
                 <div class="stop-number">10</div>
                 <div class="stop-content">
                     <div class="stop-time">🕕 5:45 PM - 6:45 PM</div>
-                    <div class="stop-location">🍜 Dinner at Clarke Quay</div>
+                    <div class="stop-location">🍜 Dinner at Clarke Quay Area</div>
+                    <a href="https://www.google.com/maps/dir/Marina+Bay+Sands,+10+Bayfront+Ave,+Singapore/Clarke+Quay,+3+River+Valley+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions to Clarke Quay</a>
                     <div class="stop-activity">
-                        • Riverside restaurants (SGD 50-70)<br>
-                        • OR walk to Lau Pa Sat hawker (SGD 30-40)<br>
-                        • OR food court at The Central (SGD 30-40)<br>
-                        • Recommended: budget option for more photo time!
+                        <strong>Dinner Options:</strong><br>
+                        • Riverside restaurants at Clarke Quay (SGD 50-70)<br>
+                        • OR walk to Lau Pa Sat hawker centre (SGD 30-40)<br>
+                        • OR food court at The Central mall (SGD 30-40)<br>
+                        • Recommended: budget option for more photo time!<br>
+                        • Asian cuisine and comfort food
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://static.thehoneycombers.com/wp-content/uploads/sites/2/2019/08/Clarke-Quay-restaurants.png"
+                             alt="Clarke Quay Riverside Restaurants"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Clarke Quay Dining</div>
+                        <a href="https://www.google.com/search?q=clarke+quay+singapore+restaurants&tbm=isch" target="_blank" class="photo-link">🔍 View Clarke Quay Restaurant Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 1 hour</span>
                     <span class="cost">💰 SGD 30-70</span>
                 </div>
             </div>
 
-            <div class="transport">🚶‍♂️ Walk along Singapore River</div>
+            <div class="transport">🚶‍♂️ Walk along Singapore River promenade</div>
 
+            <!-- STOP 11: CLARKE QUAY PHOTOS -->
             <div class="stop highlight">
                 <div class="stop-number">11</div>
                 <div class="stop-content">
                     <div class="stop-time">🕕 6:45 PM - 7:45 PM</div>
                     <div class="stop-location">📸 Clarke Quay Photos & River Walk</div>
                     <div class="stop-activity">
-                        • PERFECT GOLDEN HOUR timing!<br>
-                        • Colorful Clarke Quay buildings<br>
+                        <strong>PERFECT GOLDEN HOUR Timing!</strong><br>
+                        • Colorful Clarke Quay buildings (pastel colors!)<br>
                         • Singapore River views<br>
-                        • Bumboat rides (SGD 25)<br>
+                        • Optional bumboat rides (SGD 25)<br>
                         • Read Bridge crossing photo<br>
-                        • Cavenagh Bridge (oldest bridge!)<br>
-                        • Family photos along promenade
+                        • Cavenagh Bridge (oldest bridge in Singapore!)<br>
+                        • Family photos along promenade<br>
+                        • Beautiful evening atmosphere<br>
+                        • Iconic Singapore riverside scene
                     </div>
                     <div class="photo-container">
-                        <div class="image-placeholder">📸 Clarke Quay<br>Colorful Riverside Buildings</div>
+                        <img src="https://www.visitsingapore.com/content/dam/visitsingapore/editorials/clarke-quay-singapore/Clarke-Quay-Singapore-Profile02-1128x635.jpg"
+                             alt="Clarke Quay Colorful Riverside Buildings"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Clarke Quay</div>
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/0c/25/4d/clarke-quay.jpg?w=1200&h=-1&s=1"
+                             alt="Clarke Quay Evening"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Clarke Quay Evening</div>
                         <a href="https://www.google.com/search?q=clarke+quay+singapore+colorful+buildings&tbm=isch" target="_blank" class="photo-link">🔍 View Clarke Quay Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 1 hour</span>
-                    <span class="cost">💰 FREE (or SGD 25 for boat)</span>
+                    <span class="cost">💰 FREE (or SGD 25 for boat ride)</span>
                 </div>
             </div>
 
             <div class="transport">🚇 MRT to Bayfront then walk (15-20 min)</div>
 
+            <!-- STOP 12: GARDEN RHAPSODY -->
             <div class="stop highlight">
                 <div class="stop-number">12</div>
                 <div class="stop-content">
                     <div class="stop-time">🕣 8:30 PM - 8:45 PM</div>
                     <div class="stop-location">✨ Garden Rhapsody Light Show</div>
+                    <a href="https://www.google.com/maps/dir/Clarke+Quay,+3+River+Valley+Rd,+Singapore/Supertree+Grove,+Gardens+by+the+Bay,+18+Marina+Gardens+Dr,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Clarke Quay to Gardens</a>
                     <div class="stop-activity">
+                        <strong>FREE and MAGICAL Light Show!</strong><br>
                         • Return to Gardens by the Bay<br>
-                        • FREE and MAGICAL light show!<br>
                         • 15-minute light and music show<br>
                         • Supertrees light up with colorful LEDs<br>
-                        • Lie on grass and look up<br>
-                        • Absolutely spectacular!<br>
-                        • Perfect end to the day!
+                        • Synchronized music and lights<br>
+                        • Lie on grass and look up!<br>
+                        • Absolutely spectacular display!<br>
+                        • Perfect end to an amazing day!<br>
+                        • Shows: 7:45 PM & 8:45 PM (catch the 8:45 PM show)
                     </div>
                     <div class="photo-container">
-                        <div class="image-placeholder">📸 Garden Rhapsody<br>Supertrees Light Show</div>
+                        <img src="https://www.gardensbythebay.com.sg/content/dam/gbb-2021/images/whats-on/events/garden-rhapsody/garden-rhapsody-1.jpg"
+                             alt="Garden Rhapsody Supertrees Light Show"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Garden Rhapsody</div>
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/b6/8c/0a/garden-rhapsody.jpg?w=1200&h=-1&s=1"
+                             alt="Garden Rhapsody Night"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Garden Rhapsody at Night</div>
                         <a href="https://www.google.com/search?q=garden+rhapsody+light+show+singapore+supertree&tbm=isch" target="_blank" class="photo-link">🔍 View Garden Rhapsody Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 15 min</span>
@@ -452,17 +666,21 @@
 
             <div class="transport">🚇 MRT to Outram Park then walk (20 min)</div>
 
+            <!-- STOP 13: RETURN TO HOTEL -->
             <div class="stop">
                 <div class="stop-number">13</div>
                 <div class="stop-content">
                     <div class="stop-time">🕥 10:00 PM - 11:00 PM</div>
-                    <div class="stop-location">Furama RiverFront Hotel - Wind Down</div>
+                    <div class="stop-location">🏨 Furama RiverFront Hotel - Wind Down</div>
+                    <a href="https://www.google.com/maps/dir/Supertree+Grove,+Gardens+by+the+Bay,+18+Marina+Gardens+Dr,+Singapore/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Gardens to Hotel</a>
                     <div class="stop-activity">
-                        • Quick shower<br>
+                        <strong>End of Amazing Day!</strong><br>
+                        • Quick shower and change<br>
                         • Review amazing photos from today!<br>
                         • Light snack if needed<br>
+                        • Hydrate before bed<br>
                         • Sleep by 11 PM<br>
-                        • Tomorrow is your anniversary beach day!
+                        • Tomorrow is your ANNIVERSARY beach day! 💑
                     </div>
                     <span class="stop-duration">⏱️ 1 hour</span>
                 </div>
@@ -470,13 +688,15 @@
 
         </div>
 
+        <!-- SUMMARY SECTION -->
         <div class="summary">
             <h3>📊 DAY 3 SUMMARY - NOW WITH MERLION & HELIX BRIDGE!</h3>
             <p><strong>Total Walking:</strong> ~2 hours (leisurely pace with lots of stops)</p>
-            <p><strong>Main Activities:</strong> Gardens by the Bay (Domes + Water Play), Merlion Park, Helix Bridge, SkyPark, Clarke Quay, Light Show</p>
-            <p><strong>Total Cost:</strong> SGD 208-275 (PHP 9,190-12,145)</p>
-            <p><strong>Photo Spots:</strong> 🌳 Supertrees | ❄️ Cloud Forest | 🦁 MERLION! | 🌉 Helix Bridge | 🏙️ SkyPark Views | 🌈 Clarke Quay</p>
-            <p><strong>Click the photo links above to see real images of each landmark!</strong></p>
+            <p><strong>Main Activities:</strong> Gardens by the Bay (Cloud Forest + Flower Dome + Water Play), Merlion Park, Helix Bridge, Marina Bay Sands SkyPark, Clarke Quay, Garden Rhapsody Light Show</p>
+            <p><strong>Total Cost:</strong> SGD 243-330 (PHP 10,735-14,580)</p>
+            <p><strong>Photo Spots:</strong> 🌳 Supertrees | ❄️ Cloud Forest | 🌸 Flower Dome | 🦁 MERLION! | 🌉 Helix Bridge | 🏙️ SkyPark Views | 🌈 Clarke Quay | ✨ Garden Rhapsody</p>
+            <p><strong>New Additions:</strong> Merlion Park (most iconic photo!) + Helix Bridge (architectural marvel!)</p>
+            <p style="margin-top: 20px; font-weight: bold;">🎯 Pro Tip: Start early at Cloud Forest (9 AM) to avoid crowds! Bring jacket for air-conditioned domes!</p>
         </div>
     </div>
 </body>
