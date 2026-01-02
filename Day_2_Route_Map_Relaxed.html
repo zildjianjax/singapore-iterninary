@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - Universal Studios Singapore (RELAXED) - Route Map with Photos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #FF6B6B;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .route-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .stop {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #FF6B6B;
+            transition: transform 0.3s ease;
+        }
+        .stop:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .stop-number {
+            background: #FF6B6B;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .stop-content {
+            flex: 1;
+        }
+        .stop-time {
+            color: #FF6B6B;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .stop-location {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .stop-activity {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .stop-duration, .cost {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #FFE8E8;
+            color: #FF6B6B;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .transport {
+            text-align: center;
+            color: #4ECDC4;
+            font-weight: bold;
+            padding: 10px;
+            background: linear-gradient(90deg, transparent, #E8F9F7, transparent);
+            border-radius: 10px;
+        }
+        .highlight {
+            border-left-color: #4ECDC4;
+        }
+        .highlight .stop-number {
+            background: #4ECDC4;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .summary h3 {
+            margin-top: 0;
+        }
+        .landmark-photo {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .photo-link {
+            display: block;
+            margin: 15px 0;
+            color: #FF6B6B;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            background: #FFE8E8;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .photo-link:hover {
+            background: #FFD4D4;
+        }
+        .map-link {
+            display: inline-block;
+            margin: 10px 0;
+            color: #4ECDC4;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background: #E8F9F7;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .map-link:hover {
+            background: #D1F4EF;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(78,205,196,0.3);
+        }
+        .photo-credit {
+            font-size: 0.75em;
+            color: #999;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .photo-container {
+            margin: 15px 0;
+        }
+        .image-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin: 15px 0;
+        }
+        .version-switch-btn {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        .version-switch-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102,126,234,0.6);
+        }
+        .version-switch-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+            .subtitle {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+            .route-container {
+                gap: 15px;
+            }
+            .stop {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+            .stop:hover {
+                transform: none;
+            }
+            .stop-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+            .stop-time {
+                font-size: 1em;
+            }
+            .stop-location {
+                font-size: 1.1em;
+                line-height: 1.4;
+            }
+            .stop-activity {
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+            .landmark-photo {
+                height: 200px;
+                margin: 10px 0;
+            }
+            .photo-link, .map-link {
+                font-size: 0.9em;
+                padding: 10px;
+                margin: 8px 0;
+            }
+            .stop-duration, .cost {
+                font-size: 0.85em;
+                padding: 4px 10px;
+                margin: 5px 5px 5px 0;
+                display: inline-block;
+            }
+            .transport {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+            .summary {
+                padding: 15px;
+                font-size: 0.95em;
+            }
+            .image-placeholder {
+                height: 200px;
+                font-size: 1em;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .subtitle {
+                font-size: 0.9em;
+            }
+            .stop-location {
+                font-size: 1em;
+            }
+            .landmark-photo {
+                height: 180px;
+            }
+            .image-placeholder {
+                height: 180px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎢 Day 2 - Universal Studios Singapore 🎬</h1>
+        <div class="subtitle">TRIMMED/RELAXED ITINERARY | Stress-Free Pace | 10 AM - 8 PM | Family of 3 (4-year-old)</div>
+
+        <div class="version-switch-container">
+            <a href="Day_2_Route_Map.html" class="version-switch-btn">
+                🚀 Switch to Prioritized Version (More Activities, Full Experience)
+            </a>
+        </div>
+
+        <div class="route-container">
+
+            <!-- STOP 1: BREAKFAST -->
+            <div class="stop">
+                <div class="stop-number">1</div>
+                <div class="stop-content">
+                    <div class="stop-time">🌅 7:30 AM - 8:15 AM</div>
+                    <div class="stop-location">🍜 Breakfast at Maxwell Food Centre</div>
+                    <a href="https://www.google.com/maps/dir/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore/Maxwell+Food+Centre,+1+Kadayanallur+St,+Singapore" target="_blank" class="map-link">🗺️ Get Directions to Maxwell Food Centre</a>
+                    <div class="stop-activity">
+                        • Walk from Furama RiverFront Hotel (20 min)<br>
+                        • OR Chinatown Complex (15 min alternative)<br>
+                        • Chicken Rice, Roti Prata, Kaya Toast<br>
+                        • Quick hearty breakfast before theme park!<br>
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Maxwell Food Centre - Photo Coming Soon</div>
+                    </div>
+                    <span class="cost">💰 SGD 18-25</span>
+                </div>
+            </div>
+
+            <!-- STOP 2: TRAVEL TO USS -->
+            <div class="stop">
+                <div class="stop-number">2</div>
+                <div class="stop-content">
+                    <div class="stop-time">🚇 8:15 AM - 9:45 AM</div>
+                    <div class="stop-location">🚇 Travel to Universal Studios Singapore</div>
+                    <div class="transport">
+                        Chinatown MRT → HarbourFront MRT → Sentosa Express → USS<br>
+                        (Total: ~40 min travel + arrive 15 min early)
+                    </div>
+                    <div class="stop-activity">
+                        <strong>Travel Route:</strong><br>
+                        1. Walk from Maxwell to Chinatown MRT (5 min)<br>
+                        2. Take North East Line to HarbourFront MRT (15 min)<br>
+                        3. Walk to Sentosa Express at VivoCity Level 3 (5 min)<br>
+                        4. Take Sentosa Express to Waterfront Station (10 min)<br>
+                        5. Walk to USS entrance (5 min)<br>
+                        <br>
+                        <strong>🎯 Pro Tip:</strong> Arrive 15 min before 10 AM opening to beat crowds!
+                    </div>
+                </div>
+            </div>
+
+            <!-- STOP 3: MINION LAND -->
+            <div class="stop">
+                <div class="stop-number">3</div>
+                <div class="stop-content">
+                    <div class="stop-time">🍌 10:00 AM - 10:55 AM</div>
+                    <div class="stop-location">🍌 MINION LAND - First Stop!</div>
+                    <div class="stop-activity">
+                        <strong>🎯 STRATEGY:</strong> Turn LEFT immediately after Hollywood entrance! This is the newest zone and gets crowded quickly.
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎢 Ride 1: Silly Swirly</strong><br>
+                        • Fun spinning ride themed to Silly Swirly ice cream<br>
+                        • Height requirement: 92cm minimum<br>
+                        • Duration: ~2 minutes<br>
+                        • Perfect for 4-year-old!
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Silly Swirly Ride - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎢 Ride 2: Buggie Boogie</strong><br>
+                        • Spinning ride with bug-themed cars<br>
+                        • Height requirement: 92cm minimum<br>
+                        • Gentle and fun for young kids
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Buggie Boogie Ride - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎢 Ride 3: Despicable Me Minion Mayhem</strong><br>
+                        • Hilarious 3D motion simulator ride<br>
+                        • Height requirement: 102cm minimum<br>
+                        • Indoor, air-conditioned attraction<br>
+                        • Family-friendly storyline
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Despicable Me Minion Mayhem - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎮 MUST PLAY: Space Killer Game Booth</strong><br>
+                        • Shoot aliens to win Minion plushies!<br>
+                        • Cost: SGD 8-10 per play<br>
+                        • Fun challenge for the whole family
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🍦 Quick Snack: Minion Ice-Cream Stand</strong><br>
+                        • Soft serve ice cream in Minion cup<br>
+                        • Cost: SGD 6-8
+                    </div>
+
+                    <span class="stop-duration">⏱️ 55 minutes</span>
+                    <span class="cost">💰 SGD 14-18 (game + ice cream)</span>
+                </div>
+            </div>
+
+            <!-- STOP 4: FAR FAR AWAY -->
+            <div class="stop">
+                <div class="stop-number">4</div>
+                <div class="stop-content">
+                    <div class="stop-time">🏰 11:00 AM - 12:00 PM</div>
+                    <div class="stop-location">🏰 FAR FAR AWAY - Fairy Tale Kingdom</div>
+                    <div class="stop-activity">
+                        <strong>😌 RELAXED PACE:</strong> Extra 5-minute buffer from Minion Land. Take your time and enjoy the fairy tale atmosphere!
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎢 Ride 4: Enchanted Airways</strong><br>
+                        • Gentle roller coaster for young children<br>
+                        • Height requirement: 92cm minimum<br>
+                        • Dragon-themed suspended coaster<br>
+                        • Perfect introduction to coasters!
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Enchanted Airways - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎡 Ride 5: Magic Potion Spin</strong><br>
+                        • Gentle indoor Ferris wheel<br>
+                        • Air-conditioned and relaxing<br>
+                        • Great for cooling down
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Magic Potion Spin - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎢 Ride 6: Puss In Boots' Giant Journey (MUST RIDE!)</strong><br>
+                        • Suspended family coaster<br>
+                        • Height requirement: 100cm minimum<br>
+                        • Swinging through Giant's castle<br>
+                        • Thrilling but family-friendly!
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Puss In Boots' Giant Journey - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🐉 MUST VISIT: How to Train Your Dragon Meet & Greet</strong><br>
+                        • Scheduled time: 11:30 AM<br>
+                        • Meet Hiccup and Astrid<br>
+                        • Photo opportunity with characters<br>
+                        • Duration: 5-10 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 How to Train Your Dragon Meet & Greet - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>📸 Photo Opportunity:</strong> Take photos at the iconic Far Far Away Castle backdrop
+                    </div>
+
+                    <span class="stop-duration">⏱️ 60 minutes</span>
+                </div>
+            </div>
+
+            <!-- STOP 5: LUNCH -->
+            <div class="stop highlight">
+                <div class="stop-number">5</div>
+                <div class="stop-content">
+                    <div class="stop-time">🍽️ 12:00 PM - 1:00 PM</div>
+                    <div class="stop-location">🍔 LUNCH at Goldilocks Restaurant</div>
+                    <div class="stop-activity">
+                        <strong>🏰 Perfect Location:</strong> Right in Far Far Away zone!<br>
+                        Air-conditioned themed restaurant with fairy tale decor
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>👨‍👩‍👧 Recommended Menu:</strong><br>
+                        • Chicken Tenders & Fries (SGD 12-15)<br>
+                        • Fish & Chips (SGD 15-18)<br>
+                        • Pasta Bolognese (SGD 14-17)<br>
+                        • Burgers (SGD 13-16)<br>
+                        • Drinks (SGD 5-6 each)
+                    </div>
+
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Goldilocks Restaurant - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🧃 Lunch Strategy:</strong><br>
+                        • Let child rest and recharge<br>
+                        • Use restrooms<br>
+                        • Reapply sunscreen<br>
+                        • Stay hydrated<br>
+                        • Extra 10-minute buffer for relaxation
+                    </div>
+
+                    <span class="stop-duration">⏱️ 60 minutes</span>
+                    <span class="cost">💰 SGD 45-60</span>
+                </div>
+            </div>
+
+            <!-- STOP 6: THE LOST WORLD -->
+            <div class="stop">
+                <div class="stop-number">6</div>
+                <div class="stop-content">
+                    <div class="stop-time">🦖 1:00 PM - 2:30 PM</div>
+                    <div class="stop-location">🦕 THE LOST WORLD - Dinosaurs!</div>
+                    <div class="stop-activity">
+                        <strong>😌 RELAXED APPROACH:</strong> Extra walking and exploring time built in. No rushing between attractions!
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎢 Ride 7: Dino-Soarin' (MUST RIDE!)</strong><br>
+                        • Flying ride where you control the height!<br>
+                        • Height requirement: 92cm minimum<br>
+                        • Interactive flying experience<br>
+                        • Fun for the whole family!
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Dino-Soarin' - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🦖 MUST SEE: Raptor Encounter: Generations Show</strong><br>
+                        • Scheduled time: 1:30 PM<br>
+                        • Live dinosaur encounter show<br>
+                        • Meet Blue the Velociraptor!<br>
+                        • Interactive and educational<br>
+                        • Duration: 15-20 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Raptor Encounter Show - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🍦 Snack Break: Fossil Fuels</strong><br>
+                        • Ice cream, churros, drinks<br>
+                        • Outdoor seating with dinosaur theming<br>
+                        • Cost: SGD 8-12
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🚶 Extra Time For:</strong><br>
+                        • Walking around and exploring the zone<br>
+                        • Taking photos with dinosaur statues<br>
+                        • Enjoying the tropical atmosphere<br>
+                        • Child can ride in stroller if tired
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>ℹ️ SKIPPED:</strong> Jurassic Park Rapids Adventure (to avoid getting wet and save time for relaxed pace)
+                    </div>
+
+                    <span class="stop-duration">⏱️ 90 minutes</span>
+                    <span class="cost">💰 SGD 8-12 (snacks)</span>
+                </div>
+            </div>
+
+            <!-- STOP 7: REST BREAK / ANCIENT EGYPT -->
+            <div class="stop highlight">
+                <div class="stop-number">7</div>
+                <div class="stop-content">
+                    <div class="stop-time">🏜️ 2:30 PM - 3:30 PM</div>
+                    <div class="stop-location">🐪 REST BREAK - Ancient Egypt Zone</div>
+                    <div class="stop-activity">
+                        <strong>🧃 CRITICAL REST TIME - 60 Minutes!</strong><br>
+                        Recharge before the second half of the day
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎢 Ride 8: Treasure Hunters (MUST RIDE!)</strong><br>
+                        • Indoor gentle jeep ride through Egyptian tombs<br>
+                        • Air-conditioned dark ride - perfect for cooling down!<br>
+                        • Height requirement: None (everyone can ride!)<br>
+                        • Relaxing and fun storytelling<br>
+                        • Duration: ~5 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Treasure Hunters Ride - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>👥 MUST VISIT: Egyptian Legends Meet & Greet</strong><br>
+                        • Scheduled time: 2:30 PM<br>
+                        • Meet Egyptian-themed characters<br>
+                        • Photo opportunity<br>
+                        • Duration: 5-10 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Egyptian Legends Meet & Greet - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>📸 Photo Opportunities:</strong><br>
+                        • Egyptian pyramid and sphinx replicas<br>
+                        • Hieroglyphic walls and ancient props<br>
+                        • Great Instagram moments!
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🧃 REST TIME:</strong><br>
+                        • Find shaded area or air-conditioned space<br>
+                        • Sit down and relax for 20-30 minutes<br>
+                        • Use restrooms<br>
+                        • Reapply sunscreen<br>
+                        • Child can rest in stroller or sit quietly<br>
+                        • Hydrate with water
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🍪 Snack: Cairo Market</strong><br>
+                        • Light snacks, drinks, ice cream<br>
+                        • Cost: SGD 6-10
+                    </div>
+
+                    <span class="stop-duration">⏱️ 60 minutes</span>
+                    <span class="cost">💰 SGD 6-10 (snacks)</span>
+                </div>
+            </div>
+
+            <!-- STOP 8: SCI-FI CITY -->
+            <div class="stop">
+                <div class="stop-number">8</div>
+                <div class="stop-content">
+                    <div class="stop-time">🤖 3:30 PM - 5:00 PM</div>
+                    <div class="stop-location">🚀 SCI-FI CITY - Robot Zone!</div>
+                    <div class="stop-activity">
+                        <strong>🤖 ROBOT ADVENTURE:</strong> Two amazing attractions! Generous time allocation for full experience.
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎢 Ride 9: Accelerator (MUST RIDE!)</strong><br>
+                        • Robot-themed spinning teacups<br>
+                        • YOU control the speed with the center wheel!<br>
+                        • Height requirement: 92cm minimum<br>
+                        • Fun and interactive for families<br>
+                        • Duration: ~3 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Accelerator Ride - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎢 Ride 10: TRANSFORMERS The Ride (MUST RIDE!)</strong><br>
+                        • Mind-blowing 3D motion simulator<br>
+                        • Height requirement: 102cm minimum<br>
+                        • Indoor, air-conditioned attraction<br>
+                        • Action-packed adventure with Optimus Prime<br>
+                        • ⚠️ NOTE: Can be LOUD - prepare child beforehand<br>
+                        • Duration: ~5 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 TRANSFORMERS The Ride - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🤖 MUST VISIT: Transformers: Voices of Cybertron Meet & Greet</strong><br>
+                        • Scheduled time: 4:20 PM<br>
+                        • Meet Optimus Prime and Bumblebee!<br>
+                        • Epic photo opportunity with giant robots<br>
+                        • Duration: 10-15 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Transformers Meet & Greet - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🥤 Drinks & Rest: StarBot Cafe</strong><br>
+                        • Refreshments and snacks<br>
+                        • Seating area for quick rest<br>
+                        • Cost: SGD 5-8
+                    </div>
+
+                    <span class="stop-duration">⏱️ 90 minutes</span>
+                    <span class="cost">💰 SGD 5-8 (drinks)</span>
+                </div>
+            </div>
+
+            <!-- STOP 9: DINNER -->
+            <div class="stop highlight">
+                <div class="stop-number">9</div>
+                <div class="stop-content">
+                    <div class="stop-time">🍽️ 5:00 PM - 6:00 PM</div>
+                    <div class="stop-location">🍛 DINNER at Oasis Spice Cafe</div>
+                    <div class="stop-activity">
+                        <strong>🏜️ Perfect Location:</strong> Ancient Egypt Zone!<br>
+                        Air-conditioned restaurant with RICE options (perfect for Asian families!)
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>👨‍👩‍👧 Recommended Menu:</strong><br>
+                        • Nasi Lemak - Malaysian coconut rice (SGD 12-15)<br>
+                        • Chicken Rice - Hainanese style (SGD 10-13)<br>
+                        • Fried Rice - Various options (SGD 11-14)<br>
+                        • Curry Chicken - Spicy option (SGD 13-16)<br>
+                        • Noodle Dishes - Laksa, mee goreng (SGD 11-14)<br>
+                        • Drinks (SGD 5-6 each)
+                    </div>
+
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Oasis Spice Cafe - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🧃 Dinner Strategy:</strong><br>
+                        • Let child decompress from afternoon activities<br>
+                        • Use restrooms<br>
+                        • Hydrate well<br>
+                        • Prepare for final evening activities<br>
+                        • Extra relaxation time built in
+                    </div>
+
+                    <span class="stop-duration">⏱️ 60 minutes</span>
+                    <span class="cost">💰 SGD 40-55</span>
+                </div>
+            </div>
+
+            <!-- STOP 10: NEW YORK -->
+            <div class="stop">
+                <div class="stop-number">10</div>
+                <div class="stop-content">
+                    <div class="stop-time">🗽 6:00 PM - 7:15 PM</div>
+                    <div class="stop-location">🎬 NEW YORK - Sesame Street & Special Effects!</div>
+                    <div class="stop-activity">
+                        <strong>🗽 EVENING ENTERTAINMENT:</strong> Amazing rides and shows! Generous time allocation with flexibility.
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎢 Ride 11: Sesame Street Spaghetti Space Chase (MUST RIDE!)</strong><br>
+                        • Indoor dark ride with Elmo and Cookie Monster!<br>
+                        • Interactive shooting game elements<br>
+                        • Air-conditioned and family-friendly<br>
+                        • Perfect for young children<br>
+                        • Duration: ~5 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Sesame Street Spaghetti Space Chase - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎬 MUST SEE: Lights, Camera, Action! Show</strong><br>
+                        • Hosted by Steven Spielberg special effects show<br>
+                        • Mind-blowing hurricane simulation!<br>
+                        • Indoor theater with seating<br>
+                        • Air-conditioned and comfortable<br>
+                        • Duration: 20 minutes<br>
+                        • Show times: Every 30 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Lights, Camera, Action! Show - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>❄️ MUST SEE: Let it Snow! Show</strong><br>
+                        • Scheduled time: 6:40 PM<br>
+                        • REAL SNOW in tropical Singapore!<br>
+                        • Magical winter experience<br>
+                        • Perfect photo opportunity<br>
+                        • Duration: 10-15 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Let it Snow! Show - Photo Coming Soon</div>
+                    </div>
+
+                    <span class="stop-duration">⏱️ 75 minutes</span>
+                </div>
+            </div>
+
+            <!-- STOP 11: HOLLYWOOD SHOPPING -->
+            <div class="stop">
+                <div class="stop-number">11</div>
+                <div class="stop-content">
+                    <div class="stop-time">🎬 7:15 PM - 7:45 PM</div>
+                    <div class="stop-location">🛍️ HOLLYWOOD - Shopping & Relaxation</div>
+                    <div class="stop-activity">
+                        <strong>🛍️ RELAXED SHOPPING:</strong> No rushing through stores! Extra time for browsing and resting.
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎁 Gift Shop Options:</strong><br>
+                        • Universal Studio Store - Main merchandise shop<br>
+                        • Minion Marketplace - Minion-themed souvenirs<br>
+                        • It's A Wrap - General USS merchandise<br>
+                        • Shrek's Ye Olde Souvenir Shoppe - Shrek items
+                    </div>
+
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Hollywood Boulevard Shopping - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🧸 Souvenir Ideas:</strong><br>
+                        • Minion plushies (SGD 25-40)<br>
+                        • T-shirts and caps (SGD 20-35)<br>
+                        • Keychains and magnets (SGD 8-15)<br>
+                        • Photo frames (SGD 15-25)<br>
+                        • Mugs and water bottles (SGD 15-30)
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>👨‍👩‍👧 Family Strategy:</strong><br>
+                        • Let child pick ONE special souvenir<br>
+                        • Browse at your own pace - no rushing!<br>
+                        • Sit and rest with snacks if needed<br>
+                        • Use restrooms before evening show
+                    </div>
+
+                    <span class="stop-duration">⏱️ 30 minutes</span>
+                    <span class="cost">💰 SGD 30-80 (souvenirs)</span>
+                </div>
+            </div>
+
+            <!-- STOP 12: GRAND FINALE OR EARLY EXIT -->
+            <div class="stop highlight">
+                <div class="stop-number">12</div>
+                <div class="stop-content">
+                    <div class="stop-time">✨ 7:45 PM - 8:00 PM</div>
+                    <div class="stop-location">🎆 OPTIONAL: Evening Show OR Exit Early</div>
+                    <div class="stop-activity">
+                        <strong>🎯 FLEXIBILITY IS KEY!</strong><br>
+                        Choose based on your child's energy level
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🎬 OPTION A: DreamWorks Animation Holiday Spectacular</strong><br>
+                        (Recommended if child has energy!)<br>
+                        • Showtime: 7:45 PM or 8:00 PM<br>
+                        • Location: Far Far Away zone (5-minute walk from Hollywood)<br>
+                        • Magical evening show with lights, music, and characters<br>
+                        • Features characters from Shrek, Kung Fu Panda, Madagascar<br>
+                        • Perfect ending to your USS adventure!<br>
+                        • Duration: 20 minutes
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 DreamWorks Holiday Spectacular - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🚪 OPTION B: Exit Early at 7:45 PM</strong><br>
+                        (If child is tired)<br>
+                        • Exit USS at 7:45 PM<br>
+                        • Avoid closing time crowds<br>
+                        • Get head start on return journey<br>
+                        • Child can rest earlier<br>
+                        • Still experienced a full day of fun!
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>💡 Decision Guide:</strong><br>
+                        ✅ Choose OPTION A if: Child is energetic, excited, and wants to see the show<br>
+                        ✅ Choose OPTION B if: Child is tired, cranky, or needs earlier rest<br>
+                        🎯 This is YOUR decision - trust your instincts as parents!
+                    </div>
+                </div>
+            </div>
+
+            <!-- STOP 13: RETURN TO HOTEL -->
+            <div class="stop">
+                <div class="stop-number">13</div>
+                <div class="stop-content">
+                    <div class="stop-time">🚇 8:00 PM - 8:45 PM</div>
+                    <div class="stop-location">🏨 Return to Furama RiverFront Hotel</div>
+                    <div class="transport">
+                        USS → Sentosa Express → VivoCity → HarbourFront MRT → Chinatown MRT → Hotel<br>
+                        (Total: ~45 minutes)
+                    </div>
+                    <div class="stop-activity">
+                        <strong>🚇 Return Route:</strong><br>
+                        1. Walk from USS to Sentosa Express Waterfront Station (5 min)<br>
+                        2. Take Sentosa Express to VivoCity (10 min)<br>
+                        3. Walk to HarbourFront MRT (5 min)<br>
+                        4. Take North East Line to Chinatown MRT (15 min)<br>
+                        5. Walk to Furama RiverFront Hotel (10 min)
+                    </div>
+
+                    <div class="photo-container">
+                        <div class="image-placeholder">📸 Furama RiverFront Hotel - Photo Coming Soon</div>
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🌙 End of Day:</strong><br>
+                        • Total travel time: ~45 minutes<br>
+                        • Arrive hotel around 8:45 PM<br>
+                        • Early rest for tomorrow's adventures!<br>
+                        • 🚼 Stroller-friendly route all the way
+                    </div>
+
+                    <div class="stop-activity">
+                        <strong>🛏️ Evening Wind-Down:</strong><br>
+                        • Shower and change<br>
+                        • Light snack if hungry<br>
+                        • Hydrate before bed<br>
+                        • Rest well for Day 3!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SUMMARY SECTION -->
+        <div class="summary">
+            <h3>📊 Day 2 Summary - TRIMMED/RELAXED Version</h3>
+            <p><strong>Total Duration:</strong> 7:30 AM - 8:45 PM (13 hours 15 min)</p>
+            <p><strong>Park Time:</strong> 10:00 AM - 8:00 PM (10 hours)</p>
+            <p><strong>Total Activities:</strong> ~15 attractions (40% fewer than PRIORITIZED)</p>
+            <p><strong>Pace:</strong> Stress-free and relaxed with generous buffer times</p>
+            <br>
+            <p><strong>💰 Estimated Costs:</strong></p>
+            <p>• Breakfast: SGD 18-25</p>
+            <p>• Lunch: SGD 45-60</p>
+            <p>• Snacks: SGD 20-30</p>
+            <p>• Dinner: SGD 40-55</p>
+            <p>• Souvenirs: SGD 30-80</p>
+            <p><strong>GRAND TOTAL: SGD 153-250</strong></p>
+            <br>
+            <p><strong>🎢 Activities Breakdown:</strong></p>
+            <p><strong>Rides (11 total):</strong> Silly Swirly | Buggie Boogie | Despicable Me | Enchanted Airways | Magic Potion Spin | Puss In Boots | Dino-Soarin' | Treasure Hunters | Accelerator | TRANSFORMERS | Sesame Street</p>
+            <p><strong>Shows (3 total):</strong> Raptor Encounter | Lights, Camera, Action! | Let it Snow! | ⚠️ DreamWorks Holiday Spectacular (OPTIONAL)</p>
+            <p><strong>Meet & Greets (3 total):</strong> How to Train Your Dragon | Egyptian Legends | Transformers</p>
+            <p><strong>Game Booth (1 total):</strong> Space Killer (Minion Land)</p>
+            <br>
+            <p><strong>🎯 Key Differences from PRIORITIZED:</strong></p>
+            <p>✅ REMOVED: Jurassic Park Rapids (avoid wetness + time-consuming)</p>
+            <p>✅ REMOVED: Fortune Favours The Furry show (reduce rushing)</p>
+            <p>✅ REMOVED: Minion Dance Party (reduce rushing)</p>
+            <p>✅ REMOVED: Some character meets (maintain flexibility)</p>
+            <p>✅ REMOVED: Trolls Hug Time Jubilee show (simplify evening)</p>
+            <p>✅ ADDED: 15-20 minute buffer times between zones</p>
+            <p>✅ ADDED: Flexibility for early exit if child is tired</p>
+            <p>✅ ADDED: Extra relaxation time at meals and rest break</p>
+            <br>
+            <p><strong>😌 Relaxed Pace Benefits:</strong></p>
+            <p>✓ No rushing between zones - take your time!</p>
+            <p>✓ Generous buffer times for bathroom breaks, photos, resting</p>
+            <p>✓ Child can ride in stroller when tired</p>
+            <p>✓ Flexibility to skip activities if needed</p>
+            <p>✓ Focus on quality over quantity</p>
+            <p>✓ Stress-free family enjoyment!</p>
+            <br>
+            <p><strong>🎉 Still Amazing Coverage!</strong></p>
+            <p>Despite being "trimmed", you'll still experience:</p>
+            <p>✓ All 7 zones of Universal Studios Singapore</p>
+            <p>✓ 11 amazing rides (including all must-dos except Jurassic Rapids)</p>
+            <p>✓ 3 spectacular shows</p>
+            <p>✓ 3 character meet & greets</p>
+            <p>✓ Shopping and souvenirs</p>
+            <p>✓ A full, memorable day with your family!</p>
+        </div>
+
+    </div>
+</body>
+</html>
