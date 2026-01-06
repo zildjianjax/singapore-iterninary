@@ -160,6 +160,147 @@
             font-weight: bold;
             margin-left: 10px;
         }
+        .landmark-photo {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .map-link {
+            display: inline-block;
+            margin: 10px 0;
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background: #ffe0e0;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .map-link:hover {
+            background: #ffcccc;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(255,107,107,0.3);
+        }
+        .photo-credit {
+            font-size: 0.75em;
+            color: #999;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .photo-container {
+            margin: 15px 0;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+            .subtitle {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+            .route-container {
+                gap: 15px;
+            }
+            .stop {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+            .stop:hover {
+                transform: none;
+            }
+            .stop-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+            .stop-time {
+                font-size: 1em;
+            }
+            .stop-location {
+                font-size: 1.1em;
+                line-height: 1.4;
+            }
+            .stop-activity {
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+            .landmark-photo {
+                height: 200px;
+                margin: 10px 0;
+            }
+            .photo-link, .map-link {
+                font-size: 0.9em;
+                padding: 10px;
+                margin: 8px 0;
+            }
+            .stop-duration, .cost {
+                font-size: 0.85em;
+                padding: 4px 10px;
+                margin: 5px 5px 5px 0;
+                display: inline-block;
+            }
+            .transport {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+            .anniversary-badge {
+                font-size: 0.7em;
+                padding: 2px 8px;
+            }
+            .summary {
+                padding: 15px;
+                font-size: 0.9em;
+            }
+            .summary h3 {
+                font-size: 1.3em;
+            }
+            .summary p {
+                margin: 10px 0;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            .container {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            .subtitle {
+                font-size: 0.9em;
+            }
+            .stop-time {
+                font-size: 0.95em;
+            }
+            .stop-location {
+                font-size: 1em;
+            }
+            .stop-activity {
+                font-size: 0.9em;
+            }
+            .landmark-photo {
+                height: 180px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -174,10 +315,18 @@
                 <div class="stop-content">
                     <div class="stop-time">🕖 7:00 AM - 7:45 AM</div>
                     <div class="stop-location">🍜 Anniversary Breakfast</div>
+                    <a href="https://www.google.com/maps/dir/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore/Maxwell+Food+Centre,+1+Kadayanallur+St,+Singapore" target="_blank" class="map-link">🗺️ Get Directions to Maxwell Food Centre</a>
                     <div class="stop-activity">
                         • Walk to Maxwell or Chinatown Complex<br>
                         • Enjoy special breakfast together<br>
                         • More relaxed timing today - it's your anniversary!
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://johnnyafrica.com/wp-content/uploads/2023/06/image-19.jpg"
+                             alt="Maxwell Food Centre - Famous Hawker Centre"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Maxwell Food Centre</div>
+                        <a href="https://www.google.com/search?q=maxwell+food+centre+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Maxwell Food Centre Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 45 min</span>
                     <span class="cost">💰 SGD 20-30</span>
@@ -191,6 +340,7 @@
                 <div class="stop-content">
                     <div class="stop-time">🕗 8:00 AM - 9:30 AM</div>
                     <div class="stop-location">🏊 Prepare for Waterpark</div>
+                    <a href="https://www.google.com/maps/place/Furama+RiverFront/@1.2877908,103.8333009,17z" target="_blank" class="map-link">📍 View Furama RiverFront Hotel Location</a>
                     <div class="stop-activity">
                         <strong>Pack waterpark bag thoroughly:</strong><br>
                         • Swimsuits, rash guards (sun protection!)<br>
@@ -199,6 +349,13 @@
                         • Change of clothes, flip-flops<br>
                         • Waterproof phone case, camera<br>
                         • Snacks & water bottles
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/1f/f4/5d/facade.jpg?w=900&h=500&s=1"
+                             alt="Furama RiverFront Hotel - Your Home Base"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Furama RiverFront Hotel</div>
+                        <a href="https://www.google.com/search?q=furama+riverfront+hotel+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Furama RiverFront Hotel Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 1.5 hours</span>
                 </div>
@@ -211,6 +368,8 @@
                 <div class="stop-content">
                     <div class="stop-time">🕙 10:00 AM</div>
                     <div class="stop-location">🌊 Adventure Cove Waterpark - ARRIVAL!</div>
+                    <a href="https://www.google.com/maps/dir/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore/Adventure+Cove+Waterpark,+8+Sentosa+Gateway,+Sentosa+Island,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Hotel to Adventure Cove</a>
+                    <a href="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/adventure-cove-waterpark/park-map/adventure-cove-waterpark-map---en.jpeg?rev=f3bd922896984f24828193d8412dbef6&extension=webp&hash=0C899F096522A63713811F9E7E72A469" target="_blank" class="map-link">🗺️ View Park Map</a>
                     <div class="stop-activity">
                         • Asia's ultimate water adventure!<br>
                         • Entry & check-in<br>
@@ -219,8 +378,19 @@
                         • Apply waterproof sunscreen!<br>
                         • Life jackets available (FREE for kids!)
                     </div>
-                    <div class="image-placeholder">📸 Adventure Cove Waterpark<br>Asia's Ultimate Water Adventure</div>
-                    <a href="https://www.google.com/search?q=adventure+cove+waterpark+singapore+sentosa&tbm=isch" target="_blank" class="photo-link">🔍 View Adventure Cove Waterpark Photos on Google Images</a>
+                    <div class="photo-container">
+                        <img src="https://cdn.klook.com/user_review/product/1947880/4df8fa8c-f367-48fa-6e21-d6196b06f153.1200*0.jpeg"
+                             alt="Adventure Cove Waterpark - Asia's Ultimate Water Adventure"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Adventure Cove Waterpark Entrance</div>
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0a/35/12/1b.jpg"
+                             alt="Adventure Cove Waterpark - Asia's Ultimate Water Adventure"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Adventure Cove Waterpark Entrance</div>
+                        <a href="https://www.google.com/search?q=adventure+cove+waterpark+singapore+sentosa&tbm=isch" target="_blank" class="photo-link">🔍 View Adventure Cove Waterpark Photos on Google Images</a>
+                    </div>
                     <span class="stop-duration">⏱️ 30 min setup</span>
                     <span class="cost">💰 SGD 120-160 (tickets)</span>
                 </div>
@@ -235,15 +405,54 @@
                     <div class="stop-location">💦 Morning Water Adventures</div>
                     <div class="stop-activity">
                         <strong>Perfect for 4-year-old:</strong><br>
-                        • <strong>Bluwater Bay Wave Pool</strong> - Gentle waves, safe for kids<br>
-                        • <strong>Adventure River</strong> - Lazy river float together!<br>
-                        • <strong>Splashworks Kids Play Area</strong> - Mini slides, water features<br>
+                        • 
+                        • 
                         • Take breaks in shaded areas<br>
                         • Hydrate frequently!<br>
                         • Reapply sunscreen
                     </div>
-                    <div class="image-placeholder">📸 Wave Pool & Lazy River<br>Family-Friendly Water Fun</div>
-                    <a href="https://www.google.com/search?q=adventure+cove+wave+pool+lazy+river+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Wave Pool & Lazy River Photos on Google Images</a>
+                    <strong>Bluwater Bay Wave Pool</strong> - Gentle waves, safe for kids<br>
+                    <div class="photo-container">
+                        <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/adventure-cove-waterpark/rides/adventure-cove-waterpark-blu-water-bay-750x422.jpg?mh=900"
+                             alt="Adventure Cove Wave Pool - Family-Friendly Water Fun"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Bluwater Bay Wave Pool</div>
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://cdn.klook.com/user_review/product/1947992/b3a86f0b-9741-46b9-5406-b7d8a9d590d2.1200*0.jpeg"
+                             alt="Adventure Cove Wave Pool - Family-Friendly Water Fun"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Bluwater Bay Wave Pool</div>
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://cdn.klook.com/user_review/product/1947408/6fa5ab40-2e45-490e-5b0f-308f8d13aa33.1200*0.jpeg"
+                             alt="Adventure Cove Wave Pool - Family-Friendly Water Fun"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Bluwater Bay Wave Pool</div>
+                    </div>
+
+                    <strong>Adventure River</strong> - Lazy river float together!<br>
+                    <div class="photo-container">
+                        <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosarevamp/attractions/640-x-480/acw_friends_adventureriver.jpg?mh=900"
+                             alt="Adventure Cove Wave Pool - Family-Friendly Water Fun"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Adventure River</div>
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://cdn.klook.com/user_review/product/1946926/33f12f7a-53da-46c0-656d-563c33f1dd6c.0*1200.jpeg"
+                             alt="Adventure Cove Wave Pool - Family-Friendly Water Fun"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Adventure River</div>
+                    </div>
+
+                    <strong>Splashworks Kids Play Area</strong> - Mini slides, water features<br>
+                    <div class="photo-container">
+                        <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/adventure-cove-waterpark/rides/adventure-cove-waterpark-splashworks-750x422.jpg?mh=900"
+                             alt="Adventure Cove Wave Pool - Family-Friendly Water Fun"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Splashworks</div>
+                    </div>
+
                     <span class="stop-duration">⏱️ 1.5 hours</span>
                 </div>
             </div>
@@ -256,12 +465,25 @@
                     <div class="stop-time">🕧 12:00 PM - 1:00 PM</div>
                     <div class="stop-location">🍔 Lunch at Waterpark</div>
                     <div class="stop-activity">
-                        • <strong>Lighthouse Cafe</strong> (main restaurant)<br>
+                        • <strong>The Bay Restaurant</strong> (main restaurant)<br>
                         • Burgers, pizzas, pasta, noodles<br>
                         • Kid-friendly menu<br>
                         • Air-conditioned dining area<br>
                         • Rest & let child digest<br>
                         • Reapply waterproof sunscreen
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/adventure-cove-waterpark/dining/adventure-cove-waterpark-the-bay_restaurant-1440x760.jpg?mh=600"
+                             alt="The Bay Restaurant - Adventure Cove Restaurant"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: The Bay Restaurant at Adventure Cove</div>
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/cd/93/d6/the-bay-restaurant.jpg?w=900&h=500&s=1"
+                             alt="The Bay Restaurant - Adventure Cove Restaurant"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: The Bay Restaurant at Adventure Cove</div>
+                        <a href="https://www.google.com/search?q=adventure+cove+the+bay+restaurant+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View The Bay Restaurant Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 1 hour</span>
                     <span class="cost">💰 SGD 40-60</span>
@@ -277,7 +499,6 @@
                     <div class="stop-location">🐠 Afternoon Water Fun</div>
                     <div class="stop-activity">
                         <strong>Continue the aquatic adventure:</strong><br>
-                        • <strong>Rainbow Reef</strong> - Snorkel with 20,000+ colorful fish!<br>
                         • More Wave Pool Time - Never gets old!<br>
                         • More Lazy River Floats - Relaxing for parents<br>
                         • Back to Splashworks - Let child play freely<br>
@@ -287,8 +508,28 @@
                         • Whirlpool Washout, Dueling Racer<br>
                         • OR relax in sun loungers while supervising
                     </div>
-                    <div class="image-placeholder">📸 Rainbow Reef Snorkeling<br>Swim with Tropical Fish!</div>
-                    <a href="https://www.google.com/search?q=adventure+cove+rainbow+reef+snorkeling+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Rainbow Reef Photos on Google Images</a>
+
+                    <strong>Big Bucket Treehouse</strong><br>
+                    <div class="photo-container">
+                        <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/adventure-cove-waterpark/rides/adventure-cove-big-bucket-750x422.jpg?mh=900"
+                             alt="Adventure Cove Wave Pool - Family-Friendly Water Fun"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Big Bucket Treehouse</div>
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://cdn.klook.com/user_review/product/1948126/084927cf-940f-4252-6929-185e62b1fcc9.1200*0.jpeg"
+                             alt="Adventure Cove Wave Pool - Family-Friendly Water Fun"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Big Bucket Treehouse</div>
+                    </div>
+
+                    <strong>Rainbow Reef</strong> - Snorkel with 20,000+ colorful fish!<br>
+                    <div class="photo-container">
+                        <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/adventure-cove-waterpark/rides/adventure-cove-waterpark-rainbow-reef-1200x675.jpg?h=675&iar=0&w=1200&rev=feb481499b174857806f9d8bde249d01&extension=webp&hash=C50754C91F1DC6FCE7598BAFB00E2E29"
+                             alt="Rainbow Reef"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Rainbow Reef</div>
+                    </div>
                     <span class="stop-duration">⏱️ 2 hours</span>
                 </div>
             </div>
@@ -306,6 +547,13 @@
                         • Let child wind down<br>
                         • Reapply sunscreen one more time<br>
                         • Prepare for final activities
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/adventure-cove-waterpark/attraction-page/gallery/rwsadventure-cove-waterpark-gallery11.jpg"
+                             alt="Adventure Cove Splashworks Kids Play Area"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Splashworks Kids Area</div>
+                        <a href="https://www.google.com/search?q=adventure+cove+splashworks+kids+area+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Splashworks Kids Area Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 30 min</span>
                     <span class="cost">💰 SGD 10-15</span>
@@ -350,45 +598,98 @@
                 </div>
             </div>
 
-            <div class="transport">🚇 Sentosa Express to VivoCity</div>
+            <div class="transport">🚇 Sentosa Express to HarbourFront, then MRT to Clarke Quay</div>
 
             <div class="stop">
                 <div class="stop-number">10</div>
                 <div class="stop-content">
-                    <div class="stop-time">🕔 5:00 PM - 6:00 PM</div>
-                    <div class="stop-location">🍜 Dinner at VivoCity</div>
+                    <div class="stop-time">🕕 5:30 PM - 6:30 PM</div>
+                    <div class="stop-location">🍽️ Anniversary Dinner at Clarke Quay</div>
+                    <a href="https://www.google.com/maps/dir/Adventure+Cove+Waterpark,+8+Sentosa+Gateway,+Sentosa+Island,+Singapore/Clarke+Quay,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Adventure Cove to Clarke Quay</a>
                     <div class="stop-activity">
-                        • Food Republic food court (Level 3)<br>
-                        • Wide variety for everyone<br>
-                        • Air-conditioned comfort<br>
-                        • Rest after active day
+                        <strong>Family-friendly riverside dining options:</strong><br>
+                        • Seafood restaurants along Singapore River<br>
+                        • Beautiful riverside views and ambiance<br>
+                        • Famous for Chili Crab and seafood specialties<br>
+                        • Air-conditioned comfort after waterpark day<br>
+                        • Walking distance to river cruise departure point<br>
+                        <br>
+                        <strong>Getting there:</strong><br>
+                        • MRT: Clarke Quay Station (NE5) on Purple Line<br>
+                        • Or Fort Canning Station (DT20) on Blue Line
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/4d/46/3a/clarke-quay.jpg?w=1200&h=-1&s=1"
+                             alt="Clarke Quay - Singapore's Riverside Dining Destination"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Clarke Quay Riverside Dining</div>
+                        <a href="https://www.google.com/search?q=clarke+quay+restaurants+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Clarke Quay Restaurant Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 1 hour</span>
-                    <span class="cost">💰 SGD 30-40</span>
+                    <span class="cost">💰 SGD 50-80</span>
                 </div>
             </div>
 
-            <div class="transport">🚇 MRT back to hotel (30 min)</div>
+            <div class="transport">🚶‍♂️ Walk to Fort Canning Jetty</div>
 
-            <div class="stop">
+            <div class="stop highlight">
                 <div class="stop-number">11</div>
                 <div class="stop-content">
-                    <div class="stop-time">🕖 7:00 PM onwards</div>
-                    <div class="stop-location">🎉 Anniversary Evening Options</div>
+                    <div class="stop-time">🕖 7:00 PM - 8:10 PM</div>
+                    <div class="stop-location">🚤 Singapore River Cruise - Anniversary Special! <span class="anniversary-badge">💑 ROMANTIC!</span></div>
+                    <a href="https://www.google.com/maps/place/Clarke+Quay+Jetty+Ticket+Counter/@1.289965,103.8460177,74m/data=!3m1!1e3!4m6!3m5!1s0x31da19a0140db93d:0x2334b16ac917b4b1!8m2!3d1.2900205!4d103.8461272!16s%2Fg%2F11cm098965!5m1!1e2?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-link">🗺️ View Fort Canning Jetty Location</a>
                     <div class="stop-activity">
-                        <strong>Option A: Romantic Dinner Out 💑</strong><br>
-                        • Book babysitting service (SGD 60-80)<br>
-                        • Dinner at Ce La Vi SkyBar or Spago<br>
-                        • Stunning rooftop views<br>
+                        <strong>🎫 Book on Klook:</strong><br>
+                        <a href="https://www.klook.com/en-PH/activity/3846-river-cruise-singapore/" target="_blank" class="photo-link" style="margin: 10px 0;">🎟️ Book Singapore River Cruise on Klook</a>
                         <br>
-                        <strong>Option B: Family Together at Hotel 👨‍👩‍👧</strong><br>
-                        • Relaxing hotel evening<br>
-                        • Swimming, room service<br>
-                        • Celebrate together as a family
+                        <strong>Departure Point:</strong> Fort Canning Jetty (beside Liang Court Shopping Centre)<br>
+                        <strong>Operating Hours:</strong> 2:00 PM - 9:00 PM (hourly departures)<br>
+                        <strong>Duration:</strong> 40 minutes scenic bumboat ride<br>
+                        <br>
+                        <strong>What You'll See:</strong><br>
+                        • Marina Bay Sands skyline illuminated at night<br>
+                        • Boat Quay historical district<br>
+                        • Raffles Landing Site and historical landmarks<br>
+                        • Clarke Quay from the water perspective<br>
+                        • Singapore River nightscape views<br>
+                        • Perfect romantic ending to anniversary day!<br>
+                        <br>
+                        <strong>✨ Anniversary Tip:</strong><br>
+                        • Evening cruise offers stunning night views<br>
+                        • Relaxing after active waterpark day<br>
+                        • Child will enjoy the boat ride<br>
+                        • Great photo opportunities!
                     </div>
-                    <div class="image-placeholder">📸 Marina Bay Sands Skyline<br>Anniversary Dining Views</div>
-                    <a href="https://www.google.com/search?q=ce+la+vi+skybar+marina+bay+sands+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Anniversary Dining Options Photos on Google Images</a>
-                    <span class="cost">💰 SGD 60-200</span>
+                    <div class="photo-container">
+                        <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65/w_1080/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/eyccdzp1k0vc8zkwdsrg.webp"
+                             alt="Singapore River Cruise - Romantic Evening Bumboat Ride"
+                             class="landmark-photo">
+                        <div class="photo-credit">Photo: Singapore River Cruise at Night</div>
+                        <a href="https://www.google.com/search?q=singapore+river+cruise+night+clarke+quay&tbm=isch" target="_blank" class="photo-link">🔍 View River Cruise Photos on Google Images</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 40 min cruise</span>
+                    <span class="cost">💰 SGD 25-35 per adult, SGD 15-20 per child (book on Klook)</span>
+                </div>
+            </div>
+
+            <div class="transport">🚇 MRT from Clarke Quay to hotel (15 min)</div>
+
+            <div class="stop">
+                <div class="stop-number">12</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕗 9:00 PM onwards</div>
+                    <div class="stop-location">🏨 Return to Furama RiverFront Hotel</div>
+                    <a href="https://www.google.com/maps/dir/Clarke+Quay,+Singapore/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Clarke Quay to Hotel</a>
+                    <div class="stop-activity">
+                        • Quick MRT ride back to hotel<br>
+                        • Relaxing evening after full anniversary day<br>
+                        • Rest and prepare for tomorrow<br>
+                        • Child should be tired but happy!<br>
+                        <br>
+                        <strong>🎉 Happy Anniversary!</strong><br>
+                        A perfect day: waterpark adventure + romantic river cruise!
+                    </div>
+                    <span class="stop-duration">⏱️ Evening rest</span>
                 </div>
             </div>
 
@@ -396,10 +697,20 @@
 
         <div class="summary">
             <h3>📊 DAY 4 SUMMARY - ANNIVERSARY AT ADVENTURE COVE! 🎉</h3>
+            <p><strong>Total Duration:</strong> 7:00 AM - 8:00 PM (Full Anniversary Day!)</p>
+            <p><strong>Total Stops:</strong> 12 locations</p>
             <p><strong>Total Time at Waterpark:</strong> 6 hours of water fun!</p>
-            <p><strong>Main Activities:</strong> Wave Pool, Lazy River, Splashworks, Rainbow Reef Snorkeling</p>
-            <p><strong>Total Cost:</strong> SGD 300-465 (PHP 13,250-20,540)</p>
-            <p><strong>Special:</strong> 🎉 Happy Anniversary! Family waterpark adventure + romantic evening option 💑</p>
+            <p><strong>Morning:</strong> 🍜 Anniversary Breakfast at Maxwell → 🏨 Waterpark Preparation</p>
+            <p><strong>Waterpark Fun:</strong> 🌊 Wave Pool, Lazy River, Splashworks, Rainbow Reef Snorkeling</p>
+            <p><strong>Lunch:</strong> 🍔 Lighthouse Cafe at Adventure Cove</p>
+            <p><strong>Afternoon:</strong> 💦 More Water Adventures, Final Hour Photo Opportunities</p>
+            <p><strong>Evening:</strong> 🍽️ Anniversary Dinner at Clarke Quay → 🚤 Singapore River Cruise (40 min) → 🏨 Hotel</p>
+            <p><strong>Total Cost:</strong> SGD 305-570 (PHP 13,470-25,180)</p>
+            <p><strong>💑 SPECIAL:</strong> Happy Anniversary! Family waterpark adventure + romantic riverside dinner + scenic river cruise!</p>
+            <p><strong>🎫 BOOK IN ADVANCE:</strong> Singapore River Cruise on <a href="https://www.klook.com/en-PH/activity/3846-river-cruise-singapore/" target="_blank" style="color: white; text-decoration: underline;">Klook</a></p>
+            <p><strong>✨ INTERACTIVE FEATURES:</strong></p>
+            <p>🗺️ Click RED map links to get step-by-step directions on Google Maps!</p>
+            <p>🔍 Click BLUE photo links to see more beautiful images of each attraction!</p>
         </div>
     </div>
 </body>
