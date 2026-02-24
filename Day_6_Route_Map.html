@@ -1,99 +1,827 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Day 6 - Singapore Zoo Full Day</title>
-<style>
-body{font-family:'Segoe UI',Tahoma,sans-serif;max-width:1200px;margin:0 auto;padding:20px;background:linear-gradient(135deg,#8BC34A 0%,#FFEB3B 100%);min-height:100vh}.container{background:white;border-radius:20px;padding:30px;box-shadow:0 10px 40px rgba(0,0,0,0.2)}h1{color:#8BC34A;text-align:center;font-size:2.5em;margin-bottom:10px}.subtitle{text-align:center;color:#666;font-size:1.2em;margin-bottom:30px}.stop{padding:20px;background:#f8f9fa;border-radius:15px;margin:20px 0;border-left:5px solid #8BC34A}.stop-number{background:#8BC34A;color:white;width:50px;height:50px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold}.stop-time{color:#8BC34A;font-weight:bold;font-size:1.2em;margin:10px 0}.stop-location{font-size:1.3em;font-weight:bold;color:#333;margin:10px 0}.photo-link{display:block;margin:15px 0;color:#8BC34A;text-decoration:none;font-weight:bold;padding:10px;background:#F1F8E9;border-radius:8px;text-align:center}.photo-link:hover{background:#DCEDC8}.image-placeholder{width:100%;max-width:500px;height:300px;background:linear-gradient(135deg,#8BC34A 0%,#FFEB3B 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2em;font-weight:bold;text-align:center;padding:20px;margin:15px 0}.summary{margin-top:30px;padding:20px;background:linear-gradient(135deg,#8BC34A 0%,#FFEB3B 100%);color:#333;border-radius:15px;text-align:center}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6 - Singapore Zoo Full Day (Tram-Assisted Route)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #8BC34A 0%, #FFEB3B 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #558B2F;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .route-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stop {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #8BC34A;
+            transition: transform 0.3s ease;
+        }
+
+        .stop:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stop-number {
+            background: #8BC34A;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .stop-content {
+            flex: 1;
+        }
+
+        .stop-time {
+            color: #558B2F;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .stop-location {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .stop-activity {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .stop-duration,
+        .cost {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #F1F8E9;
+            color: #558B2F;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .transport {
+            text-align: center;
+            color: #558B2F;
+            font-weight: bold;
+            padding: 10px;
+            background: linear-gradient(90deg, transparent, #F1F8E9, transparent);
+            border-radius: 10px;
+        }
+
+        .highlight {
+            border-left-color: #ff6b6b;
+        }
+
+        .highlight .stop-number {
+            background: #ff6b6b;
+        }
+
+        .rest {
+            border-left-color: #51cf66;
+        }
+
+        .rest .stop-number {
+            background: #51cf66;
+        }
+
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #8BC34A 0%, #558B2F 100%);
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .summary h3 {
+            margin-top: 0;
+        }
+
+        .new-badge {
+            display: inline-block;
+            background: #ffd43b;
+            color: #333;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .landmark-photo {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-link {
+            display: block;
+            margin: 15px 0;
+            color: #558B2F;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            background: #F1F8E9;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .photo-link:hover {
+            background: #DCEDC8;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin: 10px 0;
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background: #ffe0e0;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+
+        .map-link:hover {
+            background: #ffcccc;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+        }
+
+        .photo-credit {
+            font-size: 0.75em;
+            color: #999;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .photo-container {
+            margin: 15px 0;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: linear-gradient(135deg, #8BC34A 0%, #558B2F 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 15px 0;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+
+            .subtitle {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+
+            .route-container {
+                gap: 15px;
+            }
+
+            .stop {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+
+            .stop:hover {
+                transform: none;
+            }
+
+            .stop-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+
+            .stop-time {
+                font-size: 1em;
+            }
+
+            .stop-location {
+                font-size: 1.1em;
+                line-height: 1.4;
+            }
+
+            .stop-activity {
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+
+            .landmark-photo {
+                height: 200px;
+                margin: 10px 0;
+            }
+
+            .photo-link,
+            .map-link {
+                font-size: 0.9em;
+                padding: 10px;
+                margin: 8px 0;
+            }
+
+            .stop-duration,
+            .cost {
+                font-size: 0.85em;
+                padding: 4px 10px;
+                margin: 5px 5px 5px 0;
+                display: inline-block;
+            }
+
+            .transport {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+
+            .new-badge {
+                font-size: 0.7em;
+                padding: 2px 8px;
+            }
+
+            .summary {
+                padding: 15px;
+                font-size: 0.9em;
+            }
+
+            .summary h3 {
+                font-size: 1.3em;
+            }
+
+            .summary p {
+                margin: 10px 0;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .subtitle {
+                font-size: 0.9em;
+            }
+
+            .stop-time {
+                font-size: 0.95em;
+            }
+
+            .stop-location {
+                font-size: 1em;
+            }
+
+            .stop-activity {
+                font-size: 0.9em;
+            }
+
+            .landmark-photo {
+                height: 180px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
-<h1>📍 DAY 6 - Sunday, March 22, 2026</h1>
-<div class="subtitle">Singapore Zoo - Full Day Adventure! 🦁🐘🦒</div>
+    <div class="container">
+        <h1>📍 DAY 6 - Sunday, March 22, 2026</h1>
+        <div class="subtitle">Singapore Zoo 🦁🐘 - Tram-Assisted Route (Optimized for Shows & Feedings)</div>
 
-<div class="stop"><span class="stop-number">1</span><div><div class="stop-time">🕖 7:00 AM - 7:45 AM</div><div class="stop-location">🍜 Quick Breakfast</div>Walk to nearby hawker centre • Hearty breakfast to fuel zoo day • Cost: SGD 18-25</div></div>
+        <div class="route-container">
 
-<div class="stop"><span class="stop-number">2</span><div><div class="stop-time">🕗 8:00 AM - 9:00 AM</div><div class="stop-location">🚇 Travel to Singapore Zoo</div>
-MRT to Khatib Station → FREE Mandai Khatib Shuttle to Zoo<br>
-<strong>Pack Zoo Essentials:</strong><br>
-• Swim clothes for water play!<br>
-• Towels, sunscreen, hats<br>
-• Water bottles & snacks<br>
-• Camera fully charged</div></div>
+            <div class="stop">
+                <div class="stop-number">1</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕡 6:30 AM - 7:15 AM</div>
+                    <div class="stop-location">🚇 Travel to Khatib MRT</div>
+                    <a href="https://www.google.com/maps/dir/Furama+RiverFront+Hotel,+Singapore/Khatib+MRT+Station,+Singapore"
+                        target="_blank" class="map-link">🗺️ Get Directions to Khatib MRT</a>
+                    <div class="stop-activity">
+                        • Travel early to beat the crowds!<br>
+                        • Take the MRT to Khatib Station.<br>
+                        <strong>Pack Zoo Essentials:</strong><br>
+                        • Swim clothes for water play!<br>
+                        • Towels, sunscreen, hats<br>
+                        • Water bottles & snacks<br>
+                        • Camera fully charged
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                    <span class="cost">💰 MRT Costs</span>
+                </div>
+            </div>
 
-<div class="stop"><span class="stop-number">3</span><div><div class="stop-time">🕤 9:30 AM - 12:00 PM</div><div class="stop-location">🦁 Morning Animals</div>
-<strong>Start with farthest zones first!</strong><br>
-• <strong>Fragile Forest</strong> - Free-flight aviary, sloths!<br>
-• <strong>Primate Kingdom</strong> - Orangutans swinging<br>
-• <strong>Elephants of Asia</strong> - Bathing elephants<br>
-• <strong>Reptopia</strong> - Komodo dragons<br>
-<div class="image-placeholder">📸 Singapore Zoo<br>World's Best Rainforest Zoo</div>
-<a href="https://www.google.com/search?q=singapore+zoo+elephants+orangutans&tbm=isch" target="_blank" class="photo-link">🔍 View Singapore Zoo Photos</a>
-Cost: SGD 100-130 (tickets)</div></div>
+            <div class="transport">🚶‍♂️ Walk to nearby breakfast spot</div>
 
-<div class="stop"><span class="stop-number">4</span><div><div class="stop-time">🕧 12:00 PM - 1:00 PM</div><div class="stop-location">🍜 Lunch at Zoo</div>
-KFC or Ah Meng Restaurant food court<br>
-Indoor air-conditioned seating<br>
-Rest and recharge - you're only halfway!<br>
-Cost: SGD 30-40</div></div>
+            <div class="stop">
+                <div class="stop-number">2</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 7:15 AM - 8:00 AM</div>
+                    <div class="stop-location">☕ Relaxed Breakfast near Khatib MRT</div>
+                    <a href="https://www.google.com/maps/dir/Khatib+MRT+Station,+Singapore/Mr+Teh+Tarik+Eating+House,+Khatib,+Singapore"
+                        target="_blank" class="map-link">🗺️ Get Directions to Breakfast</a>
+                    <div class="stop-activity">
+                        • Head to <strong>Mr Teh Tarik Eating House</strong> or <strong>Blk 848 Hawker Stalls</strong>
+                        just outside the station.<br>
+                        • Enjoy a slow, unhurried local breakfast before heading to the zoo.<br>
+                        • Head back to Khatib Station around 8:00 AM.
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                    <span class="cost">💰 SGD 15-20</span>
+                </div>
+            </div>
 
-<div class="stop"><span class="stop-number">5</span><div><div class="stop-time">🕐 1:00 PM - 2:30 PM</div><div class="stop-location">🦒 Afternoon Animals + GIRAFFE FEEDING!</div>
-<strong>Wild Africa Zone (Largest zone!):</strong><br>
-• Giraffes, Zebras, White Rhinos<br>
-• Lions, Cheetahs, African Painted Dogs<br>
-<br>
-<strong>🦒 1:50 PM - GIRAFFE FEEDING TIME!</strong><br>
-• Feed giraffes by hand! (SGD 5-10)<br>
-• <strong>Your 4-year-old will be THRILLED!</strong><br>
-• Unforgettable experience!<br>
-<br>
-• <strong>Frozen Tundra</strong> - Polar bears swimming!<br>
-• <strong>Australasia</strong> - Kangaroos hopping<br>
-<div class="image-placeholder">📸 Giraffe Feeding<br>Feed Giraffes By Hand!</div>
-<a href="https://www.google.com/search?q=singapore+zoo+giraffe+feeding&tbm=isch" target="_blank" class="photo-link">🔍 View Giraffe Feeding Photos</a>
-</div></div>
+            <div class="transport">🚌 Take the 8:00 AM Mandai Khatib Shuttle to the Zoo (15 mins)</div>
 
-<div class="stop"><span class="stop-number">6</span><div><div class="stop-time">🕞 2:30 PM - 4:00 PM</div><div class="stop-location">💦 RAINFOREST KIDZWORLD - Water Play!</div>
-<strong>Splash Safari Water Play Area:</strong><br>
-• <strong>Your 4-year-old will LOVE THIS!</strong><br>
-• Water fountains, spray pools, water slides<br>
-• Safe shallow water<br>
-• Change child into swim clothes!<br>
-• Let child play freely, burn energy<br>
-• Parents supervise from shaded benches<br>
-<br>
-<strong>Also includes:</strong><br>
-• Goat feeding<br>
-• Pony rides<br>
-• Playground<br>
-<div class="image-placeholder">📸 Rainforest Kidzworld<br>Kids Water Play Paradise!</div>
-<a href="https://www.google.com/search?q=singapore+zoo+rainforest+kidzworld+splash+safari&tbm=isch" target="_blank" class="photo-link">🔍 View Rainforest Kidzworld Photos</a>
-</div></div>
+            <div class="stop highlight">
+                <div class="stop-number">3</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕣 8:30 AM - 9:15 AM</div>
+                    <div class="stop-location">🦦 Treetops Trail, Australasia & Great Rift Valley</div>
+                    <a href="https://www.google.com/maps/dir/Khatib+MRT+Station,+Singapore/Singapore+Zoo,+80+Mandai+Lake+Road"
+                        target="_blank" class="map-link">🗺️ Get Directions to Singapore Zoo</a>
+                    <h4 style="margin-top: 15px; margin-bottom: 5px;">🌳 Treetops Trail</h4>
+                    <div class="stop-activity">
+                        <strong>Arrive right when gates open at 8:30 AM!</strong><br>
+                        • Walk the Treetops Trail to see Siamang primates swinging
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://thumbs.dreamstime.com/b/treetop-trail-inside-singapore-zoo-mar-replicates-rainforest-habitat-to-showcase-animals-different-forest-layers-366784960.jpg"
+                            alt="Treetops Trail Boardwalk" class="landmark-photo">
+                        <div class="photo-credit">Photo: Treetops Trail</div>
 
-<div class="stop"><span class="stop-number">7</span><div><div class="stop-time">🕓 4:00 PM - 5:00 PM</div><div class="stop-location">🦁 Final Animals & Gift Shop</div>
-• Big cats one more time<br>
-• Any animals you want to revisit<br>
-• Gift shop for souvenirs<br>
-• Start heading to exit by 4:45 PM</div></div>
+                        <img src="https://www.zoochat.com/community/media/treetops-trail-singapore-zoo.53246/full?d=0"
+                            alt="Treetops Trail Enclosure" class="landmark-photo">
+                        <div class="photo-credit">Photo: Treetops Trail Canopy</div>
 
-<div class="stop"><span class="stop-number">8</span><div><div class="stop-time">🕔 5:00 PM - 6:00 PM</div><div class="stop-location">🍜 Dinner Near Zoo</div>
-Food court at Causeway Point mall (near Khatib MRT)<br>
-OR pack dinner for MRT ride home<br>
-Cost: SGD 30-40</div></div>
+                        <img src="https://isomer-user-content.by.gov.sg/30/2cfb36ff-d8fd-494b-a222-af3c178ac3fd/4_Wildlife_4A_Encountering%20wildlife_Otters_Smooth-coated%20otters%20(3)%20-%20Max%20Khoo%20(banner).JPG"
+                            alt="Otters at Singapore Zoo" class="landmark-photo">
+                        <div class="photo-credit">Photo: Singapore Zoo Otters</div>
+                    </div>
 
-<div class="stop"><span class="stop-number">9</span><div><div class="stop-time">🕕 6:00 PM onwards</div><div class="stop-location">🏨 Return to Hotel</div>
-Free shuttle back to Khatib → MRT to hotel<br>
-Everyone exhausted but happy!<br>
-Quick hotel rest, pack for tomorrow<br>
-Early bedtime - Final day tomorrow!</div></div>
+                    <h4 style="margin-top: 15px; margin-bottom: 5px;">🦘 Australasia</h4>
+                    <div class="stop-activity">
+                        • Head down the west path to see tree kangaroos and wallabies in Australasia
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://wanderon-images.gumlet.io/blogs/new/2025/01/22/australasia.jpg"
+                            alt="Australasia Kangaroos" class="landmark-photo">
+                        <div class="photo-credit">Photo: Australasia Wildlife</div>
 
-<div class="summary">
-<h3>📊 DAY 6 SUMMARY - SINGAPORE ZOO!</h3>
-<p><strong>Total Time:</strong> 8 hours at world's best rainforest zoo!</p>
-<p><strong>Highlights:</strong> Giraffe Feeding + Water Play + 300+ Animals!</p>
-<p><strong>Total Cost:</strong> SGD 193-255</p>
-<p><strong>Best Moments:</strong> Feeding giraffes & splashing in Kidzworld! 🦒💦</p>
-</div>
-</div>
+                        <img src="https://www.mandai.com/content/dam/mandai/singapore-zoo/animals-zones/australasia-1x1.jpg"
+                            alt="Australasia Zone Route" class="landmark-photo">
+                        <div class="photo-credit">Photo: Australasia Exhibit</div>
+                    </div>
+
+                    <h4 style="margin-top: 15px; margin-bottom: 5px;">🐒 Great Rift Valley</h4>
+                    <div class="stop-activity">
+                        • Continue north to find the baboons and ibex in the Great Rift Valley of Ethiopia.
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://static.wikia.nocookie.net/naturerules1/images/9/96/Great_rift_valley_of_ethiopia_singapore_zoo.jpg/revision/latest/scale-to-width-down/1600?cb=20250225125711"
+                            alt="Great Rift Valley Exhibit" class="landmark-photo">
+                        <div class="photo-credit">Photo: Great Rift Valley</div>
+
+                        <img src="https://www.zoochat.com/community/media/hamadryas-baboon-exhibit-great-rift-valley-of-ethiopia-singapore-zoo.53596/full"
+                            alt="Hamadryas Baboon Exhibit" class="landmark-photo">
+                        <div class="photo-credit">Photo: Hamadryas Baboons</div>
+
+                        <a href="https://www.google.com/search?q=singapore+zoo+great+rift+valley+baboons&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Great Rift Valley Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                    <span class="cost">💰 SGD 100-130 (all tickets)</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk North to Elephants of Asia</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">4</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕤 9:30 AM - 9:50 AM</div>
+                    <div class="stop-location">🐘 Elephant Feeding!</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Singapore+Zoo+Elephants+of+Asia"
+                        target="_blank" class="map-link">🗺️ Locate Elephants of Asia</a>
+                    <div class="stop-activity">
+                        <strong>🐘 9:30 AM - ELEPHANT FEEDING TIME!</strong><br>
+                        • Observe the magnificent Asian elephants in a Burmese-style setting<br>
+                        • Watch them as they are fed and interact with keepers<br>
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://thumbs.dreamstime.com/b/singapore-zoo-elephants-asia-sign-mandai-sg-apr-april-184724149.jpg"
+                            alt="Elephants of Asia Sign" class="landmark-photo">
+                        <div class="photo-credit">Photo: Elephants of Asia Exhibit</div>
+
+                        <img src="https://www.mandai.com/content/dam/mandai/singapore-zoo/things-to-do/animal-feeding-elephant-listing-900x600.jpg"
+                            alt="Elephant Feeding" class="landmark-photo">
+                        <div class="photo-credit">Photo: Elephant Feeding Encounter</div>
+
+                        <a href="https://www.google.com/search?q=singapore+zoo+elephants+of+asia&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Elephant Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 20 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk past Primate Kingdom to Amphitheatre</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">5</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕥 10:30 AM - 10:50 AM</div>
+                    <div class="stop-location">🦭 Splash Safari Show (Must See!)</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Shaw+Foundation+Amphitheatre,+Singapore+Zoo"
+                        target="_blank" class="map-link">🗺️ Locate Amphitheatre</a>
+                    <div class="stop-activity">
+                        • <strong>Show Starts exactly at 10:30 AM</strong><br>
+                        • Shaw Foundation Amphitheatre<br>
+                        • Watch the amazing Californian sea lions perform tricks<br>
+                        • <strong>Your 4-year-old will LOVE this!</strong><br>
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://www.roowanders.com/wp-content/uploads/2024/01/Mandai-Zoo-Amphitheatre-1024x768.jpg"
+                            alt="Splash Safari Show Stage" class="landmark-photo">
+                        <div class="photo-credit">Photo: Splash Safari Amphitheatre</div>
+
+                        <img src="https://www.mandai.com/content/dam/mandai/singapore-zoo/presentations/splash-safari-1200x630.jpg"
+                            alt="Splash Safari Sea Lion" class="landmark-photo">
+                        <div class="photo-credit">Photo: Splash Safari Sea Lion</div>
+
+                        <a href="https://www.google.com/search?q=singapore+zoo+splash+safari+show&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Splash Safari Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 20 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk East / South towards Reptile Kingdom</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">6</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕚 10:50 AM - 11:50 AM</div>
+                    <div class="stop-location">🦎 RepTopia & Reptile Kingdom</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=RepTopia,+Singapore+Zoo" target="_blank"
+                        class="map-link">🗺️ Locate RepTopia</a>
+
+                    <h4 style="margin-top: 15px; margin-bottom: 5px;">🦎 RepTopia</h4>
+                    <div class="stop-activity">
+                        • Walk south and slightly east from the amphitheatre.<br>
+                        • See Komodo Dragons and cool off indoors.
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://thumbs.dreamstime.com/b/singapore-mar-sign-reptopia-zoo-home-to-over-species-reptiles-amphibian-366784849.jpg"
+                            alt="RepTopia Sign" class="landmark-photo">
+                        <div class="photo-credit">Photo: RepTopia Exhibit</div>
+
+                        <img src="https://www.zoochat.com/community/media/reptopia-indo-pacific.362974/full?d=1495897954"
+                            alt="RepTopia Indoor Exhibit" class="landmark-photo">
+                        <div class="photo-credit">Photo: RepTopia Indo-Pacific</div>
+                    </div>
+
+                    <h4 style="margin-top: 15px; margin-bottom: 5px;">🐢 Reptile Kingdom & Tortoise Shell-ter</h4>
+                    <div class="stop-activity">
+                        • Explore the outdoor Reptile Kingdom habitats nearby.<br>
+                        • Pass by the Tortoise Shell-ter on your way back toward the center of the park.
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://www.mandai.com/content/dam/wrs/singapore-zoo/zones/reptile-kingdom/animals-highlights/komodo-dragon-highlights-709x523.jpg"
+                            alt="Komodo Dragon" class="landmark-photo">
+                        <div class="photo-credit">Photo: Komodo Dragon</div>
+
+                        <img src="https://www.mandai.com/content/dam/wrs/singapore-zoo/zones/reptile-kingdom/animals-highlights/giant-tortoise-highlights-709x523.jpg"
+                            alt="Giant Tortoise" class="landmark-photo">
+                        <div class="photo-credit">Photo: Giant Tortoise</div>
+                        <a href="https://www.google.com/search?q=singapore+zoo+reptile+kingdom&tbm=isch" target="_blank"
+                            class="photo-link">🔍 View Reptopia & Reptile Kingdom Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk South into the Park Center</div>
+
+            <div class="stop rest">
+                <div class="stop-number">7</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕛 12:00 PM - 1:00 PM</div>
+                    <div class="stop-location">🍜 Lunch at Ah Meng Restaurant</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ah+Meng+Restaurant,+Singapore+Zoo"
+                        target="_blank" class="map-link">🗺️ Locate Ah Meng Restaurant</a>
+                    <div class="stop-activity">
+                        • Located centrally in the zoo (off Tram Station 1).<br>
+                        • Air-conditioned seating available to cool down.<br>
+                        • Rest and recharge while avoiding the midday heat.
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://i0.wp.com/4.bp.blogspot.com/-60_0auIvaGQ/Up8OFwrGv3I/AAAAAAAADnA/h4AvSwr-Qf0/s1600/Photo%2B1.JPG"
+                            alt="Ah Meng Restaurant Entrance" class="landmark-photo">
+                        <div class="photo-credit">Photo: Ah Meng Restaurant</div>
+
+                        <img src="https://farm4.static.flickr.com/3542/3401606906_f500e0f155_o.jpg"
+                            alt="Ah Meng Restaurant Seating" class="landmark-photo">
+                        <div class="photo-credit">Photo: Ah Meng Seating Area</div>
+
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/67/1a/2f/experience-our-award.jpg?w=900&h=500&s=1"
+                            alt="Ah Meng Dining Experience" class="landmark-photo">
+                        <div class="photo-credit">Photo: Dining at Ah Meng</div>
+
+                        <img src="https://d3gw4aml0lneeh.cloudfront.net/assets/locations/12672/1OMTJisF5afY.jpg"
+                            alt="Ah Meng Food Highlights" class="landmark-photo">
+                        <div class="photo-credit">Photo: Ah Meng Food</div>
+
+                        <a href="https://www.google.com/search?q=singapore+zoo+ah+meng+restaurant&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Ah Meng Restaurant Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 30-40</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk adjacent to Restaurant</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">8</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕐 1:00 PM - 1:30 PM</div>
+                    <div class="stop-location">🦧 Orangutan Island & Boardwalk</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Orangutan+Island,+Singapore+Zoo"
+                        target="_blank" class="map-link">🗺️ Locate Orangutan Island</a>
+                    <div class="stop-activity">
+                        • Explore the free-ranging Orangutan Boardwalk just outside Ah Meng Restaurant.<br>
+                        • Watch them swing right above the paths in this signature zoo highlight!
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://global-geography.org/attach/Geography/Asia/Singapore/Pictures/Sentosa/Singapore_Zoo_-_Orangutan_3/SB0914_Orang_Utanjpg.jpg"
+                            alt="Orangutan Exhibit" class="landmark-photo">
+                        <div class="photo-credit">Photo: Orangutan Exhibit</div>
+                        <a href="https://www.google.com/search?q=singapore+zoo+orangutans&tbm=isch" target="_blank"
+                            class="photo-link">🔍 View Orangutan Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk East to Wild Africa</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">9</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕜 1:30 PM - 2:00 PM</div>
+                    <div class="stop-location">🦁 Wild Africa & Giraffe Feeding!</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Wild+Africa,+Singapore+Zoo" target="_blank"
+                        class="map-link">🗺️ Locate Wild Africa</a>
+                    <div class="stop-activity">
+                        • Explore the Wild Africa zone (Lions, Zebras, Rhinos)<br>
+                        <br>
+                        <strong>🦒 1:50 PM - GIRAFFE FEEDING TIME!</strong><br>
+                        • Buy food tokens early!<br>
+                        • Feed giraffes hand-to-mouth! (SGD 5-10)<br>
+                        • Your 4-year-old will be THRILLED! Have camera ready!
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://leisureandme.com/wp-content/uploads/2015/07/Singapore-Zoo-61.jpg"
+                            alt="Wild Africa Entrance" class="landmark-photo">
+                        <div class="photo-credit">Photo: Wild Africa Exhibit</div>
+
+                        <img src="https://leisureandme.com/wp-content/uploads/2015/07/Singapore-Zoo-Wild-Africa.jpg"
+                            alt="Zebras at Wild Africa" class="landmark-photo">
+                        <div class="photo-credit">Photo: Zebras at Wild Africa</div>
+
+                        <img src="https://www.mandai.com/content/dam/mandai/singapore-zoo/things-to-do/giraffe-feeding-listing-900x600.jpg"
+                            alt="Giraffe Feeding Encounter" class="landmark-photo">
+                        <div class="photo-credit">Photo: Giraffe Feeding</div>
+
+                        <a href="https://www.google.com/search?q=singapore+zoo+giraffe+feeding&tbm=isch" target="_blank"
+                            class="photo-link">🔍 View Giraffe Feeding Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                    <span class="cost">💰 SGD 5-10</span>
+                </div>
+            </div>
+
+            <div class="transport">🚊 Take Tram from Station 3 to Station 1, Walk North to Show!</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">10</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕝 2:30 PM - 3:00 PM</div>
+                    <div class="stop-location">🦅 Into the Wild Presentation</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Shaw+Foundation+Amphitheatre,+Singapore+Zoo"
+                        target="_blank" class="map-link">🗺️ Locate Amphitheatre</a>
+                    <div class="stop-activity">
+                        • <strong>Show Starts exactly at 2:30 PM</strong><br>
+                        • Shaw Foundation Amphitheatre<br>
+                        • Fantastic show featuring diverse animals showing off natural abilities<br>
+                        • First use of the tram helped save tired legs getting back across the park!
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://www.mandai.com/content/dam/mandai/singapore-zoo/presentations/rainforest-fights-back-1200x630.jpg"
+                            alt="Into the Wild Presentation" class="landmark-photo">
+                        <div class="photo-credit">Photo: Into the Wild Show</div>
+                        <a href="https://www.google.com/search?q=singapore+zoo+into+the+wild+presentation&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Into the Wild Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk Northeast towards Fragile Forest / Kidzworld</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">11</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕒 3:00 PM - 4:00 PM</div>
+                    <div class="stop-location">🦋 Fragile Forest & KidzWorld</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Fragile+Forest,+Singapore+Zoo"
+                        target="_blank" class="map-link">🗺️ Locate Fragile Forest</a>
+
+                    <h4 style="margin-top: 15px; margin-bottom: 5px;">🦋 Fragile Forest</h4>
+                    <div class="stop-activity">
+                        • Incredible free-flight biodome where lemurs, flying foxes, and sloths roam around you!
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://www.mandai.com/content/dam/wrs/singapore-zoo/zones/sign-post/1x1/fragile-forest-signpost-1x1.jpg"
+                            alt="Fragile Forest Signpost" class="landmark-photo">
+                        <div class="photo-credit">Photo: Fragile Forest Exhibit</div>
+                        <a href="https://www.google.com/search?q=singapore+zoo+fragile+forest&tbm=isch" target="_blank"
+                            class="photo-link">🔍 View Fragile Forest Photos</a>
+                    </div>
+
+                    <h4 style="margin-top: 15px; margin-bottom: 5px;">💦 KidzWorld</h4>
+                    <div class="stop-activity">
+                        • <strong>KidzWorld Water Play</strong> - A perfect late-afternoon cool down for your
+                        4-year-old!<br>
+                        • Change child into swim clothes! Parents supervise from shaded benches.
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://www.mandai.com/content/dam/mandai/singapore-zoo/animals-zones/kidzworld/kidzworld-play-trees-512x512.jpg.transform/compress/resize512/img.jpg"
+                            alt="KidzWorld Play Trees" class="landmark-photo">
+                        <div class="photo-credit">Photo: KidzWorld Play Area</div>
+
+                        <img src="https://d3gw4aml0lneeh.cloudfront.net/assets/locations/S1Exh8WIp9lA.jpg"
+                            alt="KidzWorld Water Play" class="landmark-photo">
+                        <div class="photo-credit">Photo: KidzWorld Splash Zone</div>
+                        <a href="https://www.google.com/search?q=singapore+zoo+kidzworld&tbm=isch" target="_blank"
+                            class="photo-link">🔍 View KidzWorld Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                </div>
+            </div>
+
+            <div class="transport">🚊 Take Tram from Station 4 & Exit (via Station 2 & 1)</div>
+
+            <div class="stop">
+                <div class="stop-number">12</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕓 4:00 PM - 5:00 PM</div>
+                    <div class="stop-location">🛍️ Final Souvenirs & Park Exit</div>
+                    <div class="stop-activity">
+                        • <strong>Tram ride back to the entrance! (Last tram leaves Station 1 at 5:30 PM)</strong><br>
+                        • Change out of swim clothes into dry clothes<br>
+                        • Stop by the main gift shop near the exit<br>
+                        • Buy a plushie/souvenir for the 4-year old<br>
+                        • Start heading to the shuttle stop
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                </div>
+            </div>
+
+            <div class="transport">🚇 Travel to Orchard Road (North-South Line)</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">13</div>
+                <div class="stop-content">
+                    <div class="stop-time">� 5:00 PM - 9:00 PM</div>
+                    <div class="stop-location">🌟 Dinner & Stroll at Orchard Road</div>
+                    <a href="https://www.google.com/maps/dir/Singapore+Zoo,+Singapore/Orchard+Road,+Singapore"
+                        target="_blank" class="map-link">🗺️ Get Directions to Orchard Road</a>
+                    <div class="stop-activity">
+                        • Take the MRT directly from Khatib to Orchard MRT (no transfers needed).<br>
+                        • Explore the dazzling lights, giant malls, and indoor playgrounds of Orchard Road.<br><br>
+                        <strong>Affordable Dining Recommendations:</strong><br>
+                        • <strong>Food Republic at Wisma Atria:</strong> A beautiful, premium food court offering
+                        classic local dishes at very reasonable prices. Great for families.<br>
+                        • <strong>Lucky Plaza (Ayam Penyet Ria):</strong> Famous for authentic, delicious Indonesian
+                        smashed fried chicken. Very budget-friendly.<br>
+                        • <strong>Don Don Donki (Orchard Central):</strong> Grab some fun Japanese bento boxes, hot
+                        ready-to-eat meals, and sweet potatoes for a cheap, interactive dinner!
+                    </div>
+                </div>
+            </div>
+
+            <div class="transport">🚇 Travel to Hotel</div>
+
+            <div class="stop rest">
+                <div class="stop-number">14</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕘 9:00 PM</div>
+                    <div class="stop-location">🏨 Return to Hotel</div>
+                    <a href="https://www.google.com/maps/dir/Khatib+MRT+Station,+Singapore/Furama+RiverFront+Hotel,+Singapore"
+                        target="_blank" class="map-link">🗺️ Get Directions to Hotel</a>
+                    <div class="stop-activity">
+                        • Time to finally rest! Everyone exhausted but happy!<br>
+                        • Quick hotel rest, pack for tomorrow!<br>
+                        • Bedtime - Final day tomorrow!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="summary">
+            <h3>📊 DAY 6 SUMMARY - SINGAPORE ZOO!</h3>
+            <p><strong>Total Time:</strong> 8.5 hours at world's best rainforest zoo!</p>
+            <p><strong>Highlights:</strong> Tram-Assisted Route! Elephant + Giraffe Feedings, TWO Shows!</p>
+            <p><strong>Total Cost:</strong> SGD 193-255</p>
+            <p><strong>Best Moments:</strong> Splash Safari sea lions & Into the Wild show 🦭🦅</p>
+        </div>
+
+    </div>
 </body>
+
 </html>

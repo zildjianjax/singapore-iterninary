@@ -17,15 +17,15 @@
 
 ### Detailed Schedule
 
-**7:30 AM - 8:15 AM: Breakfast at Maxwell Food Centre**
-- Walk from Furama RiverFront Hotel (20 min)
-- Chicken Rice, Roti Prata, Kaya Toast
-- Quick hearty breakfast before theme park
-- Cost: SGD 18-25
+**7:30 AM - 8:15 AM: Breakfast at Tiong Bahru Market**
+- Walk from Furama RiverFront Hotel (15 min) or take Bus 123 (6 min)
+- **Must Try**: Jian Bo Shui Kueh (Rice cakes), Tiong Bahru Pau (Steamed buns), 178 Lor Mee
+- Experience Singapore's oldest housing estate with Art Deco architecture
+- Cost: SGD 15-25
 
 **8:15 AM - 9:45 AM: Travel to USS**
-- MRT from Chinatown to HarbourFront (15 min)
-- Sentosa Express to Resorts World (10 min)
+- **Recommended**: Bus 123 Direct from Tiong Bahru to Resorts World Sentosa (30 min) - Scenic & Easy!
+- OR: MRT from Tiong Bahru to Outram Park -> HarbourFront (25 min) + Sentosa Express
 - Arrive 15 min before opening to beat crowds
 
 **10:00 AM - 10:50 AM: MINION LAND (Zone 2) - First Stop!**
@@ -114,11 +114,12 @@
 
 ### Detailed Schedule
 
-**7:30 AM - 8:15 AM: Breakfast at Maxwell Food Centre**
+**7:30 AM - 8:15 AM: Breakfast at Tiong Bahru Market**
 - Same as Prioritized version
+- Explore the wet market on ground floor if time permits
 
 **8:15 AM - 9:45 AM: Travel to USS**
-- Same as Prioritized version
+- Same as Prioritized version (Bus 123 recommended)
 
 **10:00 AM - 10:55 AM: MINION LAND (Zone 2) - First Stop!**
 - Silly Swirly (spinning ride)

@@ -1,52 +1,544 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Day 5 - S.E.A. Aquarium & Skyline Luge</title>
-<style>
-body{font-family:'Segoe UI',Tahoma,sans-serif;max-width:1200px;margin:0 auto;padding:20px;background:linear-gradient(135deg,#00BCD4 0%,#8BC34A 100%);min-height:100vh}.container{background:white;border-radius:20px;padding:30px;box-shadow:0 10px 40px rgba(0,0,0,0.2)}h1{color:#00BCD4;text-align:center;font-size:2.5em;margin-bottom:10px}.subtitle{text-align:center;color:#666;font-size:1.2em;margin-bottom:30px}.stop{padding:20px;background:#f8f9fa;border-radius:15px;margin:20px 0;border-left:5px solid #00BCD4}.stop-number{background:#00BCD4;color:white;width:50px;height:50px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold}.stop-time{color:#00BCD4;font-weight:bold;font-size:1.2em;margin:10px 0}.stop-location{font-size:1.3em;font-weight:bold;color:#333;margin:10px 0}.photo-link{display:block;margin:15px 0;color:#00BCD4;text-decoration:none;font-weight:bold;padding:10px;background:#E0F7FA;border-radius:8px;text-align:center}.photo-link:hover{background:#B2EBF2}.image-placeholder{width:100%;max-width:500px;height:300px;background:linear-gradient(135deg,#00BCD4 0%,#8BC34A 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2em;font-weight:bold;text-align:center;padding:20px;margin:15px 0}.summary{margin-top:30px;padding:20px;background:linear-gradient(135deg,#00BCD4 0%,#8BC34A 100%);color:white;border-radius:15px;text-align:center}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5 - S.E.A. Aquarium & Skyline Luge - Route Map with Photos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            /* Aquarium/Nature Theme: Cyan to Green */
+            background: linear-gradient(135deg, #00BCD4 0%, #8BC34A 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #00838F;
+            /* Dark Cyan */
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .route-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stop {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #00BCD4;
+            transition: transform 0.3s ease;
+        }
+
+        .stop:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stop-number {
+            background: #00BCD4;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .stop-content {
+            flex: 1;
+        }
+
+        .stop-time {
+            color: #00BCD4;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .stop-location {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .stop-activity {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .stop-duration,
+        .cost {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #E0F7FA;
+            color: #006064;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .transport {
+            text-align: center;
+            color: #00838F;
+            font-weight: bold;
+            padding: 10px;
+            background: linear-gradient(90deg, transparent, #E0F7FA, transparent);
+            border-radius: 10px;
+        }
+
+        .highlight {
+            border-left-color: #FF9800;
+            /* Orange for highlights */
+        }
+
+        .highlight .stop-number {
+            background: #FF9800;
+        }
+
+        .rest {
+            border-left-color: #8BC34A;
+            /* Green for rest */
+        }
+
+        .rest .stop-number {
+            background: #8BC34A;
+        }
+
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #00BCD4 0%, #8BC34A 100%);
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .summary h3 {
+            margin-top: 0;
+        }
+
+        .new-badge {
+            display: inline-block;
+            background: #ffd43b;
+            color: #333;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .landmark-photo {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: linear-gradient(135deg, #00BCD4 0%, #00838F 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 15px 0;
+        }
+
+        .photo-link {
+            display: block;
+            margin: 15px 0;
+            color: #00838F;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            background: #E0F7FA;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .photo-link:hover {
+            background: #B2EBF2;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin: 10px 0;
+            color: #FF5722;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background: #FFCCBC;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+
+        .map-link:hover {
+            background: #FFAB91;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(255, 87, 34, 0.3);
+        }
+
+        .photo-credit {
+            font-size: 0.75em;
+            color: #999;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .photo-container {
+            margin: 15px 0;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+
+            .subtitle {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+
+            .route-container {
+                gap: 15px;
+            }
+
+            .stop {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+
+            .stop:hover {
+                transform: none;
+            }
+
+            .stop-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+
+            .stop-time {
+                font-size: 1em;
+            }
+
+            .stop-location {
+                font-size: 1.1em;
+                line-height: 1.4;
+            }
+
+            .landmark-photo {
+                height: 200px;
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
-<h1>📍 DAY 5 - Saturday, March 21, 2026</h1>
-<div class="subtitle">S.E.A. Aquarium + Skyline Luge Sentosa! 🐠🛷</div>
+    <div class="container">
+        <h1>📍 DAY 5 - Saturday, March 21, 2026</h1>
+        <div class="subtitle">S.E.A. Aquarium + Skyline Luge Sentosa! 🐠🛷 <span class="new-badge">FUN DAY!</span></div>
 
-<div class="stop"><span class="stop-number">1</span><div><div class="stop-time">🕖 7:00 AM - 7:45 AM</div><div class="stop-location">🍜 Breakfast</div>Quick breakfast at Tiong Bahru or Maxwell Food Centre • Cost: SGD 18-25</div></div>
+        <div class="route-container">
 
-<div class="stop"><span class="stop-number">2</span><div><div class="stop-time">🕘 9:00 AM - 11:30 AM</div><div class="stop-location">🐠 S.E.A. Aquarium - EARLY ENTRY!</div>
-• Arrive BEFORE 10 AM opening!<br>
-• Almost EMPTY!<br>
-<strong>Highlights:</strong><br>
-• Open Ocean Zone - 36m viewing panel!<br>
-• Ancient Waters - LIFE-SIZED DINOSAUR ANIMATRONICS!<br>
-• Moon Jellies - Hypnotic jellyfish<br>
-• Touch pools & interactive areas<br>
-<div class="image-placeholder">📸 S.E.A. Aquarium<br>World's Largest Aquarium</div>
-<a href="https://www.google.com/search?q=sea+aquarium+singapore+sentosa+open+ocean&tbm=isch" target="_blank" class="photo-link">🔍 View S.E.A. Aquarium Photos</a>
-Cost: SGD 110-140 (tickets)</div></div>
+            <div class="stop">
+                <div class="stop-number">1</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 7:00 AM - 7:45 AM</div>
+                    <div class="stop-location">🍜 Breakfast</div>
+                    <div class="stop-activity">
+                        • Quick breakfast at Tiong Bahru or Maxwell Food Centre<br>
+                        • Local coffee (Kopi) and toast<br>
+                        • Prepare for day at Sentosa
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                    <span class="cost">💰 SGD 18-25</span>
+                </div>
+            </div>
 
-<div class="stop"><span class="stop-number">3</span><div><div class="stop-time">🕧 12:00 PM - 1:00 PM</div><div class="stop-location">🍜 Lunch at Malaysian Food Street</div>Authentic Malaysian food • Nostalgic 1960s atmosphere • Air-conditioned • Cost: SGD 35-50</div></div>
+            <div class="transport">🚕 Taxi/Grab to Sentosa (15-20 min)</div>
 
-<div class="stop"><span class="stop-number">4</span><div><div class="stop-time">🕑 2:00 PM - 4:30 PM</div><div class="stop-location">🛷 Skyline Luge Adventure!</div>
-<strong>Your 4-year-old rides WITH parent as passenger!</strong><br>
-• Skyride chairlift up (scenic views!)<br>
-• Jungle Trail luge (638m, family-friendly)<br>
-• Dragon Trail luge (688m, more thrilling!)<br>
-• Multiple rides - as many as you want!<br>
-<div class="image-placeholder">📸 Skyline Luge Sentosa<br>Fun for All Ages!</div>
-<a href="https://www.google.com/search?q=skyline+luge+sentosa+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Skyline Luge Photos</a>
-Cost: SGD 60-80 (4-5 rides)</div></div>
+            <div class="stop highlight">
+                <div class="stop-number">2</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕘 9:00 AM - 11:30 AM</div>
+                    <div class="stop-location">🐠 S.E.A. Aquarium - DEEP DIVE!</div>
+                    <a href="https://www.google.com/maps/search/S.E.A.+Aquarium+Singapore/@1.2582736,103.8202381,17z"
+                        target="_blank" class="map-link">🗺️ Get Directions</a>
+                    <div class="stop-activity">
+                        <strong>Early Entry Strategy (10 AM Sharp!)</strong><br>
+                        • Head straight to the Open Ocean Habitat first to beat crowds!<br>
+                        • Then loop back to the start.
+                    </div>
 
-<div class="stop"><span class="stop-number">5</span><div><div class="stop-time">🕟 4:30 PM - 5:30 PM</div><div class="stop-location">🍕 Dinner at Sentosa</div>Food court or restaurant at Sentosa • Relax after active day • Cost: SGD 35-50</div></div>
+                    <strong>🚢 Zone 1: Shipwreck Habitat</strong><br>
+                    <div class="stop-activity">
+                        • See how nature reclaims man-made structures.<br>
+                        • Look for: <strong>Zebra Sharks</strong> and <strong>Schooling Fish</strong>.
+                    </div>
+                    <div class="photo-container">
+                        <div class="image-placeholder"
+                            style="background-image: url('https://media.resortsworldsentosa.com/image/upload/v1/RWS/Inv/Attractions/SEAA/SEAA1.jpg'); background-size: cover; background-position: center;">
+                            📸 Shipwreck Habitat<br>(Zebra Sharks)
+                        </div>
+                        <a href="https://www.google.com/search?q=sea+aquarium+singapore+shipwreck+habitat&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Shipwreck Photos</a>
+                    </div>
 
-<div class="stop"><span class="stop-number">6</span><div><div class="stop-time">🕕 6:00 PM onwards</div><div class="stop-location">🏨 Return to Hotel</div>MRT back to hotel • Swimming & relaxation • Early bedtime</div></div>
+                    <strong>🐡 Zone 2: School of Fish & Coral Garden</strong><br>
+                    <div class="stop-activity">
+                        • <strong>Coral Garden:</strong> Colorful cylindrical tank.<br>
+                        • <strong>Discovery Touch Pool:</strong> Touch knobbly sea stars and sea cucumbers! (Great for
+                        kids!)
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Discovery_Touch_Pool%2C_S.E.A._Aquarium%2C_Marine_Life_Park%2C_Resorts_World_Sentosa%2C_Singapore_-_20130105-01.JPG"
+                            alt="Discovery Touch Pool" class="landmark-photo">
+                        <div class="photo-credit">Photo: Discovery Touch Pool (Wikimedia)</div>
+                    </div>
 
-<div class="summary">
-<h3>📊 DAY 5 SUMMARY - AQUARIUM & LUGE!</h3>
-<p><strong>Main Activities:</strong> S.E.A. Aquarium (Dinosaurs!) + Skyline Luge (Multiple Rides!)</p>
-<p><strong>Total Cost:</strong> SGD 288-375</p>
-<p><strong>Highlight:</strong> Your child will LOVE the luge rides! 🛷</p>
-</div>
-</div>
+                    <strong>🌊 Zone 3: Open Ocean Habitat (The BIG ONE!)</strong><br>
+                    <div class="stop-activity">
+                        • <strong>The Centerpiece:</strong> 36m wide viewing panel.<br>
+                        • <strong>Look for:</strong> Reef Manta Rays, Goliath Grouper, Leopard Shark.<br>
+                        • <em>Tip: Sit on the floor and just watch the gentle giants glide by.</em>
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://media.resortsworldsentosa.com/image/upload/v1/RWS/Inv/Attractions/SEAA/SEAA_OpenOceanHabitat_Main.jpg"
+                            alt="Open Ocean Habitat" class="landmark-photo">
+                        <div class="photo-credit">Photo: S.E.A. Aquarium Open Ocean</div>
+                    </div>
+
+                    <strong>🔮 Zone 4: Ocean Diversity (Jellyfish!)</strong><br>
+                    <div class="stop-activity">
+                        • <strong>Sea Jellies:</strong> Mesmerizing color-changing lights.<br>
+                        • <strong>Fried Egg Jellyfish:</strong> Look for the yellow center!<br>
+                        • <strong>Alien-like creatures:</strong> Weedy Sea Dragons (Quirky Adaptations).
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Jellyfish_Gallery_in_the_S.E.A._Aquarium.jpg"
+                            alt="Jellyfish Gallery" class="landmark-photo">
+                        <div class="photo-credit">Photo: Jellyfish Gallery (Wikimedia)</div>
+                    </div>
+
+                    <strong>🦈 Zone 5: Shark Seas</strong><br>
+                    <div class="stop-activity">
+                        • Walk through the shark tunnel!<br>
+                        • Over 100 sharks from 12 species.<br>
+                        • Look for: Hammerhead Sharks and Silky Sharks.
+                    </div>
+
+                    <span class="stop-duration">⏱️ 2.5 hours</span>
+                    <span class="cost">💰 SGD 110-140 (Tickets)</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk or Sentosa Express</div>
+
+            <div class="stop">
+                <div class="stop-number">3</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕧 12:00 PM - 1:00 PM</div>
+                    <div class="stop-location">🍜 Lunch at Malaysian Food Street</div>
+                    <a href="https://www.google.com/maps/search/Malaysian+Food+Street+Sentosa" target="_blank"
+                        class="map-link">🗺️ Get Directions</a>
+                    <div class="stop-activity">
+                        • Authentic Malaysian hawker food<br>
+                        • Nostalgic 1960s shophouse atmosphere<br>
+                        • Fully air-conditioned!<br>
+                        • <em>Note: If under renovation, check Gourmet Park nearby.</em>
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/0c/83/8f/malaysian-food-street.jpg?w=1200&h=-1&s=1"
+                            alt="Malaysian Food Street Interior" class="landmark-photo">
+                        <div class="photo-credit">Photo: Malaysian Food Street</div>
+                        <a href="https://www.google.com/search?q=malaysian+food+street+sentosa+food&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Food Street Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 35-50</span>
+                </div>
+            </div>
+
+            <div class="transport">🚌 Beach Shuttle or Walk to Beach Station</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">4</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕑 2:00 PM - 4:30 PM</div>
+                    <div class="stop-location">🛷 Skyline Luge Adventure!</div>
+                    <a href="https://www.google.com/maps/search/Skyline+Luge+Sentosa" target="_blank"
+                        class="map-link">🗺️ Get Directions</a>
+                    <div class="stop-activity">
+                        • <strong>Family Fun:</strong> 4-year-old rides WITH parent!<br>
+                        • <strong>Skyride:</strong> Scenic chairlift up with island views<br>
+                        • <strong>Jungle Trail:</strong> 638m, easier for families<br>
+                        • <strong>Dragon Trail:</strong> 688m, more thrills!<br>
+                        • Do 3-4 rides to try different tracks
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://images.squarespace-cdn.com/content/v1/5938bfb0e3df28249258c4a1/1572935270275-01ZM612G26045EAB5T2L/Skyline-Luge-Sentosa-Review.jpg"
+                            alt="Skyline Luge Sentosa" class="landmark-photo">
+                        <div class="photo-credit">Photo: Skyline Luge Sentosa</div>
+                        <a href="https://www.google.com/search?q=skyline+luge+sentosa+singapore&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Skyline Luge Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 2.5 hours</span>
+                    <span class="cost">💰 SGD 60-80</span>
+                </div>
+            </div>
+
+            <div class="transport">🚶‍♂️ Walk to Siloso Beach Area</div>
+
+            <div class="stop highlight">
+                <div class="stop-number">5</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕟 4:30 PM - 5:30 PM</div>
+                    <div class="stop-location">🌅 Dinner at Sentosa (Sunset View)</div>
+                    <div class="stop-activity">
+                        • Relax after an active day<br>
+                        • Beach club or restaurant near Siloso/Palawan<br>
+                        • Enjoy the sea breeze and sunset views
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Sunset_at_Sentosa_Siloso_Beach_in_Singapore.jpg"
+                            alt="Sunset at Sentosa Siloso Beach" class="landmark-photo">
+                        <div class="photo-credit">Photo: Wikipedia (Sunset at Siloso Beach)</div>
+                        <a href="https://www.google.com/search?q=sentosa+sunset+dining+view&tbm=isch" target="_blank"
+                            class="photo-link">🔍 View Sentosa Sunset Spots</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 35-50</span>
+                </div>
+            </div>
+
+            <div class="transport">🚇 Sentosa Express to VivoCity → MRT to Hotel</div>
+
+            <div class="stop rest">
+                <div class="stop-number">6</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕕 6:00 PM onwards</div>
+                    <div class="stop-location">🏨 Return to Hotel</div>
+                    <div class="stop-activity">
+                        • Early return to Furama RiverFront<br>
+                        • Swimming pool time if energetic<br>
+                        • Rest and recover for tomorrow
+                    </div>
+                    <span class="stop-duration">⏱️ Evening</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="summary">
+            <h3>📊 DAY 5 SUMMARY - AQUARIUM & LUGE!</h3>
+            <p><strong>Main Activities:</strong> S.E.A. Aquarium (Dinosaurs!) + Skyline Luge (Multiple Rides!)</p>
+            <p><strong>Total Duration:</strong> 7:00 AM - 6:00 PM</p>
+            <p><strong>Total Cost:</strong> SGD 258-345 (approx)</p>
+            <p><strong>Highlight:</strong> Your child will LOVE the luge rides! 🛷</p>
+            <p style="margin-top: 20px;">
+                <a href="https://www.google.com/maps/dir/Furama+RiverFront+Hotel/S.E.A.+Aquarium/Skyline+Luge+Singapore/Furama+RiverFront+Hotel"
+                    target="_blank" style="color: white; font-weight: bold; text-decoration: underline;">
+                    🗺️ Click for Full Day Route Map
+                </a>
+            </p>
+        </div>
+
+        <div class="summary" style="margin-top: 20px; background: linear-gradient(135deg, #009688 0%, #4DB6AC 100%);">
+            <h3>🚕🚇 TRANSPORTATION COST BREAKDOWN</h3>
+
+            <h4 style="margin-top: 20px; text-decoration: underline;">OPTION A: TAXI / GRAB (Recommended for Speed)</h4>
+            <p style="text-align: left; margin: 15px 0;">
+                <strong>1️⃣ Hotel → Sentosa (S.E.A. Aquarium)</strong><br>
+                🚕 Taxi: SGD 15-20 (15 min)<br>
+                <em>Most convenient to go directly to basement carpark.</em>
+            </p>
+
+            <p style="text-align: left; margin: 15px 0;">
+                <strong>2️⃣ Sentosa Internal</strong><br>
+                🚌 Sentosa Bus / Express: FREE<br>
+                <em>Travel between Aquarium and Luge is free.</em>
+            </p>
+
+            <p style="text-align: left; margin: 15px 0;">
+                <strong>3️⃣ Sentosa → Hotel</strong><br>
+                🚕 Taxi: SGD 15-25 (Evening surcharge may apply)<br>
+                <em>Good if tired after Luge/Dinner.</em>
+            </p>
+
+            <p style="text-align: center; margin-top: 15px; font-weight: bold;">TOTAL: ~SGD 30-45 (per car)</p>
+
+            <h4 style="margin-top: 20px; text-decoration: underline;">OPTION B: PUBLIC TRANSPORT (Budget)</h4>
+            <p style="text-align: left; margin: 15px 0;">
+                <strong>1️⃣ Hotel → HarbourFront MRT</strong><br>
+                🚌 Bus/Walk: ~SGD 1.50 per adult<br>
+                <strong>2️⃣ HarbourFront → Sentosa (VivoCity)</strong><br>
+                🚇 Sentosa Express Monorail: SGD 4.00 per person<br>
+                <em>(Or walk across Boardwalk for FREE)</em>
+            </p>
+
+            <p style="text-align: center; margin-top: 15px; font-weight: bold;">TOTAL: ~SGD 12-15 (for 2 adults)</p>
+        </div>
+
+    </div>
 </body>
+
 </html>

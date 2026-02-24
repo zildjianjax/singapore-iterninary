@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,29 +14,34 @@
             background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
             min-height: 100vh;
         }
+
         .container {
             background: white;
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
+
         h1 {
             color: #FF6B6B;
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 10px;
         }
+
         .subtitle {
             text-align: center;
             color: #666;
             font-size: 1.2em;
             margin-bottom: 30px;
         }
+
         .route-container {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
+
         .stop {
             display: flex;
             align-items: flex-start;
@@ -46,10 +52,12 @@
             border-left: 5px solid #FF6B6B;
             transition: transform 0.3s ease;
         }
+
         .stop:hover {
             transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+
         .stop-number {
             background: #FF6B6B;
             color: white;
@@ -63,27 +71,33 @@
             font-weight: bold;
             flex-shrink: 0;
         }
+
         .stop-content {
             flex: 1;
         }
+
         .stop-time {
             color: #FF6B6B;
             font-weight: bold;
             font-size: 1.2em;
             margin-bottom: 5px;
         }
+
         .stop-location {
             font-size: 1.3em;
             font-weight: bold;
             color: #333;
             margin-bottom: 8px;
         }
+
         .stop-activity {
             color: #666;
             line-height: 1.6;
             margin-bottom: 10px;
         }
-        .stop-duration, .cost {
+
+        .stop-duration,
+        .cost {
             display: inline-block;
             padding: 5px 12px;
             background: #FFE8E8;
@@ -93,6 +107,7 @@
             font-weight: bold;
             margin-right: 10px;
         }
+
         .transport {
             text-align: center;
             color: #4ECDC4;
@@ -101,12 +116,15 @@
             background: linear-gradient(90deg, transparent, #E8F9F7, transparent);
             border-radius: 10px;
         }
+
         .highlight {
             border-left-color: #4ECDC4;
         }
+
         .highlight .stop-number {
             background: #4ECDC4;
         }
+
         .summary {
             margin-top: 30px;
             padding: 20px;
@@ -115,9 +133,11 @@
             border-radius: 15px;
             text-align: center;
         }
+
         .summary h3 {
             margin-top: 0;
         }
+
         .landmark-photo {
             width: 100%;
             max-width: 500px;
@@ -125,8 +145,9 @@
             object-fit: cover;
             border-radius: 10px;
             margin: 15px 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .photo-link {
             display: block;
             margin: 15px 0;
@@ -138,9 +159,11 @@
             border-radius: 8px;
             text-align: center;
         }
+
         .photo-link:hover {
             background: #FFD4D4;
         }
+
         .map-link {
             display: inline-block;
             margin: 10px 0;
@@ -152,20 +175,24 @@
             border-radius: 8px;
             font-size: 0.95em;
         }
+
         .map-link:hover {
             background: #D1F4EF;
             transform: translateY(-2px);
-            box-shadow: 0 2px 8px rgba(78,205,196,0.3);
+            box-shadow: 0 2px 8px rgba(78, 205, 196, 0.3);
         }
+
         .photo-credit {
             font-size: 0.75em;
             color: #999;
             font-style: italic;
             margin-top: 5px;
         }
+
         .photo-container {
             margin: 15px 0;
         }
+
         .image-placeholder {
             width: 100%;
             max-width: 500px;
@@ -180,9 +207,10 @@
             font-weight: bold;
             text-align: center;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             margin: 15px 0;
         }
+
         .version-switch-btn {
             display: inline-block;
             margin: 20px auto;
@@ -193,14 +221,16 @@
             border-radius: 30px;
             font-weight: bold;
             font-size: 1.1em;
-            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
         }
+
         .version-switch-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(102,126,234,0.6);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
+
         .version-switch-container {
             text-align: center;
             margin-bottom: 30px;
@@ -211,68 +241,86 @@
             body {
                 padding: 10px;
             }
+
             .container {
                 padding: 15px;
                 border-radius: 10px;
             }
+
             h1 {
                 font-size: 1.8em;
                 margin-bottom: 8px;
             }
+
             .subtitle {
                 font-size: 1em;
                 margin-bottom: 20px;
             }
+
             .route-container {
                 gap: 15px;
             }
+
             .stop {
                 flex-direction: column;
                 gap: 12px;
                 padding: 15px;
             }
+
             .stop:hover {
                 transform: none;
             }
+
             .stop-number {
                 width: 40px;
                 height: 40px;
                 font-size: 1.2em;
             }
+
             .stop-time {
                 font-size: 1em;
             }
+
             .stop-location {
                 font-size: 1.1em;
                 line-height: 1.4;
             }
+
             .stop-activity {
                 font-size: 0.95em;
                 line-height: 1.5;
             }
+
             .landmark-photo {
                 height: 200px;
                 margin: 10px 0;
             }
-            .photo-link, .map-link {
+
+            .photo-link,
+            .map-link {
                 font-size: 0.9em;
                 padding: 10px;
                 margin: 8px 0;
             }
-            .stop-duration, .cost {
+
+            .stop-duration,
+            .cost {
                 font-size: 0.85em;
                 padding: 4px 10px;
                 margin: 5px 5px 5px 0;
                 display: inline-block;
             }
+
             .transport {
                 font-size: 0.9em;
                 padding: 8px;
             }
+
             .summary {
                 padding: 15px;
                 font-size: 0.95em;
             }
+
             .image-placeholder {
                 height: 200px;
                 font-size: 1em;
@@ -284,15 +332,19 @@
             h1 {
                 font-size: 1.5em;
             }
+
             .subtitle {
                 font-size: 0.9em;
             }
+
             .stop-location {
                 font-size: 1em;
             }
+
             .landmark-photo {
                 height: 180px;
             }
+
             .image-placeholder {
                 height: 180px;
                 font-size: 0.9em;
@@ -300,6 +352,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>🎢 Day 2 - Universal Studios Singapore 🎬</h1>
@@ -318,28 +371,34 @@
                 <div class="stop-number">1</div>
                 <div class="stop-content">
                     <div class="stop-time">🌅 7:30 AM - 8:15 AM</div>
-                    <div class="stop-location">🍜 Breakfast at Maxwell Food Centre</div>
-                    <a href="https://www.google.com/maps/dir/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore/Maxwell+Food+Centre,+1+Kadayanallur+St,+Singapore" target="_blank" class="map-link">🗺️ Get Directions to Maxwell Food Centre</a>
+                    <div class="stop-location">🍜 Breakfast at Tiong Bahru Market</div>
+                    <a href="https://www.google.com/maps/dir/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore/Tiong+Bahru+Market,+30+Seng+Poh+Rd,+Singapore"
+                        target="_blank" class="map-link">🗺️ Get Directions to Tiong Bahru Market</a>
                     <div class="stop-activity">
-                        • Walk from Furama RiverFront Hotel (20 min)<br>
-                        • OR Chinatown Complex (15 min alternative)<br>
-                        • Chicken Rice, Roti Prata, Kaya Toast<br>
-                        • Quick hearty breakfast before theme park!<br>
-                        • Opens at 7 AM - perfect timing
+                        • Walk from Furama RiverFront Hotel (15 min)<br>
+                        • OR take Bus 123 from Hotel Miramar stop (5 min)<br>
+                        • <strong>Must Try:</strong> Jian Bo Shui Kueh, Tiong Bahru Pau, 178 Lor Mee<br>
+                        • Experience Singapore's oldest housing estate (Art Deco style)<br>
+                        • Opens at 6 AM - perfect for early breakfast
                     </div>
                     <div class="photo-container">
-                        <img src="https://johnnyafrica.com/wp-content/uploads/2023/06/image-19.jpg"
-                             alt="Maxwell Food Centre - Famous Hawker Centre"
-                             class="landmark-photo">
-                        <div class="photo-credit">Photo: Maxwell Food Centre</div>
-                        <a href="https://www.google.com/search?q=maxwell+food+centre+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Maxwell Food Centre Photos on Google Images</a>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Tiong_Bahru_Market_and_paws.jpg"
+                            alt="Tiong Bahru Market Facade" class="landmark-photo">
+                        <div class="photo-credit">Photo: Tiong Bahru Market</div>
+
+                        <img src="https://www.jianbo.com.sg/img/JB%20Products-01.jpg" alt="Jian Bo Shui Kueh"
+                            class="landmark-photo">
+                        <div class="photo-credit">Photo: Jian Bo Shui Kueh</div>
+
+                        <a href="https://www.google.com/search?q=tiong+bahru+market+food&tbm=isch" target="_blank"
+                            class="photo-link">🔍 View Tiong Bahru Food Photos</a>
                     </div>
                     <span class="stop-duration">⏱️ 45 min</span>
-                    <span class="cost">💰 SGD 18-25</span>
+                    <span class="cost">💰 SGD 15-25</span>
                 </div>
             </div>
 
-            <div class="transport">🚇 MRT to HarbourFront + Sentosa Express to USS (45 min)</div>
+            <div class="transport">🚌 Bus 123 Direct to Resorts World Sentosa (35 min) - Scenic & Easy!</div>
 
             <!-- STOP 2: ARRIVAL -->
             <div class="stop highlight">
@@ -347,20 +406,22 @@
                 <div class="stop-content">
                     <div class="stop-time">🎟️ 9:00 AM - 9:45 AM</div>
                     <div class="stop-location">🎫 Arrive at Universal Studios Singapore</div>
-                    <a href="https://www.google.com/maps/dir/Maxwell+Food+Centre,+1+Kadayanallur+St,+Singapore/Universal+Studios+Singapore,+8+Sentosa+Gateway,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from Maxwell Food Centre to USS</a>
+                    <a href="https://www.google.com/maps/dir/Tiong+Bahru+Market,+30+Seng+Poh+Rd,+Singapore/Universal+Studios+Singapore,+8+Sentosa+Gateway,+Singapore"
+                        target="_blank" class="map-link">🗺️ Get Directions from Tiong Bahru to USS</a>
                     <div class="stop-activity">
-                        <strong>Early Bird Strategy!</strong><br>
-                        • MRT from Chinatown to HarbourFront (15 min)<br>
-                        • Sentosa Express to Resorts World (10 min)<br>
-                        • Arrive 15 min before 10 AM opening<br>
-                        • Use restrooms, apply sunscreen<br>
-                        • Prepare stroller and diaper bag<br>
-                        • Park opens at 10 AM sharp!
+                        <strong>Scenic Direct Route!</strong><br>
+                        • Take <strong>Bus 123</strong> from 'Blk 1' or 'Opp Tiong Bahru Plaza'<br>
+                        • Alight directly at 'Resorts World Sentosa' or 'Village Hotel'<br>
+                        • No need to transfer or pay Sentosa Express fee!<br>
+                        • Alternatively: MRT to Outram Park -> HarbourFront<br>
+                        • Arrive 15 min before 10 AM opening
                     </div>
                     <div class="photo-container">
-                        <img src="https://d3gw4aml0lneeh.cloudfront.net/assets/locations/9kTC2X9mXLmE.jpg" alt="Universal Studios Singapore - Iconic Rotating Globe Entrance" class="landmark-photo">
+                        <img src="https://d3gw4aml0lneeh.cloudfront.net/assets/locations/9kTC2X9mXLmE.jpg"
+                            alt="Universal Studios Singapore - Iconic Rotating Globe Entrance" class="landmark-photo">
                         <div class="photo-credit">Photo: Universal Studios Singapore Rotating Globe</div>
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+entrance+globe&amp;tbm=isch" target="_blank" class="photo-link">🔍 View USS Entrance Photos on Google Images</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+entrance+globe&amp;tbm=isch"
+                            target="_blank" class="photo-link">🔍 View USS Entrance Photos on Google Images</a>
                     </div>
                     <span class="stop-duration">⏱️ 45 min (travel + prep)</span>
                 </div>
@@ -382,44 +443,42 @@
                     <strong>🎡 Silly Swirly (spinning ride - 92cm min)</strong><br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/play/universal-studios-singapore/minionland/carousel/silly_swirly_1200x675_v1-02.jpg?mw=1200"
-                             alt="Minion Land Silly Swirly"
-                             class="landmark-photo">
+                            alt="Minion Land Silly Swirly" class="landmark-photo">
                         <div class="photo-credit">Photo: Silly Swirly Ride</div>
 
                         <img src="https://offloadmedia.feverup.com/secretsingapore.co/wp-content/uploads/2025/02/14173447/Minion-Land-Singapore-guide-6.jpg"
-                             alt="Minion Land Silly Swirly 2"
-                             class="landmark-photo">
+                            alt="Minion Land Silly Swirly 2" class="landmark-photo">
                         <div class="photo-credit">Photo: Silly Swirly Ride</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+silly+swirly+minion+land&tbm=isch" target="_blank" class="photo-link">🔍 View Silly Swirly Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+silly+swirly+minion+land&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Silly Swirly Photos</a>
                     </div>
 
                     <strong>🐛 Buggie Boogie (bug-themed spinner - 92cm min)</strong><br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/play/universal-studios-singapore/minionland/minion-land_buggyboogie_desktop.jpg?h=1080&iar=0&w=1920&rev=ea8815db8f5c4d618013a549a186713c&sc_lang=en&hash=17F0261BC01146F52293235A20E65321"
-                             alt="Buggie Boogie Ride Photo 1"
-                             class="landmark-photo">
+                            alt="Buggie Boogie Ride Photo 1" class="landmark-photo">
                         <div class="photo-credit">Photo: Buggie Boogie Ride</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+buggie+boogie+minion+land&tbm=isch" target="_blank" class="photo-link">🔍 View Buggie Boogie Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+buggie+boogie+minion+land&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Buggie Boogie Photos</a>
                     </div>
 
                     <strong>🎬 Despicable Me Minion Mayhem (3D simulator - 102cm min)</strong><br>
                     <div class="photo-container">
                         <img src="https://www.asiaone.com/sites/default/files/inline-images/20250214_minion3_0.jpg"
-                             alt="Despicable Me Minion Mayhem"
-                             class="landmark-photo">
+                            alt="Despicable Me Minion Mayhem" class="landmark-photo">
                         <div class="photo-credit">Photo: Despicable Me Minion Mayhem</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+despicable+me+minion+mayhem&tbm=isch" target="_blank" class="photo-link">🔍 View Minion Mayhem Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+despicable+me+minion+mayhem&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Minion Mayhem Photos</a>
                     </div>
 
                     <strong>🎮 MUST PLAY: Space Killer Game Booth!</strong><br>
                     Fun carnival game beside Silly Swirly
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/play/universal-studios-singapore/minionland/grid-visual/space_killer_1200x900_v1-03.jpg?mh=600"
-                             alt="Space Killer Game Booth"
-                             class="landmark-photo">
+                            alt="Space Killer Game Booth" class="landmark-photo">
                         <div class="photo-credit">Photo: Space Killer Game Booth</div>
                     </div>
                     <br><br>
@@ -428,8 +487,7 @@
                     Ice cream or Minion-themed popcorn at Ice-Cream Stand
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/play/universal-studios-singapore/minionland/grid-visual/ice_cream_1200x900_v1-04.jpg?mh=600"
-                             alt="Minion Ice-Cream Stand"
-                             class="landmark-photo">
+                            alt="Minion Ice-Cream Stand" class="landmark-photo">
                         <div class="photo-credit">Photo: Minion Ice-Cream Stand</div>
                     </div>
 
@@ -455,51 +513,49 @@
                     Catch this entertaining show first thing!
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/play/universal-studios-singapore/shows/fortune-favors-the-furry/desktop-masthead-640-x-480.png?mw=1200"
-                             alt="Minion Land Silly Swirly"
-                             class="landmark-photo">
+                            alt="Minion Land Silly Swirly" class="landmark-photo">
                         <div class="photo-credit">Photo: Silly Swirly Ride</div>
                     </div><br><br>
 
                     <strong>🎢 Enchanted Airways (junior coaster - 92cm min)</strong><br>
                     <div class="photo-container">
-                        <img src="https://www.themeparkinsider.com/photos/images/PC021602.JPG"
-                             alt="Enchanted Airways"
-                             class="landmark-photo">
+                        <img src="https://www.themeparkinsider.com/photos/images/PC021602.JPG" alt="Enchanted Airways"
+                            class="landmark-photo">
                         <div class="photo-credit">Photo: Enchanted Airways</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+enchanted+airways+far+far+away&tbm=isch" target="_blank" class="photo-link">🔍 View Enchanted Airways Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+enchanted+airways+far+far+away&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Enchanted Airways Photos</a>
                     </div>
 
                     <strong>🎠 Magic Potion Spin (indoor Ferris wheel - gentle!)</strong><br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/universal-studios-singapore/rides/uss-far-far-away-magic-potion-spin750-x-422.jpg?mw=1200"
-                             alt="Magic Potion Spin"
-                             class="landmark-photo">
+                            alt="Magic Potion Spin" class="landmark-photo">
                         <div class="photo-credit">Photo: Magic Potion Spin</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+magic+potion+spin+far+far+away&tbm=isch" target="_blank" class="photo-link">🔍 View Magic Potion Spin Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+magic+potion+spin+far+far+away&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Magic Potion Spin Photos</a>
                     </div>
 
                     <strong>🐉 MUST RIDE: Puss In Boots' Giant Journey</strong><br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/universal-studios-singapore/rides/uss-far-far-away-puss-in-boots-750-x-422.jpg?mw=1200"
-                             alt="Puss In Boots' Giant Journey"
-                             class="landmark-photo">
+                            alt="Puss In Boots' Giant Journey" class="landmark-photo">
                         <div class="photo-credit">Photo: Puss In Boots' Giant Journey</div>
                         <img src="https://i.ytimg.com/vi/5Rsie3RYoO4/maxresdefault.jpg"
-                             alt="Puss In Boots' Giant Journey"
-                             class="landmark-photo">
+                            alt="Puss In Boots' Giant Journey" class="landmark-photo">
                         <div class="photo-credit">Photo: Puss In Boots' Giant Journey</div>
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+puss+in+boots+giant+journey&tbm=isch" target="_blank" class="photo-link">🔍 View Puss In Boots Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+puss+in+boots+giant+journey&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Puss In Boots Photos</a>
                     </div>
 
                     <strong>🐲 MUST VISIT: How to Train Your Dragon (11:30 AM meet & greet)</strong><br>
                     <div class="photo-container">
                         <img src="https://cdn-imgix.headout.com/media/images/85b78fcf-7f76-4f6f-bfdf-9b97526ccbee-1758627075361-313635.jpg?w=1041.6000000000001&h=651&crop=faces&auto=compress%2Cformat&fit=min"
-                             alt="How to Train Your Dragon"
-                             class="landmark-photo">
+                            alt="How to Train Your Dragon" class="landmark-photo">
                         <div class="photo-credit">Photo: How to Train Your Dragon</div>
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+how+to+train+your+dragon&tbm=isch" target="_blank" class="photo-link">🔍 View Dragon Meet & Greet Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+how+to+train+your+dragon&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Dragon Meet & Greet Photos</a>
                     </div>
 
                     <span class="stop-duration">⏱️ 1 hour 5 min</span>
@@ -525,16 +581,15 @@
                     </div>
                     <div class="photo-container">
                         <img src="https://shopsinsg.com/wp-content/uploads/2020/11/goldilocks.jpg"
-                             alt="Goldilocks Restaurant"
-                             class="landmark-photo">
+                            alt="Goldilocks Restaurant" class="landmark-photo">
                         <div class="photo-credit">Photo: Goldilocks Restaurant</div>
 
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/articles/attractions/top-6-picture-perfect-foods-at-universal-studios-singapore/shrek-waffle-at-goldilocks-universal-studios-singapore.jpg?sc_lang=en&h=1000&w=1000&rev=39bb3ee808f34291991e00816e567e18&hash=690106E794BD2C39E0E465FD88B0A642"
-                             alt="Goldilocks Shrek Waffle"
-                             class="landmark-photo">
+                            alt="Goldilocks Shrek Waffle" class="landmark-photo">
                         <div class="photo-credit">Photo: Goldilocks Shrek Waffle</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+goldilocks+restaurant&tbm=isch" target="_blank" class="photo-link">🔍 View Goldilocks Restaurant Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+goldilocks+restaurant&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Goldilocks Restaurant Photos</a>
                     </div>
                     <span class="stop-duration">⏱️ 1 hour</span>
                     <span class="cost">💰 SGD 45-60</span>
@@ -556,56 +611,53 @@
 
                     <strong>🦅 MUST RIDE: Dino-Soarin' (flying Pteranodon - control height!)</strong><br>
                     <div class="photo-container">
-                         <img src="https://i.ytimg.com/vi/o_RY8mwjNuI/maxresdefault.jpg"
-                             alt="Dino-Soarin"
-                             class="landmark-photo">
+                        <img src="https://i.ytimg.com/vi/o_RY8mwjNuI/maxresdefault.jpg" alt="Dino-Soarin"
+                            class="landmark-photo">
                         <div class="photo-credit">Photo: Dino-Soarin'</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+dino+soarin+lost+world&tbm=isch" target="_blank" class="photo-link">🔍 View Dino-Soarin' Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+dino+soarin+lost+world&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Dino-Soarin' Photos</a>
                     </div>
 
                     <strong>🌊 MUST RIDE: Jurassic Park Rapid Adventure (107cm min - YOU WILL GET WET!)</strong><br>
                     ⚠️ <strong>BRING CHANGE OF CLOTHES OR PONCHO!</strong><br>
                     <div class="photo-container">
                         <img src="https://d2mgzmtdeipcjp.cloudfront.net/files/good/2023/11/21/17005454025989.png"
-                             alt="Jurassic Park Rapid Adventure"
-                             class="landmark-photo">
+                            alt="Jurassic Park Rapid Adventure" class="landmark-photo">
                         <div class="photo-credit">Photo: Jurassic Park Rapid Adventure</div>
 
                         <img src="https://static.wikia.nocookie.net/universal-orlando/images/d/d6/Universal_Studios_Singapore_Jurassic_Park_Rapids_Adventure.jpg/revision/latest?cb=20230801003246"
-                             alt="Jurassic Park Rapid Adventure Splash"
-                             class="landmark-photo">
+                            alt="Jurassic Park Rapid Adventure Splash" class="landmark-photo">
                         <div class="photo-credit">Photo: Jurassic Park Rapid Adventure</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+jurassic+park+rapid+adventure&tbm=isch" target="_blank" class="photo-link">🔍 View Jurassic Park Rapids Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+jurassic+park+rapid+adventure&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Jurassic Park Rapids Photos</a>
                     </div>
 
                     <strong>🦖 MUST SEE: Raptor Encounter: Generations (1:30 PM)</strong><br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/universal-studios-singapore/meet-and-greet/jurassicbluemg750x422.jpg?mw=1200"
-                             alt="Raptor Encounter"
-                             class="landmark-photo">
+                            alt="Raptor Encounter" class="landmark-photo">
                         <div class="photo-credit">Photo: Raptor Encounter</div>
                         <img src="https://i.ytimg.com/vi/M8TnsU-q1WY/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVShDMA8=&rs=AOn4CLCSVXP_XEcojOFZIu6OfYrXj2nQWQ"
-                             alt="Raptor Encounter"
-                             class="landmark-photo">
+                            alt="Raptor Encounter" class="landmark-photo">
                         <div class="photo-credit">Photo: Raptor Encounter</div>
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+raptor+encounter&tbm=isch" target="_blank" class="photo-link">🔍 View Raptor Encounter Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+raptor+encounter&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Raptor Encounter Photos</a>
                     </div>
 
                     <strong>🍦 Snack Break!</strong><br>
                     Ice cream or churros at Fossil Fuels<br>
                     <div class="photo-container">
-                        <img src="https://farm9.staticflickr.com/8046/8126373383_2e1f0e57c9.jpg"
-                             alt="Fossil Fuels"
-                             class="landmark-photo">
+                        <img src="https://farm9.staticflickr.com/8046/8126373383_2e1f0e57c9.jpg" alt="Fossil Fuels"
+                            class="landmark-photo">
                         <div class="photo-credit">Photo: Fossil Fuels</div>
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/universal-studios-singapore/dining/uss-fossil-fuels-1440x760.jpg?mh=600"
-                             alt="Fossil Fuels"
-                             class="landmark-photo">
+                            alt="Fossil Fuels" class="landmark-photo">
                         <div class="photo-credit">Photo: Fossil Fuels</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+fossil+fuels&tbm=isch" target="_blank" class="photo-link">🔍 View Fossil Fuels Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+fossil+fuels&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Fossil Fuels Photos</a>
                     </div>
 
                     <span class="stop-duration">⏱️ 1 hour 20 min</span>
@@ -630,30 +682,30 @@
                     Kids "drive" through temple and pyramids!<br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/universal-studios-singapore/rides/uss-ancient-egypt-treasure-hunters-750-x-422.jpg?h=422&iar=0&w=750&rev=f951365ed1a2480a9f3ddb6089172e99&hash=084852D0F8E4B91CB26011483CDCFA9D"
-                             alt="Treasure Hunters"
-                             class="landmark-photo">
+                            alt="Treasure Hunters" class="landmark-photo">
                         <div class="photo-credit">Photo: Treasure Hunters</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+treasure+hunters+ancient+egypt&tbm=isch" target="_blank" class="photo-link">🔍 View Treasure Hunters Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+treasure+hunters+ancient+egypt&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Treasure Hunters Photos</a>
                     </div>
 
                     <strong>🏺 Egyptian Legends Meet & Greet (2:30 PM or 4 PM)</strong><br>
                     <div class="photo-container">
                         <img src="https://dejiki.com/wp-content/uploads/2020/02/Universal-Studios-Singapore-Park-Update-Feb-2020-Meet-and-Greet-Ancient-Egypt-Nile-Princess-Anubis-Stilts.jpg"
-                             alt="Egyptian Legends"
-                             class="landmark-photo">
+                            alt="Egyptian Legends" class="landmark-photo">
                         <div class="photo-credit">Photo: Egyptian Legends</div>
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+egyptian+legends&tbm=isch" target="_blank" class="photo-link">🔍 View Egyptian Legends Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+egyptian+legends&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Egyptian Legends Photos</a>
                     </div>
 
                     <strong>📸 Photo Opportunities with Egyptian Props</strong><br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/universal-studios-singapore/zones/uss-ancientegypt-750-x-422.jpg?mw=1200"
-                             alt="Ancient Egypt"
-                             class="landmark-photo">
+                            alt="Ancient Egypt" class="landmark-photo">
                         <div class="photo-credit">Photo: Ancient Egypt</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+ancient+egypt+zone&tbm=isch" target="_blank" class="photo-link">🔍 View Ancient Egypt Zone Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+ancient+egypt+zone&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Ancient Egypt Zone Photos</a>
                     </div>
 
                     <strong>🧃 REST TIME:</strong><br>
@@ -683,37 +735,37 @@
 
                     <strong>🎡 MUST RIDE: Accelerator (spinning teacups - you control speed!)</strong><br>
                     <div class="photo-container">
-                        <img src="https://themeparkreview.com/forum/files/thumb_uss-tr-0014.jpg"
-                             alt="Accelerator"
-                             class="landmark-photo">
+                        <img src="https://themeparkreview.com/forum/files/thumb_uss-tr-0014.jpg" alt="Accelerator"
+                            class="landmark-photo">
                         <div class="photo-credit">Photo: Accelerator</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+accelerator+sci+fi+city&tbm=isch" target="_blank" class="photo-link">🔍 View Accelerator Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+accelerator+sci+fi+city&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Accelerator Photos</a>
                     </div>
 
-                    <strong>🤖 MUST RIDE: TRANSFORMERS The Ride (3D simulator - 102cm min - LOUD but AMAZING!)</strong><br>
+                    <strong>🤖 MUST RIDE: TRANSFORMERS The Ride (3D simulator - 102cm min - LOUD but
+                        AMAZING!)</strong><br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/universal-studios-singapore/rides/uss-sci-fi-transformers-750-x-422.jpg?mw=1200"
-                             alt="Transformers: The Ride"
-                             class="landmark-photo">
+                            alt="Transformers: The Ride" class="landmark-photo">
                         <div class="photo-credit">Photo: Transformers: The Ride</div>
 
                         <img src="https://superadrianme.com/wp-content/uploads/2012/01/003511.jpg"
-                             alt="Transformers: The Ride 2"
-                             class="landmark-photo">
+                            alt="Transformers: The Ride 2" class="landmark-photo">
                         <div class="photo-credit">Photo: Transformers: The Ride</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+transformers+ride&tbm=isch" target="_blank" class="photo-link">🔍 View Transformers Ride Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+transformers+ride&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Transformers Ride Photos</a>
                     </div>
 
                     <strong>🤖 MUST VISIT: Transformers: Voices of Cybertron (4:20 PM meet & greet)</strong><br>
                     <div class="photo-container">
                         <img src="https://image.kkday.com/v2/image/get/c_fit%2Cq_55%2Ct_webp%2Cw_960/s1.kkday.com/product_104637/20230316092444_G4OGr/jpg"
-                             alt="Transformers Meet and Greet"
-                             class="landmark-photo">
+                            alt="Transformers Meet and Greet" class="landmark-photo">
                         <div class="photo-credit">Photo: Transformers Meet and Greet</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+transformers+characters+meet+greet&tbm=isch" target="_blank" class="photo-link">🔍 View Transformers Meet & Greet Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+transformers+characters+meet+greet&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Transformers Meet & Greet Photos</a>
                     </div>
 
                     <strong>🧃 Quick Snack!</strong><br>
@@ -742,14 +794,13 @@
                     </div>
                     <div class="photo-container">
                         <img src="https://crunchybottoms.wordpress.com/wp-content/uploads/2010/05/img_0823.jpg"
-                             alt="Oasis Spice Cafe"
-                             class="landmark-photo">
+                            alt="Oasis Spice Cafe" class="landmark-photo">
                         <div class="photo-credit">Photo: Oasis Spice Cafe</div>
                         <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/8b/bc/9b/roasted-chicken-briyani.jpg?w=500&h=-1&s=1"
-                             alt="Oasis Spice Cafe"
-                             class="landmark-photo">
+                            alt="Oasis Spice Cafe" class="landmark-photo">
                         <div class="photo-credit">Photo: Oasis Spice Cafe</div>
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+oasis+spice+cafe&tbm=isch" target="_blank" class="photo-link">🔍 View Oasis Spice Cafe Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+oasis+spice+cafe&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Oasis Spice Cafe Photos</a>
                     </div>
                     <span class="stop-duration">⏱️ 1 hour</span>
                     <span class="cost">💰 SGD 40-55</span>
@@ -769,37 +820,37 @@
                         Perfect evening activities!
                     </div>
 
-                    <strong>🍝 MUST RIDE: Sesame Street Spaghetti Space Chase (indoor dark ride - COOL AIR!)</strong><br>
+                    <strong>🍝 MUST RIDE: Sesame Street Spaghetti Space Chase (indoor dark ride - COOL
+                        AIR!)</strong><br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/universal-studios-singapore/rides/uss-spaghetti-space-chase-750-x-422.jpg?mw=1200"
-                             alt="Spaghetti Space Chase"
-                             class="landmark-photo">
+                            alt="Spaghetti Space Chase" class="landmark-photo">
                         <div class="photo-credit">Photo: Spaghetti Space Chase</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+sesame+street+spaghetti+space+chase&tbm=isch" target="_blank" class="photo-link">🔍 View Spaghetti Space Chase Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+sesame+street+spaghetti+space+chase&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Spaghetti Space Chase Photos</a>
                     </div>
 
                     <strong>🎬 MUST WATCH: Lights, Camera, Action! (special effects show with fire & storm)</strong><br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/universal-studios-singapore/shows/uss-new-york-lights-camera-action-750x422.jpg?mw=1200"
-                             alt="Lights, Camera, Action!"
-                             class="landmark-photo">
+                            alt="Lights, Camera, Action!" class="landmark-photo">
                         <div class="photo-credit">Photo: Lights, Camera, Action!</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+lights+camera+action+show&tbm=isch" target="_blank" class="photo-link">🔍 View Lights Camera Action Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+lights+camera+action+show&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Lights Camera Action Photos</a>
                     </div>
 
                     <strong>🎭 MUST SEE: Let it Snow! Show (6:40 PM)</strong><br>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/promotions/2023/attractions/uss/a-universal-christmas/highlights/let-it-snow_1125x633.jpg?h=634&iar=0&w=1126&rev=ddfc6c8597314b91be517b039bc5eb15&sc_lang=en&extension=webp&hash=C5B003E65BA94BBF61FB866A0B3FDD5B"
-                             alt="Let it Snow"
-                             class="landmark-photo">
+                            alt="Let it Snow" class="landmark-photo">
                         <div class="photo-credit">Photo: Let it Snow</div>
                         <img src="https://dejiki.com/wp-content/uploads/2022/12/Universal-Studios-Singapore-Park-Update-2022-A-Universal-Christmas-Santas-Christmas-Spectacular-stage-show-7-Finale-Snowfall.jpg"
-                             alt="Let it Snow"
-                             class="landmark-photo">
+                            alt="Let it Snow" class="landmark-photo">
                         <div class="photo-credit">Photo: Let it Snow</div>
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+let+it+snow+show&tbm=isch" target="_blank" class="photo-link">🔍 View Let it Snow Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+let+it+snow+show&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Let it Snow Photos</a>
                     </div>
 
                     <span class="stop-duration">⏱️ 55 min</span>
@@ -824,11 +875,11 @@
                     </div>
                     <div class="photo-container">
                         <img src="https://www.rwsentosa.com/-/jssmedia/project/non-gaming/rwsentosa/attractions/universal-studios-singapore/retail/universal-studios-singapore-studios-store-750x422.jpg?mh=600"
-                             alt="Hollywood Boulevard gift shop"
-                             class="landmark-photo">
+                            alt="Hollywood Boulevard gift shop" class="landmark-photo">
                         <div class="photo-credit">Photo: Hollywood Boulevard gift shop</div>
 
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+gift+shop+merchandise&tbm=isch" target="_blank" class="photo-link">🔍 View Gift Shop Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+gift+shop+merchandise&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Gift Shop Photos</a>
                     </div>
                     <span class="stop-duration">⏱️ 25 min</span>
                     <span class="cost">💰 SGD 30-80 (souvenirs)</span>
@@ -853,10 +904,10 @@
                     </div>
                     <div class="photo-container">
                         <img src="https://hexogonsol.com/wp-content/uploads/2025/02/2024-12-USS-Xmas-pjphoto02.jpg"
-                             alt="DreamWorks Holiday Spectacular"
-                             class="landmark-photo">
+                            alt="DreamWorks Holiday Spectacular" class="landmark-photo">
                         <div class="photo-credit">Photo: DreamWorks Holiday Spectacular</div>
-                        <a href="https://www.google.com/search?q=universal+studios+singapore+dreamworks+holiday+spectacular&tbm=isch" target="_blank" class="photo-link">🔍 View DreamWorks Holiday Spectacular Photos</a>
+                        <a href="https://www.google.com/search?q=universal+studios+singapore+dreamworks+holiday+spectacular&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View DreamWorks Holiday Spectacular Photos</a>
                     </div>
                     <span class="stop-duration">⏱️ 30 min</span>
                     <span class="cost">💰 Included in ticket</span>
@@ -871,7 +922,8 @@
                 <div class="stop-content">
                     <div class="stop-time">🌙 8:00 PM - 8:45 PM</div>
                     <div class="stop-location">🏨 Return to Hotel</div>
-                    <a href="https://www.google.com/maps/dir/Universal+Studios+Singapore,+8+Sentosa+Gateway,+Singapore/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore" target="_blank" class="map-link">🗺️ Get Directions from USS to Furama RiverFront Hotel</a>
+                    <a href="https://www.google.com/maps/dir/Universal+Studios+Singapore,+8+Sentosa+Gateway,+Singapore/Furama+RiverFront+Hotel,+405+Havelock+Rd,+Singapore"
+                        target="_blank" class="map-link">🗺️ Get Directions from USS to Furama RiverFront Hotel</a>
                     <div class="stop-activity">
                         <strong>End of Amazing Day!</strong><br>
                         • Exit USS by 8:00 PM<br>
@@ -906,10 +958,12 @@
             <p>✓ Treasure Hunters | ✓ Accelerator | ✓ TRANSFORMERS Ride</p>
             <p>✓ Sesame Street Spaghetti Space Chase</p>
             <br>
-            <p><strong>🎬 Shows:</strong> 6 total | <strong>🤝 Meet & Greets:</strong> 5 total | <strong>🎮 Games:</strong> Space Killer</p>
+            <p><strong>🎬 Shows:</strong> 6 total | <strong>🤝 Meet & Greets:</strong> 5 total | <strong>🎮
+                    Games:</strong> Space Killer</p>
             <br>
             <p style="font-size: 0.9em; margin-top: 15px;">
-                <em>🎒 Tips: Bring change of clothes for Jurassic Rapids! Use compact stroller throughout. Stay hydrated!</em>
+                <em>🎒 Tips: Bring change of clothes for Jurassic Rapids! Use compact stroller throughout. Stay
+                    hydrated!</em>
             </p>
         </div>
 
@@ -919,78 +973,88 @@
             <h4 style="margin-top: 20px; text-decoration: underline;">TRAVEL OPTIONS TO UNIVERSAL STUDIOS</h4>
 
             <p style="text-align: left; margin: 15px 0;"><strong>1️⃣ Hotel → Maxwell Food Centre</strong><br>
-            🚶 Walk: FREE (PHP 0) (20 min walk)<br>
-            🚕 Taxi: SGD 5-7 (PHP 220-310) (5 min, ≈1 km)<br>
-            <em>Recommended: Walk (save money, good morning exercise)</em></p>
+                🚶 Walk: FREE (PHP 0) (20 min walk)<br>
+                🚕 Taxi: SGD 5-7 (PHP 220-310) (5 min, ≈1 km)<br>
+                <em>Recommended: Walk (save money, good morning exercise)</em>
+            </p>
 
             <p style="text-align: left; margin: 15px 0;"><strong>2️⃣ Maxwell → HarbourFront MRT</strong><br>
-            🚇 MRT: SGD 1.50-2.00 (PHP 66-88) per adult, child FREE (Chinatown → HarbourFront, 15 min)<br>
-            🚕 Taxi: SGD 10-15 (PHP 440-665) (10 min, ≈4 km)<br>
-            <em>Recommended: MRT (cheap, reliable, avoid traffic)</em></p>
+                🚇 MRT: SGD 1.50-2.00 (PHP 66-88) per adult, child FREE (Chinatown → HarbourFront, 15 min)<br>
+                🚕 Taxi: SGD 10-15 (PHP 440-665) (10 min, ≈4 km)<br>
+                <em>Recommended: MRT (cheap, reliable, avoid traffic)</em>
+            </p>
 
             <p style="text-align: left; margin: 15px 0;"><strong>3️⃣ HarbourFront → USS Entrance</strong><br>
-            🚊 Sentosa Express: SGD 4 (PHP 177) per person (10 min monorail ride)<br>
-            • Included in Sentosa Fun Pass if you buy one<br>
-            • Direct connection from VivoCity Level 3<br>
-            <em>Recommended: Sentosa Express (only option for car-free travel)</em></p>
+                🚊 Sentosa Express: SGD 4 (PHP 177) per person (10 min monorail ride)<br>
+                • Included in Sentosa Fun Pass if you buy one<br>
+                • Direct connection from VivoCity Level 3<br>
+                <em>Recommended: Sentosa Express (only option for car-free travel)</em>
+            </p>
 
             <p style="text-align: left; margin: 15px 0;"><strong>4️⃣ USS Exit → Return to Hotel</strong><br>
-            🚇 Reverse route (Sentosa Express + MRT): SGD 5.50-6.00 (PHP 243-265) per adult, child FREE (45 min total)<br>
-            🚕 Taxi from Sentosa: SGD 15-20 (PHP 665-885) (20-25 min, ≈7 km)<br>
-            <em>Recommended: MRT (after full day, save money for souvenirs)</em></p>
+                🚇 Reverse route (Sentosa Express + MRT): SGD 5.50-6.00 (PHP 243-265) per adult, child FREE (45 min
+                total)<br>
+                🚕 Taxi from Sentosa: SGD 15-20 (PHP 665-885) (20-25 min, ≈7 km)<br>
+                <em>Recommended: MRT (after full day, save money for souvenirs)</em>
+            </p>
 
             <hr style="margin: 20px 0; border: 1px solid rgba(255,255,255,0.3);">
 
             <h4 style="margin-top: 20px;">📊 TOTAL TRANSPORTATION COSTS</h4>
 
-            <p style="text-align: left; margin: 15px 0;"><strong>🚇 PUBLIC TRANSPORT (Walk + MRT + Sentosa Express):</strong><br>
-            • Hotel → Maxwell: FREE (walk)<br>
-            • Maxwell → HarbourFront MRT: SGD 1.50-2.00 per adult × 2 adults = SGD 3.00-4.00<br>
-            • Sentosa Express (round trip): SGD 4 per person × 3 = SGD 12<br>
-            • HarbourFront → Hotel (return): SGD 1.50-2.00 per adult × 2 adults = SGD 3.00-4.00<br>
-            • Child: FREE on MRT (under 7 years old)<br>
-            <strong>TOTAL: SGD 18-20 (PHP 795-885)</strong><br>
-            <em>Most economical option! Saves SGD 22-37 vs taxi.</em></p>
+            <p style="text-align: left; margin: 15px 0;"><strong>🚇 PUBLIC TRANSPORT (Walk + MRT + Sentosa
+                    Express):</strong><br>
+                • Hotel → Maxwell: FREE (walk)<br>
+                • Maxwell → HarbourFront MRT: SGD 1.50-2.00 per adult × 2 adults = SGD 3.00-4.00<br>
+                • Sentosa Express (round trip): SGD 4 per person × 3 = SGD 12<br>
+                • HarbourFront → Hotel (return): SGD 1.50-2.00 per adult × 2 adults = SGD 3.00-4.00<br>
+                • Child: FREE on MRT (under 7 years old)<br>
+                <strong>TOTAL: SGD 18-20 (PHP 795-885)</strong><br>
+                <em>Most economical option! Saves SGD 22-37 vs taxi.</em>
+            </p>
 
             <p style="text-align: left; margin: 15px 0;"><strong>🚕 MIXED (Taxi one way, MRT return):</strong><br>
-            • Taxi from hotel → USS: SGD 15-20 (direct, 25 min, ≈8 km)<br>
-            • MRT + Sentosa Express return: SGD 9.50-10.00<br>
-            <strong>TOTAL: SGD 24.50-30.00 (PHP 1,085-1,325)</strong><br>
-            <em>Good if running late in morning, save energy for park!</em></p>
+                • Taxi from hotel → USS: SGD 15-20 (direct, 25 min, ≈8 km)<br>
+                • MRT + Sentosa Express return: SGD 9.50-10.00<br>
+                <strong>TOTAL: SGD 24.50-30.00 (PHP 1,085-1,325)</strong><br>
+                <em>Good if running late in morning, save energy for park!</em>
+            </p>
 
             <p style="text-align: left; margin: 15px 0;"><strong>🚕 ALL TAXI (Both directions):</strong><br>
-            • Hotel → USS: SGD 15-20<br>
-            • USS → Hotel: SGD 15-20<br>
-            <strong>TOTAL: SGD 30-40 (PHP 1,325-1,770)</strong><br>
-            <em>Most convenient but most expensive. Good if very tired.</em></p>
+                • Hotel → USS: SGD 15-20<br>
+                • USS → Hotel: SGD 15-20<br>
+                <strong>TOTAL: SGD 30-40 (PHP 1,325-1,770)</strong><br>
+                <em>Most convenient but most expensive. Good if very tired.</em>
+            </p>
 
             <hr style="margin: 20px 0; border: 1px solid rgba(255,255,255,0.3);">
 
             <h4 style="margin-top: 20px;">💡 RECOMMENDATIONS</h4>
             <p style="text-align: left; margin: 10px 0;">
-            <strong>Best Value:</strong> Public Transport Option<br>
-            • Save SGD 10-20 compared to taxi<br>
-            • MRT is faster than taxi during peak hours<br>
-            • Sentosa Express is fun experience for kids<br>
-            • Walk to Maxwell = good morning warm-up!
+                <strong>Best Value:</strong> Public Transport Option<br>
+                • Save SGD 10-20 compared to taxi<br>
+                • MRT is faster than taxi during peak hours<br>
+                • Sentosa Express is fun experience for kids<br>
+                • Walk to Maxwell = good morning warm-up!
             </p>
 
             <p style="text-align: left; margin: 10px 0;">
-            <strong>If Running Late:</strong> Mixed Option<br>
-            • Take taxi to USS to save time<br>
-            • MRT back (you'll be tired anyway)<br>
-            • Still saves money vs all-taxi
+                <strong>If Running Late:</strong> Mixed Option<br>
+                • Take taxi to USS to save time<br>
+                • MRT back (you'll be tired anyway)<br>
+                • Still saves money vs all-taxi
             </p>
 
             <p style="text-align: left; margin: 10px 0;">
-            <strong>🎫 Pro Tips:</strong><br>
-            • Buy Sentosa Fun Pass if doing multiple Sentosa days (includes Express rides)<br>
-            • Download SimplyGo app for easy MRT payment<br>
-            • Grab app for taxis (better rates than street hail)<br>
-            • MRT runs 5:30 AM - 12:00 AM (you'll be fine!)
+                <strong>🎫 Pro Tips:</strong><br>
+                • Buy Sentosa Fun Pass if doing multiple Sentosa days (includes Express rides)<br>
+                • Download SimplyGo app for easy MRT payment<br>
+                • Grab app for taxis (better rates than street hail)<br>
+                • MRT runs 5:30 AM - 12:00 AM (you'll be fine!)
             </p>
         </div>
 
     </div>
 </body>
+
 </html>

@@ -1,145 +1,533 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Day 7 - Harry Potter & Jewel Changi & Departure</title>
-<style>
-body{font-family:'Segoe UI',Tahoma,sans-serif;max-width:1200px;margin:0 auto;padding:20px;background:linear-gradient(135deg,#9C27B0 0%,#FF9800 100%);min-height:100vh}.container{background:white;border-radius:20px;padding:30px;box-shadow:0 10px 40px rgba(0,0,0,0.2)}h1{color:#9C27B0;text-align:center;font-size:2.5em;margin-bottom:10px}.subtitle{text-align:center;color:#666;font-size:1.2em;margin-bottom:30px}.stop{padding:20px;background:#f8f9fa;border-radius:15px;margin:20px 0;border-left:5px solid #9C27B0}.stop-number{background:#9C27B0;color:white;width:50px;height:50px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:bold}.stop-time{color:#9C27B0;font-weight:bold;font-size:1.2em;margin:10px 0}.stop-location{font-size:1.3em;font-weight:bold;color:#333;margin:10px 0}.photo-link{display:block;margin:15px 0;color:#9C27B0;text-decoration:none;font-weight:bold;padding:10px;background:#F3E5F5;border-radius:8px;text-align:center}.photo-link:hover{background:#E1BEE7}.image-placeholder{width:100%;max-width:500px;height:300px;background:linear-gradient(135deg,#9C27B0 0%,#FF9800 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2em;font-weight:bold;text-align:center;padding:20px;margin:15px 0}.summary{margin-top:30px;padding:20px;background:linear-gradient(135deg,#9C27B0 0%,#FF9800 100%);color:white;border-radius:15px;text-align:center}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 7 - Harry Potter & Jewel Changi Finale - Route Map</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            /* Magical/Jewel Theme: Deep Purple to Gold gradient */
+            background: linear-gradient(135deg, #4A148C 0%, #FF6F00 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #4A148C;
+            /* Deep Purple */
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .route-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stop {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f3e5f5;
+            /* Light Purple Tint */
+            border-radius: 15px;
+            border-left: 5px solid #7b1fa2;
+            /* Purple Border */
+            transition: transform 0.3s ease;
+        }
+
+        .stop:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stop-number {
+            background: #7b1fa2;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .stop-content {
+            flex: 1;
+        }
+
+        .stop-time {
+            color: #4A148C;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .stop-location {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .stop-activity {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .stop-duration,
+        .cost {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #e1bee7;
+            color: #4a148c;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .transport {
+            text-align: center;
+            color: #e65100;
+            /* Dark Orange for transport */
+            font-weight: bold;
+            padding: 10px;
+            background: linear-gradient(90deg, transparent, #ffe0b2, transparent);
+            border-radius: 10px;
+        }
+
+        /* Highlight stops (Jewel Changi) - Gold Theme */
+        .highlight-gold {
+            border-left-color: #ffca28;
+            background: #fff8e1;
+        }
+
+        .highlight-gold .stop-number {
+            background: #ffca28;
+            color: #333;
+        }
+
+        /* Highlight stops (Harry Potter) - Mystic Theme */
+        .highlight-magic {
+            border-left-color: #9c27b0;
+            background: #f3e5f5;
+            box-shadow: 0 0 15px rgba(156, 39, 176, 0.2);
+        }
+
+        .highlight-magic .stop-number {
+            background: #9c27b0;
+        }
+
+        /* Rest/Meal stops - Blue/Calm Theme */
+        .rest {
+            border-left-color: #0288d1;
+            background: #e1f5fe;
+        }
+
+        .rest .stop-number {
+            background: #0288d1;
+        }
+
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4A148C 0%, #FF6F00 100%);
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .summary h3 {
+            margin-top: 0;
+        }
+
+        .new-badge {
+            display: inline-block;
+            background: #ffd700;
+            color: #333;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /* Photo Styles */
+        .landmark-photo {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-link {
+            display: block;
+            margin: 15px 0;
+            color: #4a148c;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            background: #e1bee7;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .photo-link:hover {
+            background: #ce93d8;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin: 10px 0;
+            color: #e65100;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background: #ffe0b2;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+
+        .map-link:hover {
+            background: #ffcc80;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(230, 81, 0, 0.3);
+        }
+
+        .photo-credit {
+            font-size: 0.75em;
+            color: #777;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .photo-container {
+            margin: 15px 0;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+
+            .subtitle {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+
+            .route-container {
+                gap: 15px;
+            }
+
+            .stop {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+
+            .stop:hover {
+                transform: none;
+            }
+
+            .stop-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+
+            .stop-time {
+                font-size: 1em;
+            }
+
+            .stop-location {
+                font-size: 1.1em;
+                line-height: 1.4;
+            }
+
+            .stop-activity {
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+
+            .landmark-photo {
+                height: 200px;
+                margin: 10px 0;
+            }
+
+            .photo-link,
+            .map-link {
+                font-size: 0.9em;
+                padding: 10px;
+                margin: 8px 0;
+            }
+
+            .stop-duration,
+            .cost {
+                font-size: 0.85em;
+                padding: 4px 10px;
+                margin: 5px 5px 5px 0;
+                display: inline-block;
+            }
+
+            .transport {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+
+            .new-badge {
+                font-size: 0.7em;
+                padding: 2px 8px;
+            }
+
+            .summary {
+                padding: 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
-<h1>📍 DAY 7 - Monday, March 23, 2026</h1>
-<div class="subtitle">⚡ Harry Potter + Jewel Changi + DEPARTURE! 🪄✈️</div>
+    <div class="container">
+        <h1>📍 DAY 7 - Monday, March 23, 2026</h1>
+        <div class="subtitle">⚡ Harry Potter & Jewel Changi + DEPARTURE! 🪄✈️ <span class="new-badge">GRAND
+                FINALE</span></div>
 
-<div class="stop"><span class="stop-number">1</span><div><div class="stop-time">🕖 7:00 AM - 7:45 AM</div><div class="stop-location">🍳 Buffet Breakfast at Hotel</div>
-Full buffet spread at Furama RiverFront<br>
-Western & Asian options<br>
-Last proper meal before flight<br>
-Cost: Included OR SGD 15-25/person</div></div>
+        <div class="route-container">
 
-<div class="stop"><span class="stop-number">2</span><div><div class="stop-time">🕗 8:15 AM - 8:30 AM</div><div class="stop-location">🏨 Hotel Checkout</div>
-<strong>CHECK OUT OF HOTEL</strong><br>
-Return key cards<br>
-<strong>Take ALL luggage with you</strong><br>
-<strong>YOU'RE NOT COMING BACK!</strong></div></div>
+            <div class="stop">
+                <div class="stop-number">1</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕖 7:00 AM - 7:45 AM</div>
+                    <div class="stop-location">🍳 Last Hotel Breakfast</div>
+                    <div class="stop-activity">
+                        • Full buffet spread at Furama RiverFront<br>
+                        • Western & Asian options<br>
+                        • Eat a big meal - busy start to the day!<br>
+                        • <strong>Double check rooms for all belongings!</strong>
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                    <span class="cost">💰 Included</span>
+                </div>
+            </div>
 
-<div class="stop"><span class="stop-number">3</span><div><div class="stop-time">🕣 8:30 AM - 9:00 AM</div><div class="stop-location">🧳 Luggage Storage</div>
-Taxi/walk to HarbourFront MRT<br>
-<strong>Store luggage in lockers (SGD 10-15/bag)</strong><br>
-Now luggage-free for Harry Potter!</div></div>
+            <div class="stop">
+                <div class="stop-number">2</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕗 8:15 AM - 8:30 AM</div>
+                    <div class="stop-location">🏨 Check Out & Depart</div>
+                    <div class="stop-activity">
+                        • <strong>CHECK OUT OF HOTEL</strong><br>
+                        • Return key cards<br>
+                        • <strong>Take ALL luggage with you</strong><br>
+                        • Say goodbye to Furama RiverFront!
+                    </div>
+                    <span class="stop-duration">⏱️ 15 min</span>
+                </div>
+            </div>
 
-<div class="stop"><span class="stop-number">4</span><div><div class="stop-time">🕘 9:00 AM - 12:00 PM</div><div class="stop-location">🛍️ Free Morning Time</div>
-<strong>Explore VivoCity Mall (RECOMMENDED):</strong><br>
-• Right above HarbourFront MRT<br>
-• Air-conditioned shopping<br>
-• Uniqlo, Toys "R" Us, etc.<br>
-• Coffee at Starbucks<br>
-• Very comfortable way to pass time!<br>
-<br>
-OR head to Sentosa early to explore</div></div>
+            <div class="transport">🚕 Taxi/Walk to HarbourFront MRT (Bring Luggage)</div>
 
-<div class="stop"><span class="stop-number">5</span><div><div class="stop-time">🕚 11:30 AM - 12:30 PM</div><div class="stop-location">🥗 Early Light Lunch</div>
-Food Republic at VivoCity<br>
-OR Resorts World Sentosa food court<br>
-<strong>Light meal - you'll have Butterbeer soon!</strong><br>
-Cost: SGD 15-25</div></div>
+            <div class="stop">
+                <div class="stop-number">3</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕣 8:30 AM - 9:00 AM</div>
+                    <div class="stop-location">🧳 Luggage Storage (VivoCity/HarbourFront)</div>
+                    <a href="https://www.google.com/maps/search/luggage+storage+harbourfront+singapore" target="_blank"
+                        class="map-link">🗺️ Find Luggage Storage</a>
+                    <div class="stop-activity">
+                        • Store luggage in lockers at HarbourFront Centre or VivoCity<br>
+                        • <strong>Cost:</strong> ~SGD 10-15 per large locker<br>
+                        • Free yourself from bags for the Harry Potter experience!
+                    </div>
+                    <span class="stop-duration">⏱️ 30 min</span>
+                    <span class="cost">💰 SGD 10-20</span>
+                </div>
+            </div>
 
-<div class="stop"><span class="stop-number">6</span><div><div class="stop-time">🕐 1:00 PM - 2:45 PM</div><div class="stop-location">⚡ Harry Potter™: Visions of Magic!</div>
-<strong>MAGICAL EXPERIENCE - Self-Paced!</strong><br>
-• <strong>Platform 9¾</strong> - Hogwarts Express entrance<br>
-• <strong>The Trap Door</strong> - Singapore Exclusive!<br>
-• <strong>Chamber of Secrets</strong> - Basilisk encounter!<br>
-• <strong>Ministry of Magic</strong> - Flying memos everywhere<br>
-• <strong>Newt's Menagerie</strong> - Fantastic Beasts!<br>
-• <strong>The Pensieve</strong> - Dive into memories<br>
-• <strong>Hogsmeade Village</strong> - Cozy snow village<br>
-<br>
-<strong>Interactive wand included!</strong><br>
-Use throughout exhibition to unlock magic!<br>
-<div class="image-placeholder">📸 Harry Potter: Visions of Magic<br>Interactive Magical Experience!</div>
-<a href="https://www.google.com/search?q=harry+potter+visions+of+magic+singapore+sentosa&tbm=isch" target="_blank" class="photo-link">🔍 View Harry Potter Exhibition Photos</a>
-Cost: SGD 105-135 (includes SGD 10 voucher!)</div></div>
+            <div class="stop">
+                <div class="stop-number">4</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕘 9:00 AM - 11:30 AM</div>
+                    <div class="stop-location">🛍️ Free Time @ VivoCity (or Sentosa)</div>
+                    <div class="stop-activity">
+                        • <strong>VivoCity Mall:</strong> Rooftop park, Toys "R" Us, Shopping<br>
+                        • <strong>Sentosa Boardwalk:</strong> Nice walk if weather is good<br>
+                        • Relaxed morning before the magic begins
+                    </div>
+                    <span class="stop-duration">⏱️ 2.5 hours</span>
+                </div>
+            </div>
 
-<div class="stop"><span class="stop-number">7</span><div><div class="stop-time">🕞 2:45 PM - 3:30 PM</div><div class="stop-location">☕ Butterbeer Café</div>
-<strong>Use your SGD 10 voucher!</strong><br>
-<br>
-<strong>Must Try:</strong><br>
-• <strong>Butterbeer</strong> (Frozen/Original/Hot)<br>
-• Cauldron Cakes<br>
-• Chocolate Frogs (collectible cards!)<br>
-• Pumpkin Pasties<br>
-• Treacle Tart<br>
-<div class="image-placeholder">📸 Butterbeer<br>The Magical Drink!</div>
-<a href="https://www.google.com/search?q=butterbeer+harry+potter+singapore&tbm=isch" target="_blank" class="photo-link">🔍 View Butterbeer Photos</a>
-</div></div>
+            <div class="stop rest">
+                <div class="stop-number">5</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕚 11:30 AM - 12:30 PM</div>
+                    <div class="stop-location">🥗 Early Lunch</div>
+                    <div class="stop-activity">
+                        • Food Republic at VivoCity (great variety)<br>
+                        • OR Resorts World Sentosa food court<br>
+                        • Eat before entering the exhibition
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hour</span>
+                    <span class="cost">💰 SGD 15-25</span>
+                </div>
+            </div>
 
-<div class="stop"><span class="stop-number">8</span><div><div class="stop-time">🕞 3:30 PM</div><div class="stop-location">🧳 Retrieve Luggage</div>
-Return to HarbourFront MRT<br>
-Get luggage from lockers<br>
-Ready for Changi Airport!</div></div>
+            <div class="transport">🚶‍♂️ Walk to Resorts World Sentosa</div>
 
-<div class="stop"><span class="stop-number">9</span><div><div class="stop-time">🕓 4:00 PM - 5:30 PM</div><div class="stop-location">🚇 Travel to Changi Airport</div>
-MRT from HarbourFront → Tanah Merah → Changi Airport<br>
-About 1 hour journey</div></div>
+            <div class="stop highlight-magic">
+                <div class="stop-number">6</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕐 1:00 PM - 2:45 PM</div>
+                    <div class="stop-location">⚡ Harry Potter™: Visions of Magic! <span
+                            class="new-badge">HIGHLIGHT</span></div>
+                    <a href="https://www.google.com/maps/search/Resorts+World+Sentosa" target="_blank"
+                        class="map-link">🗺️ Location: RWS</a>
+                    <div class="stop-activity">
+                        • <strong>MAGICAL INTERACTIVE EXPERIENCE!</strong><br>
+                        • <strong>Use your interactive wand</strong> to cast spells<br>
+                        • Explore: Platform 9¾, Chamber of Secrets, Ministry of Magic<br>
+                        • <strong>The Trap Door:</strong> Singapore Exclusive room!<br>
+                        • Take amazing magical photos/videos!
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,w_1000/v1727339891/yl2o5r8p2k5z8qj4z1d3.jpg"
+                            alt="Harry Potter Visions of Magic Exhibition" class="landmark-photo">
+                        <div class="photo-credit">Photo: Harry Potter: Visions of Magic</div>
+                        <a href="https://www.google.com/search?q=harry+potter+visions+of+magic+singapore&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Exhibition Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 1 hr 45 min</span>
+                    <span class="cost">💰 Paid (Tickets)</span>
+                </div>
+            </div>
 
-<div class="stop"><span class="stop-number">10</span><div><div class="stop-time">🕔 5:30 PM - 10:00 PM</div><div class="stop-location">✨ JEWEL CHANGI AIRPORT!</div>
-<strong>The Ultimate Finale!</strong><br>
-<br>
-<strong>5:30 PM - Check-in & Drop Bags:</strong><br>
-• Check-in for 1:25 AM flight<br>
-• Drop all luggage<br>
-• Get boarding passes<br>
-• Now luggage-free!<br>
-<br>
-<strong>6:00 PM - 10:00 PM - Explore Jewel:</strong><br>
-<br>
-<strong>HSBC Rain Vortex (MUST-SEE!):</strong><br>
-• World's tallest indoor waterfall (40m!)<br>
-• Light shows at 7:30 PM & 8:30 PM<br>
-• <strong>ABSOLUTELY STUNNING!</strong><br>
-• FREE to watch!<br>
-<br>
-<strong>Canopy Park (if time/energy):</strong><br>
-• Sky Nets, Hedge Maze, Bouncing Net<br>
-• Walking nets 25m above ground<br>
-• Cost: SGD 30-40<br>
-<br>
-<strong>Dinner at Jewel:</strong><br>
-• Shake Shack, A&W, burger King<br>
-• Din Tai Fung, Wingstop<br>
-• SO many options!<br>
-• Cost: SGD 40-60<br>
-<br>
-<strong>Shopping:</strong><br>
-• 280+ shops<br>
-• Last-minute souvenirs<br>
-• Duty-free when you enter transit<br>
-<div class="image-placeholder">📸 Jewel Changi Rain Vortex<br>World's Tallest Indoor Waterfall!</div>
-<a href="https://www.google.com/search?q=jewel+changi+airport+rain+vortex+waterfall&tbm=isch" target="_blank" class="photo-link">🔍 View Jewel Changi Photos</a>
-</div></div>
+            <div class="stop highlight-magic">
+                <div class="stop-number">7</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕞 2:45 PM - 3:30 PM</div>
+                    <div class="stop-location">🍺 Butterbeer Café</div>
+                    <div class="stop-activity">
+                        • <strong>Use your SGD 10 Voucher!</strong><br>
+                        • Try the famous <strong>Butterbeer</strong> (contains no alcohol)<br>
+                        • Chocolate Frogs & Bertie Bott's Beans<br>
+                        • Relax after the tour
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://media.timeout.com/images/106057088/750/422/image.jpg"
+                            alt="Butterbeer at Harry Potter Cafe" class="landmark-photo">
+                        <div class="photo-credit">Photo: Butterbeer</div>
+                    </div>
+                    <span class="stop-duration">⏱️ 45 min</span>
+                </div>
+            </div>
 
-<div class="stop"><span class="stop-number">11</span><div><div class="stop-time">🕙 10:00 PM - 11:00 PM</div><div class="stop-location">🛂 Immigration & Security</div>
-Enter transit area<br>
-Immigration clearance<br>
-Security screening<br>
-Plenty of time before 1:25 AM flight!</div></div>
+            <div class="transport">🚶‍♂️ Return to HarbourFront → 🧳 Pick up Luggage → 🚇 MRT to Airport</div>
 
-<div class="stop"><span class="stop-number">12</span><div><div class="stop-time">🕚 11:00 PM - 1:00 AM</div><div class="stop-location">✈️ Final Hours at Gate</div>
-Relax at departure gate<br>
-Let child rest/nap<br>
-Light snacks if needed<br>
-Browse duty-free<br>
-Board at ~12:45 AM<br>
-<br>
-<strong>FLIGHT PR508 departs 1:25 AM!</strong></div></div>
+            <div class="stop">
+                <div class="stop-number">8</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕓 4:00 PM - 5:30 PM</div>
+                    <div class="stop-location">🚇 Travel to Changi Airport</div>
+                    <div class="stop-activity">
+                        • MRT: HarbourFront (NE1/CC29) → Outram Park → Tanah Merah → Changi Airport<br>
+                        • Journey time: ~1 hour<br>
+                        • Relax on the train
+                    </div>
+                    <span class="stop-duration">⏱️ 1.5 hours</span>
+                </div>
+            </div>
 
-<div class="summary">
-<h3>📊 DAY 7 SUMMARY - MAGICAL FINALE!</h3>
-<p><strong>Highlights:</strong> Harry Potter Magic + Butterbeer + Jewel Changi Waterfall!</p>
-<p><strong>Total Cost:</strong> SGD 210-310</p>
-<p><strong>Perfect Ending:</strong> Magical experience + stunning airport finale! ⚡✨</p>
-<p><strong>Flight:</strong> PR508 Manila at 1:25 AM ✈️🇵🇭</p>
-</div>
-</div>
+            <div class="stop highlight-gold">
+                <div class="stop-number">9</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕔 5:30 PM - 10:00 PM</div>
+                    <div class="stop-location">✨ JEWEL CHANGI AIRPORT <span class="new-badge">MUST SEE</span></div>
+                    <div class="stop-activity">
+                        • <strong>5:30 PM:</strong> Early Check-in & Bag Drop (Jewel Early Check-in Lounge)<br>
+                        • <strong>Rain Vortex:</strong> World's tallest indoor waterfall (Light show @ 7:30/8:30 PM)<br>
+                        • <strong>Canopy Park:</strong> Walking nets & mazes (Level 5)<br>
+                        • <strong>Dinner:</strong> Shake Shack, A&W, or endless options!
+                    </div>
+                    <div class="photo-container">
+                        <img src="https://www.jewelchangiairport.com/content/dam/jewel/attractions/rain-vortex/HSBC%20Rain%20Vortex_900x600.jpg"
+                            alt="Jewel Changi Rain Vortex" class="landmark-photo">
+                        <div class="photo-credit">Photo: Jewel Changi Rain Vortex</div>
+                        <a href="https://www.google.com/search?q=jewel+changi+airport+night+light+show&tbm=isch"
+                            target="_blank" class="photo-link">🔍 View Jewel Light Show Photos</a>
+                    </div>
+                    <span class="stop-duration">⏱️ 4.5 hours</span>
+                    <span class="cost">💰 Free Entry (Attractions Paid)</span>
+                </div>
+            </div>
+
+            <div class="stop">
+                <div class="stop-number">10</div>
+                <div class="stop-content">
+                    <div class="stop-time">🕙 10:00 PM - 1:25 AM</div>
+                    <div class="stop-location">✈️ Immigration & Departure</div>
+                    <div class="stop-activity">
+                        • <strong>10:00 PM:</strong> Enter Transit Area (Immigration)<br>
+                        • <strong>Last Shopping:</strong> Duty-Free Cosmetics/Alcohol<br>
+                        • <strong>12:30 AM:</strong> Go to Gate<br>
+                        • <strong>1:25 AM:</strong> FLIGHT PR508 to Manila 🛫
+                    </div>
+                    <span class="stop-duration">⏱️ 3.5 hours</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="summary">
+            <h3>📊 DAY 7 SUMMARY - THE MAGICAL FINALE!</h3>
+            <p><strong>Highlights:</strong> Harry Potter Interactive Tour ⚡ + Jewel Rain Vortex 💎</p>
+            <p><strong>Logistics:</strong> Hotel Checkout → Luggage Storage → Airport Early Check-in</p>
+            <p><strong>Total Cost Est:</strong> SGD 210-310 (Exhibition + Food + Transport)</p>
+            <p><strong>Final Flight:</strong> PR508 departing 1:25 AM (technically Day 8)</p>
+            <p><strong>Memories:</strong> Unforgettable ending to an amazing anniversary trip! ❤️</p>
+        </div>
+    </div>
 </body>
+
 </html>

@@ -551,31 +551,16 @@
 
 **🕕 5:45 PM - 6:45 PM: Early Dinner at Clarke Quay**
 
-**Dinner Options:**
+**🕕 5:45 PM - 6:45 PM: Anniversary Dinner at El Mesa**
 
-**Option A: Riverside Restaurants**
-- Various cafes & restaurants along river
-- Outdoor seating with river views
-- Western, Asian, fusion options
-- **Cost: SGD 50-70 for family**
-- More expensive but great ambiance
+- **Reservation at El Mesa** (Filipino Cuisine)
+- **Location:** 3E River Valley Road, #01-07, Clarke Quay
+- **Why here:** Lively riverside dining with authentic Filipino favorites!
+- **Must Try:** Crispy Pata, Kare-Kare, Sizzling Sisig
+- **Cost: SGD 40-70 for family**
+- Enjoy the live music and festive atmosphere!
 
-**Option B: Walk to Lau Pa Sat (15 min)**
-- Historic hawker centre
-- 80+ food stalls
-- More affordable
-- **Famous Satay Street!** (opens 7 PM but food available earlier)
-- **Cost: SGD 30-40 for family**
-- Then return to Clarke Quay for photos
-
-**Option C: Food Court at The Central (Clarke Quay)**
-- Indoor food court nearby
-- Air-conditioned
-- Multiple cuisines
-- **Cost: SGD 30-40**
-- Quick and convenient
-
-**Recommended: Option B or C (budget-friendly, then more time for photos!)**
+**Recommended: Request a riverside table for the best view!**
 
 **🕕 6:45 PM - 7:45 PM: Clarke Quay Photos & River Walk 📸**
 
