@@ -225,13 +225,7 @@
   #zone-pass { left: 0; }
   #zone-correct { right: 0; }
 
-  .zone-hint {
-    display: flex; flex-direction: column; align-items: center;
-    opacity: 0.18; pointer-events: none;
-    gap: 6px;
-  }
-  .zone-hint .arrow { font-size: 2.2rem; }
-  .zone-hint span { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+  .zone-hint { display: none; }
 
   /* Word display */
   #word-wrap {
@@ -334,7 +328,133 @@
   }
   .btn-play-again:active { transform: scale(0.97); }
 
-  /* BG colors for game */
+  /* ── CUSTOM CONFIRM OVERLAY ── */
+  #confirm-overlay {
+    display: none; position: fixed; inset: 0; z-index: 300;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+  }
+  #confirm-overlay.open { display: flex; }
+  .confirm-box {
+    background: #16213e;
+    border: 1.5px solid rgba(255,255,255,0.14);
+    border-radius: 18px;
+    padding: 24px 28px;
+    max-width: 320px; width: 90%;
+    text-align: center;
+  }
+  .confirm-box p {
+    font-family: 'Boogaloo', cursive;
+    font-size: 1.3rem; letter-spacing: 0.5px;
+    margin-bottom: 20px; line-height: 1.4;
+  }
+  .confirm-btns { display: flex; gap: 10px; }
+  .confirm-btns button {
+    flex: 1; padding: 12px;
+    border: none; border-radius: 12px;
+    font-family: 'Boogaloo', cursive; font-size: 1.1rem; letter-spacing: 1px;
+    cursor: pointer; transition: transform 0.1s;
+  }
+  .confirm-btns button:active { transform: scale(0.96); }
+  .confirm-yes { background: var(--pass-color); color: #fff; }
+  .confirm-no  { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
+  .btn-back {
+    position: absolute; top: 12px; left: 12px; z-index: 30;
+    width: 38px; height: 38px;
+    background: rgba(0,0,0,0.3);
+    border: 1.5px solid rgba(255,255,255,0.18);
+    border-radius: 10px;
+    color: rgba(255,255,255,0.7);
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; backdrop-filter: blur(4px);
+    transition: background 0.2s;
+  }
+  .btn-back:active { background: rgba(0,0,0,0.55); }
+
+  /* ── HELP ICON (setup) ── */
+  #btn-help-setup {
+    position: absolute; top: 16px; right: 16px; z-index: 30;
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.08);
+    border: 1.5px solid rgba(255,255,255,0.18);
+    border-radius: 50%;
+    color: rgba(255,255,255,0.65);
+    font-size: 1rem; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background 0.2s;
+  }
+  #btn-help-setup:active { background: rgba(255,255,255,0.18); }
+
+  /* ── HELP MODAL ── */
+  #help-modal {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+    align-items: flex-start; justify-content: center;
+    padding: 16px;
+    overflow-y: auto;
+  }
+  #help-modal.open { display: flex; }
+  .help-box {
+    background: #16213e;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 24px 28px;
+    max-width: 480px; width: 100%;
+    position: relative;
+    margin: auto;
+    flex-shrink: 0;
+  }
+  .help-box h2 {
+    font-family: 'Boogaloo', cursive; font-size: 1.8rem;
+    color: #ffd60a; letter-spacing: 2px; margin-bottom: 14px;
+  }
+  .help-step {
+    display: flex; gap: 14px; align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .help-step .hs-icon {
+    font-size: 1.6rem; flex-shrink: 0; width: 36px; text-align: center; margin-top: 2px;
+  }
+  .help-step .hs-text { font-size: 0.88rem; line-height: 1.5; opacity: 0.85; }
+  .help-step .hs-text strong { color: #fff; font-weight: 900; }
+  .help-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 14px 0; }
+  .help-close {
+    position: absolute; top: 14px; right: 14px;
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.08); border: none; border-radius: 8px;
+    color: rgba(255,255,255,0.6); font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .help-close:active { background: rgba(255,255,255,0.2); }
+  #screen-calibrate {
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 16px; text-align: center; padding: 30px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  }
+  #screen-calibrate h2 {
+    font-family: 'Boogaloo', cursive; font-size: 2rem;
+    color: #ffd60a; letter-spacing: 2px;
+  }
+  #screen-calibrate p { opacity: 0.6; font-size: 0.9rem; max-width: 340px; line-height: 1.5; }
+  #calib-icon { font-size: 4rem; animation: bob 1.6s ease-in-out infinite; }
+  @keyframes bob {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  #calib-bar-wrap {
+    width: 260px; height: 12px;
+    background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden;
+  }
+  #calib-bar {
+    height: 100%; width: 0%; border-radius: 6px;
+    background: #ffd60a; transition: width 0.1s linear;
+  }
+  #calib-status { font-size: 0.8rem; opacity: 0.5; letter-spacing: 1px; }
+
+  #tilt-up-hint, #tilt-down-hint { display: none; }
   .bg-1  { background: #e63946; }
   .bg-2  { background: #2a9d8f; }
   .bg-3  { background: #e76f51; }
@@ -358,6 +478,7 @@
 
 <!-- SETUP -->
 <div class="screen" id="screen-setup">
+  <button id="btn-help-setup" onclick="openHelp()">?</button>
   <h1>🎭 CHARADES</h1>
   <p class="subtitle">Choose your words · Set your timer · Play!</p>
 
@@ -394,10 +515,31 @@
   <div class="word-count" id="word-count"></div>
 </div>
 
+<!-- CALIBRATE -->
+<div class="screen" id="screen-calibrate">
+  <button class="btn-back" onclick="cancelToSetup()">←</button>
+  <div id="calib-icon">🤔</div>
+  <h2>Place on Forehead</h2>
+  <p>Hold the phone flat on your forehead in landscape mode. Keep still — we're setting your baseline tilt.</p>
+  <div id="calib-bar-wrap"><div id="calib-bar"></div></div>
+  <div id="calib-status">Detecting…</div>
+  <div id="calib-debug" style="font-size:0.7rem;opacity:0.3;font-family:monospace;margin-top:-8px"></div>
+</div>
+
 <!-- GAME -->
 <div class="screen" id="screen-game">
+  <button class="btn-back" id="btn-back-game" onclick="confirmBack()">←</button>
   <div id="timer-bar-wrap"><div id="timer-bar"></div></div>
   <div id="timer-num">—</div>
+
+  <div id="tilt-up-hint">
+    <div class="th-arrow">▲</div>
+    <div class="th-label">Correct</div>
+  </div>
+  <div id="tilt-down-hint">
+    <div class="th-label">Pass</div>
+    <div class="th-arrow">▼</div>
+  </div>
 
   <div id="zone-pass">
     <div class="zone-hint">
@@ -431,6 +573,51 @@
   <button class="btn-play-again" id="btn-again">PLAY AGAIN</button>
 </div>
 
+<!-- CUSTOM CONFIRM -->
+<div id="confirm-overlay">
+  <div class="confirm-box">
+    <p>End this game and go back to setup?</p>
+    <div class="confirm-btns">
+      <button class="confirm-yes" id="confirm-yes">End Game</button>
+      <button class="confirm-no"  id="confirm-no">Keep Playing</button>
+    </div>
+  </div>
+</div>
+
+<!-- HELP MODAL -->
+<div id="help-modal">
+  <div class="help-box">
+    <button class="help-close" onclick="closeHelp()">✕</button>
+    <h2>🎭 How to Play</h2>
+    <div class="help-step">
+      <div class="hs-icon">👥</div>
+      <div class="hs-text">Split into two teams. One person is the <strong>actor</strong>, the rest are <strong>guessers</strong>.</div>
+    </div>
+    <div class="help-step">
+      <div class="hs-icon">📱</div>
+      <div class="hs-text">The actor holds the phone <strong>flat on their forehead</strong>, screen facing up — so they can't see it but everyone else can.</div>
+    </div>
+    <div class="help-step">
+      <div class="hs-icon">🎬</div>
+      <div class="hs-text">The team <strong>acts out</strong> the word shown on screen without speaking. The actor tries to guess what it is!</div>
+    </div>
+    <hr class="help-divider">
+    <div class="help-step">
+      <div class="hs-icon">✅</div>
+      <div class="hs-text"><strong>Correct guess?</strong> Tilt the phone UP (raise your forehead). Or tap the right side of the screen.</div>
+    </div>
+    <div class="help-step">
+      <div class="hs-icon">⛔</div>
+      <div class="hs-text"><strong>Want to skip?</strong> Tilt the phone DOWN (drop your chin). Or tap the left side of the screen.</div>
+    </div>
+    <hr class="help-divider">
+    <div class="help-step">
+      <div class="hs-icon">⏱️</div>
+      <div class="hs-text">Score as many correct guesses as you can before the timer runs out. Then swap actors!</div>
+    </div>
+  </div>
+</div>
+
 <!-- Mini fullscreen toggle (game + results) -->
 <button id="btn-fs-mini" title="Toggle fullscreen">⛶</button>
 
@@ -460,6 +647,66 @@ const CATEGORIES = [
   {
     id: 'nature', name: 'Nature & Travel', icon: '🌿',
     words: ['Rain falling','Blowing wind','Digging hole','Climbing mountain','Walking uphill','Driving car','Riding train','Paddling canoe','Picking flowers','Building snowman','Planting seeds','Watching stars','Flying plane','Crossing bridge','Splashing puddle']
+  },
+  {
+    id: 'animals', name: 'Animals', icon: '🐾',
+    words: ['Dog begging','Cat stretching','Elephant walking','Snake slithering','Monkey swinging','Penguin waddling','Crab walking sideways','Frog jumping','Horse galloping','Bear scratching tree','Bird pecking ground','Fish swimming','Lion yawning','Dog fetching ball','Cat knocking things off','Rabbit hopping','Duck waddling','Giraffe eating leaves','Kangaroo jumping','Parrot talking','Hamster on wheel','Owl turning head','Cheetah running','Gorilla chest beat','Flamingo standing']
+  },
+  {
+    id: 'jobs', name: 'Jobs & Professions', icon: '👔',
+    words: ['Surgeon operating','Dentist drilling','Firefighter hosing','Police directing traffic','Chef tossing pizza','Barista making coffee','Pilot landing plane','Teacher at chalkboard','Referee blowing whistle','Waiter balancing plates','Hairdresser cutting hair','Mechanic under car','Librarian shushing','Painter on ladder','Photographer taking shot','Lifeguard watching','Astronaut floating','News anchor reporting','Mime performing','Magician pulling rabbit','Barber shaving','Bus driver steering','DJ spinning records','Fisherman casting rod','Boxer training']
+  },
+  {
+    id: 'superheroes', name: 'Superheroes', icon: '🦸',
+    words: ['Spider-Man shooting webs','Superman flying','Batman gliding','Wonder Woman deflecting','The Flash running fast','Hulk smashing','Iron Man flying suit','Thor swinging hammer','Captain America throwing shield','Black Panther pouncing','Aquaman swimming','Doctor Strange casting spell','Wolverine popping claws','Invisible Woman disappearing','The Wasp shrinking','Ant-Man growing giant','Black Widow flipping','Hawkeye shooting arrow','Cyclops eye blast','Storm controlling weather']
+  },
+  {
+    id: 'fairytales', name: 'Fairy Tales', icon: '🧚',
+    words: ['Cinderella losing shoe','Jack climbing beanstalk','Goldilocks tasting porridge','Big Bad Wolf blowing','Sleeping Beauty sleeping','Rapunzel letting down hair','Snow White eating apple','Pinocchio nose growing','Little Mermaid swimming','Beauty and the Beast dancing','Red Riding Hood skipping','Three Little Pigs building','Hansel and Gretel lost','Thumbelina tiny walking','Puss in Boots strutting','Rumpelstiltskin spinning gold','Aladdin on magic carpet','Frog Prince kissing','Ugly Duckling waddling','Fairy godmother waving wand']
+  },
+  {
+    id: 'awkward', name: 'Awkward Situations', icon: '😬',
+    words: ['Forgetting someone\'s name','Waving back at wrong person','Laughing at wrong time','Walking into glass door','Stuck in revolving door','Sending text to wrong person','Tripping on flat ground','Talking with mouth full','Holding door too early','Handshake goes wrong','Singing alone then someone walks in','Elevator awkward silence','Saying bye then walking same way','Spoiling a movie','Arriving overdressed','Calling teacher Mom','Fake laugh at bad joke','Starting a story no one cares about','Getting caught dancing alone','Holding in a sneeze']
+  },
+  {
+    id: 'hardthings', name: 'Hard To Do', icon: '😤',
+    words: ['Threading a needle','Opening a pistachio','Peeling a sticker cleanly','Untangling a necklace','Parallel parking perfectly','Folding a fitted sheet','Opening a jar stuck tight','Putting on sunscreen on your back','Eating spaghetti gracefully','Whistling loudly','Snapping fingers','Winking one eye','Licking your elbow','Patting head rubbing belly','Balancing book on head','Rolling tongue','Touching nose with tongue','Wiggling ears','Cracking knuckles','Catching fly with chopsticks']
+  },
+  {
+    id: 'office', name: 'Office Life', icon: '💼',
+    words: ['Printer paper jam','Bad Zoom call frozen','Microwave fish smell','Falling asleep in meeting','Replying all by accident','Free lunch stampede','Passive aggressive sticky note','Birthday singing in office','Stealing someone\'s lunch','Pretending to be busy','Webcam on accidentally','Conference call on mute','Broken office chair','Coffee machine broken','Taking last coffee no refill','Standing desk not working','Keyboard too loud','Eating at desk secretly','Boss walking up behind you','IT support visit']
+  },
+  {
+    id: 'christmas', name: 'Christmas', icon: '🎄',
+    words: ['Wrapping awkward present','Untangling Christmas lights','Santa going down chimney','Reindeer flying','Elf on shelf spying','Pulling Christmas cracker','Eating too much turkey','Drunk uncle at dinner','Trying on ugly sweater','Carolers at door','Opening disappointing gift','Building toy with no instructions','Falling asleep during movie','Christmas tree falling over','Cookie baking disaster','Kids sneaking downstairs','Fighting over TV remote','Taking family photo','Pretending to like gift','Eating advent calendar early']
+  },
+  {
+    id: 'beach', name: 'Beach & Summer', icon: '🏖️',
+    words: ['Putting on sunscreen','Sand in your food','Seagull stealing chips','Building sandcastle','Getting knocked by wave','Finding parking at beach','Putting up beach umbrella','Stepping on hot sand','Applying fake tan','Jumping in cold pool','Ice cream melting fast','Getting sunburned','Snorkeling underwater','Surfing and falling','Burying someone in sand','Playing beach volleyball','Trying to read in sun','Jellyfish panic','Putting on wet swimsuit','Running into the sea']
+  },
+  {
+    id: 'wedding', name: 'Wedding Moments', icon: '💍',
+    words: ['First dance','Cutting the cake','Bouquet toss','Groom seeing bride','Father daughter dance','Best man speech','Catching the garter','Drunk dancing guest','Flower girl walking','Ring bearer dropping rings','Vows getting emotional','Photographer directing poses','Confetti throwing','Getting into dress','Bride losing shoe','Groomsmen goofing off','Signing register','Clinking glasses for kiss','Releasing balloons','Crying happy tears']
+  },
+  {
+    id: 'toddler', name: 'Toddler Edition', icon: '🧸',
+    words: ['Eating ice cream','Blowing bubbles','Playing peek-a-boo','Throwing tantrum','Hugging teddy bear','Jumping in puddles','Putting shoes on wrong feet','Feeding ducks','Playing in sandbox','Blowing out candles','Spinning until dizzy','Chasing bubbles','Clapping hands','Stomping in puddle','Blowing raspberries','Falling asleep eating','Hiding behind curtain','Riding tricycle','Playing with blocks','Giving big hug']
+  },
+  {
+    id: 'onepiece', name: 'One Piece', icon: '🏴‍☠️',
+    words: ['Luffy','Zoro','Nami','Usopp','Sanji','Chopper','Robin','Franky','Brook','Jinbe','Shanks','Whitebeard','Blackbeard','Ace','Sabo','Garp','Roger','Rayleigh','Law','Coby','Smoker','Tashigi','Hancock','Mihawk','Crocodile','Doflamingo','Buggy','Kizaru','Aokiji','Akainu','Fujitora','Ryokugyu','Sengoku','Tsuru','Vegapunk','Bonney','Kidd','Killer','Apoo','Drake','Hawkins','Urouge','Capone Bege','Jewelry Bonney','Perona','Moria','Kuma','Ivankov','Dragon','Lucci','Kaku','Jabra','Blueno','Kumadori','Fukurou','Kalifa','Spandam','Caesar Clown','Monet','Vergo','Sugar','Trebol','Diamante','Pica','Senor Pink','Machvise','Lao G','Dellinger','Baby 5','Buffalo','Corazon','Cavendish','Bartolomeo','Sai','Leo','Maui','Viola','Rebecca','Kyros','Bellamy','Hody Jones','Vander Decken','Caribou','Enel','Wiper','Wyper','Dalton','Kureha','Vivi','Igaram','Pell','Chaka','Mr 1','Mr 2','Mr 3','Mr 4','Mr 5','Miss Doublefinger','Miss Goldenweek','Arlong','Hatchan','Jimbei','Kaido','Big Mom','Katakuri','Smoothie','Cracker','Perospero','Yamato','Momonosuke','Kinemon','Oden','Jack','Queen','King','Ulti','Page One','Who\'s Who','Sasaki','Black Maria','Orochi','Hyogoro','Raizo','Shinobu','Carrot','Pedro','Wanda','Nekomamushi','Inuarashi']
+  },
+  {
+    id: 'naruto', name: 'Naruto', icon: '🍥',
+    words: ['Naruto','Sasuke','Sakura','Kakashi','Itachi','Obito','Madara','Hashirama','Tobirama','Minato','Kushina','Jiraiya','Tsunade','Orochimaru','Hiruzen','Shikamaru','Choji','Ino','Neji','Rock Lee','Tenten','Hinata','Kiba','Shino','Gaara','Temari','Kankuro','Sai','Yamato','Asuma','Kurenai','Might Guy','Iruka','Konohamaru','Moegi','Udon','Deidara','Sasori','Hidan','Kakuzu','Kisame','Zetsu','Konan','Nagato','Pain','Yahiko','Tobi','Kabuto','Suigetsu','Jugo','Karin','Killer Bee','Darui','Mei Terumi','Onoki','Raikage','Gaara','Chiyo','Ebizo','Kimimaro','Tayuya','Kidomaru','Sakon','Ukon','Jirobo','Haku','Zabuza','Gato','Anko','Ibiki','Danzo','Sai','Fu','Torune','Kotetsu','Izumo','Genma','Shizune','Tonton','Pakura','Gari','Mifune','Han','Utakata','Yugito','Yagura','Roshi','Fuu','Chomei','Gyuki','Kurama','Shukaku','Matatabi','Isobu','Son Goku','Kokuo','Saiken','Chomei','Kaguya','Hagoromo','Hamura','Indra','Ashura','Boruto','Sarada','Mitsuki','Kawaki','Shikadai','Inojin','Chocho','Himawari','Iruka']
+  },
+  {
+    id: 'mlbb', name: 'Mobile Legends', icon: '🗡️',
+    words: ['Miya','Balmond','Saber','Alice','Nana','Tigreal','Alucard','Karina','Akai','Franco','Bane','Bruno','Clint','Layla','Minotaur','Lolita','Hayabusa','Freya','Gord','Vexana','Roger','Rafaela','Estes','Hilda','Zilong','Fanny','Eudora','Grock','Lancelot','Cyclops','Kagura','Jawhead','Martis','Helcurt','Pharsa','Lesley','Zhask','Hylos','Diggie','Argus','Aurora','Moskov','Johnson','Chou','Thamuz','Irithel','Gusion','Valir','Kimmy','Aldous','Claude','Vale','Selena','Hanabi','Chang\'e','Uranus','Gatotkaca','Lunox','Leomord','Belerick','Hanzo','Kadita','Harith','Minsitthar','Khufra','Granger','Esmeralda','Guinevere','Faramis','Badang','Atlas','Wanwan','Baxia','Masha','Lylia','Dyrroth','Silvanna','Cecilion','Carmilla','Popol and Kupa','Brody','Barats','Paquito','Benedetta','Yve','Mathilda','Phoveus','Aulus','Natan','Beatrix','Gloo','Valentina','Edith','Floryn','Aamon','Melissa','Xavier','Julian','Fredrinn','Joy','Yin','Koko','Novaria','Arlott','Cici','Lukas','Chip','Suyou','Zhuxin','Obsidia','Khaleed','Tigreal','Terizla','Aldous','Ruby','Lapu-Lapu','Sun','Yi Sun-shin','Angela','Luo Yi','Benedetta','Jawhead','Harley','Kadita','Odette','Lylia','Irithel','Lesley','Kimmy','Gusion','Selena','Kagura','Fanny','Lancelot','Hayabusa','Gord','Cyclops','Eudora','Vale','Zilong']
+  },
+  {
+    id: 'spongebob', name: 'SpongeBob', icon: '🧽',
+    words: ['SpongeBob','Patrick','Squidward','Sandy','Mr Krabs','Gary','Plankton','Karen','Mrs Puff','Larry the Lobster','Mermaid Man','Barnacle Boy','The Flying Dutchman','Larry the Snail','Squilliam','Pearl','Man Ray','Dirty Bubble','DoodleBob','Bubble Bass','Old Man Jenkins','Fred','Tom','Nancy','Harold','Margaret','Herb','Grandma SquarePants','Patchy the Pirate','Potty the Parrot','Kevin the Sea Cucumber','Wormy','Mystery the Seahorse','Reg','Nat','Scooter','Ned','Monroe','Sergeant Sam Roderick','Captain Magma','Jumbo Shrimp','Elastic Waistband','Pi-Right Ponderer','The Quickster','Prehistoric Gary','Primitive Sponge','Primitive Star','SpongeGar','Patar','Squog','King Neptune','Mindy','Dennis','Weenie the Hotdog','Burger Beard','Hamburger Patty','SpongeBob\'s Dad','SpongeBob\'s Mom','Squidward\'s Mom','Mini Squidward','Robot Krabs','Robot Patrick','Patrick Star','GrandPat','Bunny Wunny','Squidina','Cecil Star','Bunny Star','Narlene','Nobby']
   },
 ];
 
@@ -553,10 +800,11 @@ let gameActive = false;
 
 // ── DOM ──
 const screens = {
-  rotate: document.getElementById('screen-rotate'),
-  setup:  document.getElementById('screen-setup'),
-  game:   document.getElementById('screen-game'),
-  results: document.getElementById('screen-results'),
+  rotate:    document.getElementById('screen-rotate'),
+  setup:     document.getElementById('screen-setup'),
+  calibrate: document.getElementById('screen-calibrate'),
+  game:      document.getElementById('screen-game'),
+  results:   document.getElementById('screen-results'),
 };
 
 function showScreen(name) {
@@ -629,11 +877,132 @@ function startGame() {
   idx = 0;
   results = [];
   timeLeft = timerDuration;
+  gameActive = false;
+  startCalibration();
+}
+
+// ── Tilt / Motion ──
+let baselineVal = null;
+let tiltLocked = false;
+let calibSamples = [];
+let calibInterval = null;
+let calibProgress = 0;
+const CALIB_DURATION = 2000;
+const TILT_THRESHOLD = 20;  // degrees
+const HOLD_MS = 350;
+let tiltHoldTimer = null;
+let currentTiltDir = null;
+
+// In landscape on Android, beta is the forehead-tilt axis
+// (positive = tilting screen toward viewer / chin down, negative = away / forehead up)
+function getTiltValue(e) {
+  // Use beta in landscape — it reflects the pitch of the phone when held horizontally
+  return e.beta;
+}
+
+function startCalibration() {
+  calibSamples = [];
+  calibProgress = 0;
+  baselineVal = null;
+  document.getElementById('calib-bar').style.width = '0%';
+  document.getElementById('calib-status').textContent = 'Detecting…';
+  document.getElementById('calib-icon').textContent = '🤔';
+  showScreen('calibrate');
+
+  window.addEventListener('deviceorientation', onCalibOrientation);
+
+  const startTime = Date.now();
+  calibInterval = setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    calibProgress = Math.min(elapsed / CALIB_DURATION * 100, 100);
+    document.getElementById('calib-bar').style.width = calibProgress + '%';
+    if (elapsed >= CALIB_DURATION) {
+      finishCalibration();
+    }
+  }, 50);
+}
+
+function onCalibOrientation(e) {
+  const v = getTiltValue(e);
+  if (v !== null && v !== undefined) {
+    calibSamples.push(v);
+    document.getElementById('calib-debug').textContent = `β=${v.toFixed(1)}°`;
+  }
+}
+
+function finishCalibration() {
+  clearInterval(calibInterval);
+  window.removeEventListener('deviceorientation', onCalibOrientation);
+
+  if (calibSamples.length < 5) {
+    document.getElementById('calib-status').textContent = 'Motion not detected — using tap controls';
+    document.getElementById('calib-icon').textContent = '👆';
+    setTimeout(launchGame, 1200);
+    return;
+  }
+
+  baselineVal = calibSamples.reduce((s, v) => s + v, 0) / calibSamples.length;
+
+  document.getElementById('calib-bar').style.width = '100%';
+  document.getElementById('calib-status').textContent = 'Ready!';
+  document.getElementById('calib-icon').textContent = '✅';
+
+  setTimeout(launchGame, 600);
+}
+
+function launchGame() {
   gameActive = true;
   showScreen('game');
   renderDots();
   showWord();
   startTimer();
+  if (baselineVal !== null) {
+    window.addEventListener('deviceorientation', onGameOrientation);
+  }
+}
+
+function onGameOrientation(e) {
+  if (!gameActive || tiltLocked) return;
+  const val = getTiltValue(e);
+  if (val === null || val === undefined || baselineVal === null) return;
+
+  const delta = val - baselineVal;
+  // beta decreases (goes negative) when forehead lifts up → correct
+  // beta increases when chin drops / screen faces you → pass
+  if (delta < -TILT_THRESHOLD) {
+    if (currentTiltDir !== 'correct') {
+      clearTimeout(tiltHoldTimer);
+      currentTiltDir = 'correct';
+      tiltHoldTimer = setTimeout(() => triggerTilt('correct'), HOLD_MS);
+    }
+  } else if (delta > TILT_THRESHOLD) {
+    if (currentTiltDir !== 'pass') {
+      clearTimeout(tiltHoldTimer);
+      currentTiltDir = 'pass';
+      tiltHoldTimer = setTimeout(() => triggerTilt('pass'), HOLD_MS);
+    }
+  } else {
+    if (currentTiltDir !== null) {
+      clearTimeout(tiltHoldTimer);
+      currentTiltDir = null;
+    }
+  }
+}
+
+function triggerTilt(action) {
+  if (!gameActive || tiltLocked) return;
+  tiltLocked = true;
+  currentTiltDir = null;
+  clearTimeout(tiltHoldTimer);
+  doAction(action);
+  setTimeout(() => { tiltLocked = false; }, 700);
+}
+
+function stopMotion() {
+  window.removeEventListener('deviceorientation', onGameOrientation);
+  clearTimeout(tiltHoldTimer);
+  currentTiltDir = null;
+  tiltLocked = false;
 }
 
 function randomBg(avoid) {
@@ -664,14 +1033,12 @@ function doAction(action) {
 
   const flash = document.getElementById('flash');
   if (action === 'correct') {
-    flash.textContent = '✅ CORRECT!';
-    flash.style.background = 'rgba(48,209,88,0.88)';
-    flash.style.color = '#fff';
+    flash.textContent = '';
+    flash.style.background = 'rgba(48,209,88,0.72)';
     soundCorrect();
   } else {
-    flash.textContent = '⛔ PASS';
-    flash.style.background = 'rgba(255,45,85,0.88)';
-    flash.style.color = '#fff';
+    flash.textContent = '';
+    flash.style.background = 'rgba(255,45,85,0.72)';
     soundPass();
   }
   // Animate flash
@@ -753,6 +1120,7 @@ function renderTimerBar() {
 function endGame() {
   clearInterval(timerInterval);
   gameActive = false;
+  stopMotion();
   soundTimeUp();
 
   const correct = results.filter(r => r.result === 'correct');
@@ -786,8 +1154,50 @@ document.getElementById('zone-correct').addEventListener('touchend', e => { e.pr
 
 // Play again
 document.getElementById('btn-again').addEventListener('click', () => {
+  stopMotion();
   showScreen('setup');
   updateWordCount();
+});
+
+// ── Help Modal ──
+function openHelp() {
+  document.getElementById('help-modal').classList.add('open');
+}
+function closeHelp() {
+  document.getElementById('help-modal').classList.remove('open');
+}
+document.getElementById('help-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('help-modal')) closeHelp();
+});
+
+// ── Navigation ──
+function cancelToSetup() {
+  // Cancel calibration in progress
+  clearInterval(calibInterval);
+  window.removeEventListener('deviceorientation', onCalibOrientation);
+  stopMotion();
+  showScreen('setup');
+  updateWordCount();
+}
+
+function confirmBack() {
+  // Pause without any native dialog
+  gameActive = false;
+  clearInterval(timerInterval);
+  document.getElementById('confirm-overlay').classList.add('open');
+}
+
+document.getElementById('confirm-yes').addEventListener('click', () => {
+  document.getElementById('confirm-overlay').classList.remove('open');
+  stopMotion();
+  showScreen('setup');
+  updateWordCount();
+});
+
+document.getElementById('confirm-no').addEventListener('click', () => {
+  document.getElementById('confirm-overlay').classList.remove('open');
+  gameActive = true;
+  startTimer();
 });
 
 // ── Fullscreen ──

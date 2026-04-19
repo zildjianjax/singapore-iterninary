@@ -1,0 +1,87 @@
+Convert the attached charades.html single-file web app into an Expo React Native app (TypeScript). 
+
+## Overview
+This is a charades party game where one player holds the phone on their forehead in landscape mode. Teammates act out words, and the actor tilts the phone up (correct) or down (pass) to advance. It also supports tap controls as fallback.
+
+## Core Requirements
+
+### Screens (match existing flow exactly)
+1. **Setup Screen** — tab switcher between "Categories" (grid of category cards) and "Custom List" (textarea). Timer duration slider (30–300s, default 120s). START GAME button.
+2. **Calibration Screen** — progress bar over 2 seconds, reads baseline tilt value using accelerometer, then auto-launches game. Back button to cancel.
+3. **Game Screen** — fullscreen landscape, colored background (random per word), large word text centered. Timer bar at top. Progress dots at bottom. Left half tap = pass, right half tap = correct. Back button shows custom in-app confirm dialog (no native Alert). Flash color overlay on action (green = correct, red = pass). Sound effects on correct/pass/tick/end.
+4. **Results Screen** — single column list in play order. White dot = correct, dark dot = pass. Score pills showing totals. PLAY AGAIN button.
+
+### Tilt Detection
+- Use `expo-sensors` DeviceMotion or Accelerometer
+- Calibrate baseline `beta` value on the calibration screen (2s average)
+- Tilt up (beta decreases from baseline by 20°+) = correct
+- Tilt down (beta increases from baseline by 20°+) = pass
+- Must hold tilt for 350ms before triggering (debounce)
+- Lock out re-trigger for 700ms after action
+
+### Orientation & Display
+- Lock to landscape using `expo-screen-orientation`
+- Keep screen awake using `expo-keep-awake`
+- Show "rotate device" screen if portrait detected
+
+### Audio
+- Use `expo-av` to play short synthesized tones (or small bundled audio files)
+- Correct: ascending 3-tone ding
+- Pass: descending buzz
+- Tick: short click for last 10 seconds
+- Time up: descending 3-tone
+
+### Categories
+Copy all category data exactly from the source HTML file. There are 20 categories including: Around the House, Sports & Fitness, Food & Cooking, Hobbies & Play, Feelings & Body, Nature & Travel, Animals, Jobs & Professions, Superheroes, Fairy Tales, Awkward Situations, Hard To Do, Office Life, Christmas, Beach & Summer, Wedding Moments, Toddler Edition, One Piece, Naruto, Mobile Legends, SpongeBob.
+
+### Styling
+- Dark navy background (#1a1a2e) throughout
+- Yellow accent (#ffd60a) for titles, selected states, timer
+- Font: use a bold display font for word text (React Native compatible)
+- Random vivid background colors per word (10 color pool)
+- Category cards: 2-column grid, gold border when selected
+- Tab switcher for Categories vs Custom on setup screen
+
+### Navigation
+- Use React Navigation (stack)
+- No native browser dialogs anywhere — all confirmations use custom modal overlays
+- Help modal accessible from setup screen explaining how to play
+
+## File Structure
+app/
+  index.tsx         (setup screen)
+  calibrate.tsx     (calibration screen)
+  game.tsx          (game screen)
+  results.tsx       (results screen)
+components/
+  HelpModal.tsx
+  ConfirmModal.tsx
+  CategoryCard.tsx
+  TimerBar.tsx
+data/
+  categories.ts     (all word lists)
+hooks/
+  useTilt.ts        (accelerometer + calibration logic)
+  useGameTimer.ts   (countdown timer logic)
+utils/
+  audio.ts          (sound effect helpers)
+  shuffle.ts        (fisher-yates shuffle)
+
+## Dependencies needed
+- expo
+- expo-sensors
+- expo-screen-orientation
+- expo-keep-awake
+- expo-av
+- @react-navigation/native
+- @react-navigation/stack
+- react-native-safe-area-context
+- react-native-screens
+
+## Notes
+- TypeScript throughout
+- No class components, hooks only
+- Pass game state (shuffled words, results, timer duration) via React Navigation params or a lightweight context
+- The calibration screen should show the live beta reading so it can be debugged
+- Tilt axis in landscape: use the `beta` value from DeviceMotion (not gamma)
+- All word lists are plain string arrays, no IDs needed in the game logic
