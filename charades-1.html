@@ -878,77 +878,25 @@ function startGame() {
   results = [];
   timeLeft = timerDuration;
   gameActive = false;
-  startCalibration();
+  launchGame();
 }
 
-// ── Tilt / Motion ──
+// ── Tilt / Motion — DISABLED ──
 let baselineVal = null;
 let tiltLocked = false;
 let calibSamples = [];
 let calibInterval = null;
 let calibProgress = 0;
 const CALIB_DURATION = 2000;
-const TILT_THRESHOLD = 20;  // degrees
+const TILT_THRESHOLD = 20;
 const HOLD_MS = 350;
 let tiltHoldTimer = null;
 let currentTiltDir = null;
 
-// In landscape on Android, beta is the forehead-tilt axis
-// (positive = tilting screen toward viewer / chin down, negative = away / forehead up)
-function getTiltValue(e) {
-  // Use beta in landscape — it reflects the pitch of the phone when held horizontally
-  return e.beta;
-}
-
-function startCalibration() {
-  calibSamples = [];
-  calibProgress = 0;
-  baselineVal = null;
-  document.getElementById('calib-bar').style.width = '0%';
-  document.getElementById('calib-status').textContent = 'Detecting…';
-  document.getElementById('calib-icon').textContent = '🤔';
-  showScreen('calibrate');
-
-  window.addEventListener('deviceorientation', onCalibOrientation);
-
-  const startTime = Date.now();
-  calibInterval = setInterval(() => {
-    const elapsed = Date.now() - startTime;
-    calibProgress = Math.min(elapsed / CALIB_DURATION * 100, 100);
-    document.getElementById('calib-bar').style.width = calibProgress + '%';
-    if (elapsed >= CALIB_DURATION) {
-      finishCalibration();
-    }
-  }, 50);
-}
-
-function onCalibOrientation(e) {
-  const v = getTiltValue(e);
-  if (v !== null && v !== undefined) {
-    calibSamples.push(v);
-    document.getElementById('calib-debug').textContent = `β=${v.toFixed(1)}°`;
-  }
-}
-
-function finishCalibration() {
-  clearInterval(calibInterval);
-  window.removeEventListener('deviceorientation', onCalibOrientation);
-
-  if (calibSamples.length < 5) {
-    document.getElementById('calib-status').textContent = 'Motion not detected — using tap controls';
-    document.getElementById('calib-icon').textContent = '👆';
-    setTimeout(launchGame, 1200);
-    return;
-  }
-
-  baselineVal = calibSamples.reduce((s, v) => s + v, 0) / calibSamples.length;
-
-  document.getElementById('calib-bar').style.width = '100%';
-  document.getElementById('calib-status').textContent = 'Ready!';
-  document.getElementById('calib-icon').textContent = '✅';
-
-  setTimeout(launchGame, 600);
-}
+function getTiltValue(e) { return e.beta; }
+function startCalibration() { launchGame(); }
+function onCalibOrientation(e) {}
+function finishCalibration() { launchGame(); }
 
 function launchGame() {
   gameActive = true;
@@ -956,50 +904,11 @@ function launchGame() {
   renderDots();
   showWord();
   startTimer();
-  if (baselineVal !== null) {
-    window.addEventListener('deviceorientation', onGameOrientation);
-  }
 }
 
-function onGameOrientation(e) {
-  if (!gameActive || tiltLocked) return;
-  const val = getTiltValue(e);
-  if (val === null || val === undefined || baselineVal === null) return;
-
-  const delta = val - baselineVal;
-  // beta decreases (goes negative) when forehead lifts up → correct
-  // beta increases when chin drops / screen faces you → pass
-  if (delta < -TILT_THRESHOLD) {
-    if (currentTiltDir !== 'correct') {
-      clearTimeout(tiltHoldTimer);
-      currentTiltDir = 'correct';
-      tiltHoldTimer = setTimeout(() => triggerTilt('correct'), HOLD_MS);
-    }
-  } else if (delta > TILT_THRESHOLD) {
-    if (currentTiltDir !== 'pass') {
-      clearTimeout(tiltHoldTimer);
-      currentTiltDir = 'pass';
-      tiltHoldTimer = setTimeout(() => triggerTilt('pass'), HOLD_MS);
-    }
-  } else {
-    if (currentTiltDir !== null) {
-      clearTimeout(tiltHoldTimer);
-      currentTiltDir = null;
-    }
-  }
-}
-
-function triggerTilt(action) {
-  if (!gameActive || tiltLocked) return;
-  tiltLocked = true;
-  currentTiltDir = null;
-  clearTimeout(tiltHoldTimer);
-  doAction(action);
-  setTimeout(() => { tiltLocked = false; }, 700);
-}
-
+function onGameOrientation(e) {}
+function triggerTilt(action) {}
 function stopMotion() {
-  window.removeEventListener('deviceorientation', onGameOrientation);
   clearTimeout(tiltHoldTimer);
   currentTiltDir = null;
   tiltLocked = false;
@@ -1172,9 +1081,6 @@ document.getElementById('help-modal').addEventListener('click', e => {
 
 // ── Navigation ──
 function cancelToSetup() {
-  // Cancel calibration in progress
-  clearInterval(calibInterval);
-  window.removeEventListener('deviceorientation', onCalibOrientation);
   stopMotion();
   showScreen('setup');
   updateWordCount();
